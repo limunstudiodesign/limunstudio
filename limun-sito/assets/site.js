@@ -28,6 +28,10 @@
       case "image":
         if (!m.src) return `<figure class="${cls}">${ph(n, "4/3")}</figure>`;
         return `<figure class="${cls}"><img src="${esc(m.src)}" alt="${esc(m.alt || "")}" loading="lazy" decoding="async">${cap}</figure>`;
+      case "gallery": {
+        const imgs = (Array.isArray(m.images) ? m.images : [m.images]).filter(Boolean);
+        return imgs.map((src, k) => `<figure class="${cls}"><img src="${esc(src)}" alt="" loading="lazy" decoding="async">${k === imgs.length - 1 ? cap : ""}</figure>`).join("");
+      }
       case "video":
         if (!m.src) return "";
         return `<figure class="${cls}"><video src="${esc(m.src)}" ${m.poster ? `poster="${esc(m.poster)}"` : ""} autoplay muted loop playsinline preload="metadata"></video>${cap}</figure>`;

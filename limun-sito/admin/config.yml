@@ -71,6 +71,13 @@ collections:
                       - { name: alt, label: Descrizione per accessibilità, widget: string, required: false }
                       - &size { name: size, label: Dimensione, widget: select, default: half, options: [ { label: Mezza larghezza, value: half }, { label: A tutta larghezza, value: full } ] }
                       - &caption { name: caption, label: Didascalia, widget: string, required: false }
+                  - name: gallery
+                    label: Gruppo di foto
+                    summary: "Gruppo di foto"
+                    fields:
+                      - { name: images, label: Foto, widget: image, multiple: true, hint: "Seleziona o trascina più foto insieme. Trascinale per cambiare l'ordine." }
+                      - { name: size, label: Disposizione, widget: select, default: half, options: [ { label: Due per riga, value: half }, { label: Una per riga (a tutta larghezza), value: full } ] }
+                      - *caption
                   - name: video
                     label: Video (file mp4)
                     summary: "Video {{fields.caption}}"
