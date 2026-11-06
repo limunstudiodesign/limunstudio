@@ -19,14 +19,22 @@
   const head = p => `${esc(p.client)}${p.subtitle ? SL + esc(p.subtitle) : ""}${p.year ? " — " + esc(p.year) : ""}`;
 
   /* ---------- Contenuti esterni: si caricano solo dopo il consenso ---------- */
-  let ext = false;
-  try { ext = localStorage.getItem("limun-ext") === "1"; } catch (err) {}
-  function setExt(v){ ext = v; try { v ? localStorage.setItem("limun-ext", "1") : localStorage.removeItem("limun-ext"); } catch (err) {} }
+  /* Scelta salvata: "1" accettati, "0" rifiutati, nessun valore = banner da mostrare */
+  let choice = null;
+  try { choice = localStorage.getItem("limun-ext"); } catch (err) {}
+  let ext = choice === "1";
+  function setExt(v){ ext = v; choice = v ? "1" : "0"; try { localStorage.setItem("limun-ext", choice); } catch (err) {} }
   const SERVICE = { youtube: "YouTube", vimeo: "Vimeo", instagram: "Instagram" };
-  function frame(service, src, ratio, title, allow){
+  function frame(service, src, ratio, title, allow, link){
     const ifr = `<iframe src="${src}" title="${esc(title)}" loading="lazy" ${allow ? `allow="${allow}" allowfullscreen` : `scrolling="no"`}></iframe>`;
     if (ext) return `<div class="emb" style="--r:${ratio}">${ifr}</div>`;
-    return `<div class="emb gate" style="--r:${ratio}"><button type="button" data-gate="${encodeURIComponent(ifr)}"><span>Contenuto su ${SERVICE[service]}.<br>Clicca per caricarlo.</span><span class="gate-n">${SERVICE[service]} può usare cookie propri. <a href="#privacy">Privacy</a></span></button></div>`;
+    return `<p class="ext-off" data-gate="${encodeURIComponent(ifr)}" data-r="${ratio}"><a href="${esc(link || "#")}" target="_blank" rel="noopener">Guarda su ${SERVICE[service]} <span aria-hidden="true">↗</span></a></p>`;
+  }
+  function loadAll(){
+    document.querySelectorAll(".ext-off[data-gate]").forEach(p => {
+      const d = document.createElement("div"); d.className = "emb"; d.style.setProperty("--r", p.dataset.r);
+      d.innerHTML = decodeURIComponent(p.dataset.gate); p.replaceWith(d);
+    });
   }
   const YTA = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
 
@@ -55,11 +63,11 @@
       case "youtube": {
         const id = ytId(m.url); if (!id) return "";
         const tall = /\/shorts\//.test(m.url);
-        return `<figure class="${cls}">${frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0`, tall ? "9/16" : "16/9", m.caption || "Video YouTube", YTA)}${cap}</figure>`;
+        return `<figure class="${cls}">${frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0`, tall ? "9/16" : "16/9", m.caption || "Video YouTube", YTA, m.url)}${cap}</figure>`;
       }
       case "vimeo": {
         const id = vimeoId(m.url); if (!id) return "";
-        return `<figure class="${cls}">${frame("vimeo", `https://player.vimeo.com/video/${id}?dnt=1`, "16/9", m.caption || "Video Vimeo", "autoplay; fullscreen; picture-in-picture")}${cap}</figure>`;
+        return `<figure class="${cls}">${frame("vimeo", `https://player.vimeo.com/video/${id}?dnt=1`, "16/9", m.caption || "Video Vimeo", "autoplay; fullscreen; picture-in-picture", m.url)}${cap}</figure>`;
       }
       case "link": {
         if (!m.url) return "";
@@ -67,7 +75,7 @@
       }
       case "instagram": {
         const p = igPath(m.url); if (!p) return "";
-        return `<figure class="${cls}">${frame("instagram", `https://www.instagram.com/${p}/embed/`, "9/14", m.caption || "Post Instagram", "")}${cap}</figure>`;
+        return `<figure class="${cls}">${frame("instagram", `https://www.instagram.com/${p}/embed/`, "9/14", m.caption || "Post Instagram", "", m.url)}${cap}</figure>`;
       }
       default: return "";
     }
@@ -109,7 +117,7 @@
     const e = s.episodes[ei];
     const id = e ? ytId(e.url) : null;
     const player = id
-      ? frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}`, "16/9", e.title, YTA)
+      ? frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}`, "16/9", e.title, YTA, e.url)
       : `<div class="emb pod-empty" style="--r:16/9"><span>${e ? "Video in arrivo" : "Nessun episodio"}</span></div>`;
     const sl = s.label === "" ? "" : esc(s.label || "S" + pad(si + 1));
     return `<div class="pod-now">${sl}${e ? `${sl ? " — " : ""}E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>
@@ -153,12 +161,6 @@
         ${PROJECTS.length > 1 ? `<a class="next" href="#p-${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
       </article>`;
     },
-    privacy(){
-      return `<div class="view"><div class="legal">${paras(S.privacy || "")}
-        <p>Contenuti esterni (YouTube, Vimeo, Instagram): ${ext ? "attualmente <strong>consentiti</strong> su questo browser." : "attualmente <strong>bloccati</strong> finché non li carichi."}<br>
-        <button type="button" class="pill" data-ext="${ext ? "0" : "1"}" style="margin-top:.4em">${ext ? "Blocca i contenuti esterni" : "Consenti i contenuti esterni"}</button></p>
-      </div></div>`;
-    },
     contact(){
       return `<div class="view"><div class="blocks">
         ${S.email ? `<p>New projects:<br><a href="mailto:${esc(S.email)}" data-mail>${esc(S.email)}</a><br><button type="button" class="pill" data-copy style="margin-top:.3em">Copy</button></p>` : ""}
@@ -184,17 +186,38 @@
         </div>
       </div>
       ${S.contacts_in_about ? contacts() : ""}
-      ${team.length ? `<div class="ipills"><button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button></div>
-      <div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}`;
+      <div class="ipills">${team.length ? `<button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button>` : ""}<button type="button" class="pill" id="privBtn" aria-expanded="false">Privacy</button></div>
+      ${team.length ? `<div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}
+      <div class="team priv" id="priv" hidden>${paras(S.privacy || "")}<p><button type="button" class="pill" data-cookie-prefs>Cookie preferences</button></p></div>`;
     $("#foot").innerHTML = `<div>${S.name ? esc(S.name) + "<br>" : ""}${lines(S.address)}</div>
       <div>${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a>` : ""}</div>`;
     const vat = (S.vat || []).filter(v => v && v.number);
     if (vat.length) $("#foot > div").insertAdjacentHTML("beforeend", `<br>P.IVA ${vat.map(v => esc(v.number)).join(" — ")}`);
-    $("#foot > div:last-child").insertAdjacentHTML("beforeend", `<br><a href="#privacy">Privacy</a>`);
     if (S.instagram_url) $("#dockIg").href = S.instagram_url;
     const tb = $("#teamBtn");
     if (tb) tb.addEventListener("click", () => { const t = $("#team"); t.hidden = !t.hidden; tb.setAttribute("aria-expanded", !t.hidden); });
+    $("#privBtn").addEventListener("click", () => showPrivacy($("#priv").hidden));
   }
+
+  function showPrivacy(open){ const p = $("#priv"), b = $("#privBtn"); if (!p) return; p.hidden = !open; b.setAttribute("aria-expanded", open); }
+
+  /* Banner dei cookie: Accetta e Rifiuta con lo stesso peso */
+  function banner(show){
+    let el = $("#cookie");
+    if (!show){ if (el) el.hidden = true; return; }
+    if (!el){
+      el = document.createElement("div"); el.id = "cookie"; el.className = "cookie"; el.setAttribute("role", "dialog"); el.setAttribute("aria-label", "Cookie");
+      el.innerHTML = `<p>Questo sito mostra video e post di YouTube, Vimeo e Instagram, che possono usare cookie propri. Li carichiamo solo se accetti.</p>
+        <div class="cookie-b"><button type="button" class="pill" data-consent="1">Accetta</button><button type="button" class="pill" data-consent="0">Rifiuta</button><a class="pill" href="#privacy">Privacy</a></div>`;
+      document.body.appendChild(el);
+    }
+    el.hidden = false;
+  }
+  document.addEventListener("click", e => {
+    const c = e.target.closest("[data-consent]");
+    if (c){ const yes = c.dataset.consent === "1"; const was = ext; setExt(yes); banner(false); if (yes) loadAll(); else if (was) route(); return; }
+    if (e.target.closest("[data-cookie-prefs]")) banner(true);
+  });
 
   /* About: si apre in alto e resta aperto mentre navighi */
   const topEl = $("#top"), abt = $("#abt");
@@ -232,7 +255,7 @@
     let key = "home", html;
     if (h === "about"){ setAbout(true); html = VIEWS.home(); }
     else if (h === "contact"){ key = "contact"; html = VIEWS.contact(); }
-    else if (h === "privacy"){ key = "privacy"; html = VIEWS.privacy(); }
+    else if (h === "privacy"){ html = VIEWS.home(); setAbout(true); showPrivacy(true); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
     else html = VIEWS.home();
     if (key !== "project") document.title = S.name || "Limun Studio Design";
@@ -247,14 +270,6 @@
   app.addEventListener("click", e => {
     const a = e.target.closest("[data-acc]");
     if (a){ const s = a.parentElement, open = !s.classList.contains("open"); s.classList.toggle("open", open); a.setAttribute("aria-expanded", open); return; }
-    const g = e.target.closest("[data-gate]");
-    if (g && !e.target.closest("a")){
-      setExt(true);
-      document.querySelectorAll(".emb.gate").forEach(box => { const b = box.querySelector("[data-gate]"); box.classList.remove("gate"); box.innerHTML = decodeURIComponent(b.dataset.gate); });
-      return;
-    }
-    const x = e.target.closest("[data-ext]");
-    if (x){ setExt(x.dataset.ext === "1"); route(); return; }
     const sb = e.target.closest("[data-season]");
     if (sb){
       const pod = sb.closest("[data-pod]");
@@ -296,6 +311,7 @@
       return;
     }
     renderChrome(); fillBar(); route();
+    if (choice === null) banner(true);
   }
   load();
 })();
