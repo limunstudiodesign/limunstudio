@@ -21,16 +21,20 @@
   function ytId(u){ const m = String(u).match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/); return m ? m[1] : null; }
   function vimeoId(u){ const m = String(u).match(/vimeo\.com\/(?:video\/)?(\d+)/); return m ? m[1] : null; }
   function igPath(u){ const m = String(u).match(/instagram\.com\/(?:[\w.]+\/)?(reel|reels|p|tv)\/([\w-]+)/); return m ? `${m[1] === "reels" ? "reel" : m[1]}/${m[2]}` : null; }
+  const RATIOS = ["1/1","4/5","3/4","2/3","4/3","3/2","16/9","9/16"];
+  const fit = r => RATIOS.includes(r) ? ` style="aspect-ratio:${r};object-fit:cover"` : "";
   function mediaItem(m, n){
     const cls = `m ${m.size === "full" ? "span2" : ""}`;
     const cap = m.caption ? `<figcaption>${esc(m.caption)}</figcaption>` : "";
     switch (m.type){
       case "image":
         if (!m.src) return `<figure class="${cls}">${ph(n, "4/3")}</figure>`;
-        return `<figure class="${cls}"><img src="${esc(m.src)}" alt="${esc(m.alt || "")}" loading="lazy" decoding="async">${cap}</figure>`;
+        return `<figure class="${cls}"><img src="${esc(m.src)}" alt="${esc(m.alt || "")}" loading="lazy" decoding="async"${fit(m.ratio)}>${cap}</figure>`;
       case "gallery": {
         const imgs = (Array.isArray(m.images) ? m.images : [m.images]).filter(Boolean);
-        return imgs.map((src, k) => `<figure class="${cls}"><img src="${esc(src)}" alt="" loading="lazy" decoding="async">${k === imgs.length - 1 ? cap : ""}</figure>`).join("");
+        if (!imgs.length) return "";
+        const per = Math.min(4, Math.max(1, parseInt(m.per_row, 10) || (m.size === "full" ? 1 : 2)));
+        return `<figure class="m span2 grp" style="--n:${per}">${imgs.map(src => `<img src="${esc(src)}" alt="" loading="lazy" decoding="async"${fit(m.ratio)}>`).join("")}${cap}</figure>`;
       }
       case "video":
         if (!m.src) return "";
@@ -95,9 +99,14 @@
   function tile(p){
     const i = idx(p);
     let cover = ph(i, "4/3");
+    const yid = !p.cover_video && p.cover_youtube ? ytId(p.cover_youtube) : null;
     if (p.cover_video) cover = `<video class="cover" src="${esc(p.cover_video)}" ${p.cover ? `poster="${esc(p.cover)}"` : ""} autoplay muted loop playsinline preload="metadata"></video>`;
+    else if (yid){
+      const tall = /\/shorts\//.test(p.cover_youtube);
+      cover = `<span class="cover cvr${tall ? " tall" : ""}"${p.cover ? ` style="background:center/cover url('${esc(p.cover)}')"` : ""}><iframe src="https://www.youtube-nocookie.com/embed/${yid}?autoplay=1&mute=1&loop=1&playlist=${yid}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0" title="" tabindex="-1" aria-hidden="true" loading="lazy" allow="autoplay; encrypted-media"></iframe></span>`;
+    }
     else if (p.cover) cover = `<img class="cover" src="${esc(p.cover)}" alt="" loading="${i < 4 ? "eager" : "lazy"}" decoding="async">`;
-    return `<a class="tile" href="#p-${p.slug}">${cover}<span>${head(p)}<br>${esc(p.category)}</span></a>`;
+    return `<a class="tile" href="#p-${p.slug}">${cover}<span>${esc(p.client)}${p.subtitle ? SL + esc(p.subtitle) : ""}<br>${esc(p.category)}</span></a>`;
   }
   const VIEWS = {
     home(){

@@ -45,6 +45,7 @@ collections:
               - { name: hidden, label: Nascondi dal sito, widget: boolean, default: false, required: false }
               - { name: cover, label: Copertina, widget: image, required: false, hint: "L'immagine del progetto nel portfolio (formato 4:3)." }
               - { name: cover_video, label: Video di copertina, widget: file, required: false, hint: "Facoltativo: mp4 breve in loop al posto della copertina. Massimo 25 MB." }
+              - { name: cover_youtube, label: Video di copertina da YouTube, widget: string, required: false, hint: "Facoltativo: incolla un link YouTube. In home parte da solo, muto e in loop, senza player. Se c'è anche il video mp4, vince l'mp4. La foto di copertina resta come anteprima mentre carica." }
               - { name: description, label: Testo, widget: text, required: false, hint: "Lascia una riga vuota tra un paragrafo e l'altro." }
               - name: credits
                 label: Crediti
@@ -70,13 +71,15 @@ collections:
                       - { name: src, label: Foto, widget: image }
                       - { name: alt, label: Descrizione per accessibilità, widget: string, required: false }
                       - &size { name: size, label: Dimensione, widget: select, default: half, options: [ { label: Mezza larghezza, value: half }, { label: A tutta larghezza, value: full } ] }
+                      - &ratio { name: ratio, label: Formato, widget: select, default: auto, options: [ { label: Originale, value: auto }, { label: "1:1", value: "1/1" }, { label: "4:5", value: "4/5" }, { label: "3:4", value: "3/4" }, { label: "2:3", value: "2/3" }, { label: "4:3", value: "4/3" }, { label: "3:2", value: "3/2" }, { label: "16:9", value: "16/9" }, { label: "9:16", value: "9/16" } ] }
                       - &caption { name: caption, label: Didascalia, widget: string, required: false }
                   - name: gallery
                     label: Gruppo di foto
                     summary: "Gruppo di foto"
                     fields:
                       - { name: images, label: Foto, widget: image, multiple: true, hint: "Seleziona o trascina più foto insieme. Trascinale per cambiare l'ordine." }
-                      - { name: size, label: Disposizione, widget: select, default: half, options: [ { label: Due per riga, value: half }, { label: Una per riga (a tutta larghezza), value: full } ] }
+                      - { name: per_row, label: Foto per riga, widget: select, default: "2", options: [ { label: "1", value: "1" }, { label: "2", value: "2" }, { label: "3", value: "3" }, { label: "4", value: "4" } ], hint: "Sul telefono diventano al massimo due per riga." }
+                      - *ratio
                       - *caption
                   - name: video
                     label: Video (file mp4)
