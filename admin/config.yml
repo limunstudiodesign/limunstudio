@@ -153,14 +153,13 @@ collections:
                     fields:
                       - { name: title, label: Titolo della striscia, widget: string, hint: "Es. Podcast | Ruota Libera" }
                       - { name: text, label: Testo, widget: text, required: false }
-                      - { name: color, label: Colore del riquadro stagioni, widget: color, default: "#b8a6f7", allowInput: true }
                       - name: seasons
                         label: Stagioni
                         label_singular: Stagione
                         widget: list
                         summary: "{{fields.label}} {{fields.title}}"
                         fields:
-                          - { name: label, label: Sigla, widget: string, hint: "Es. S01" }
+                          - { name: label, label: Nota interna, widget: string, required: false, hint: "Non compare sul sito: le pillole si numerano da sole (Stagione 01, 02…)." }
                           - { name: title, label: Titolo della stagione, widget: string, required: false }
                           - name: episodes
                             label: Episodi

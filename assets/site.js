@@ -96,18 +96,14 @@
     return (.2126 * L[0] + .7152 * L[1] + .0722 * L[2]) > .22 ? "#000" : "#fff";
   }
   function podcast(w, key){
-    const seasons = (w.seasons || []).filter(s => s && (s.label || s.title)).map(s => ({ ...s, episodes: (s.episodes || []).filter(e => e && (e.title || e.url)) }));
+    const seasons = (w.seasons || []).filter(s => s && ((s.episodes || []).length || s.label || s.title)).map(s => ({ ...s, label: "", episodes: (s.episodes || []).filter(e => e && (e.title || e.url)) }));
     PODS[key] = seasons;
-    const color = /^#[0-9a-f]{6}/i.test(w.color || "") ? w.color.slice(0, 7) : "#b8a6f7";
-    const total = seasons.reduce((n, s) => n + s.episodes.length, 0);
-    return `<div class="pod" data-pod="${key}" style="--pc:${color};--pi:${ink(color)}">
-      <div class="pod-l">
-        <ol class="pod-s">${seasons.map((s, i) => `<li><button type="button" data-season="${i}" aria-pressed="${i === 0}">${esc(s.label || "S" + pad(i + 1))}${s.title ? " " + esc(s.title) : ""}</button></li>`).join("")}</ol>
-        <div class="pod-foot"><span>${esc(w.title)}</span><span>${total} ${total === 1 ? "episode" : "episodes"}</span></div>
-      </div>
+    return `<div class="pod" data-pod="${key}">
+      ${seasons.length > 1 ? `<div class="pod-pills">${seasons.map((s, i) => `<button type="button" class="pill" data-season="${i}" aria-pressed="${i === 0}">Stagione ${pad(i + 1)}</button>`).join("")}</div>` : ""}
       <div class="pod-r">${podRight(key, 0, 0, false)}</div>
     </div>`;
   }
+
   function series(w, key){
     PODS[key] = [{ label: "", episodes: (w.episodes || []).filter(e => e && (e.title || e.url)) }];
     return `<div class="ser" data-pod="${key}"><div class="pod-r">${podRight(key, 0, 0, false)}</div></div>`;
