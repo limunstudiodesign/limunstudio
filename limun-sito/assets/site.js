@@ -14,7 +14,8 @@
   let PROJECTS = [], S = {}, filter = null;
   const idx = p => PROJECTS.indexOf(p);
   const bySlug = s => PROJECTS.find(p => p.slug === s);
-  const cats = () => [...new Set(PROJECTS.map(p => p.category).filter(Boolean))];
+  const catsOf = p => [p.category, ...(Array.isArray(p.categories) ? p.categories : [])].filter(Boolean);
+  const cats = () => [...new Set(PROJECTS.map(p => p.category).filter(Boolean).concat(PROJECTS.flatMap(p => catsOf(p))))];
   const head = p => `${esc(p.client)}${p.subtitle ? SL + esc(p.subtitle) : ""}${p.year ? " — " + esc(p.year) : ""}`;
 
   /* ---------- Media: foto, video, YouTube, Vimeo, Instagram ---------- */
@@ -119,7 +120,7 @@
   }
   const VIEWS = {
     home(){
-      const list = PROJECTS.filter(p => !filter || p.category === filter);
+      const list = PROJECTS.filter(p => !filter || catsOf(p).includes(filter));
       return `<div class="view">${list.length ? `<div class="g2">${list.map(tile).join("")}</div>` : `<p class="empty">Nessun progetto in questa categoria.</p>`}</div>`;
     },
     project(p){
