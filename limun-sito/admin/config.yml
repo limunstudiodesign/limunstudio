@@ -202,7 +202,7 @@ collections:
           - { name: email, label: E-mail, required: false, widget: string }
           - { name: instagram_url, label: Link Instagram, widget: string, required: false }
           - { name: instagram_handle, label: Nome Instagram, widget: string, required: false, hint: "Es. @limunstudiodesign" }
-          - { name: privacy, label: Testo Privacy, required: false, widget: text, hint: "Il testo che si apre con la pillola Privacy nell'About. Lascia una riga vuota tra un paragrafo e l'altro." }
+          - { name: privacy, label: Testo Privacy, required: false, widget: text, hint: "Il testo che si apre con la pillola Privacy in fondo alla pagina Contact. Lascia una riga vuota tra un paragrafo e l'altro." }
           - name: vat
             label: Partite IVA (footer)
             label_singular: Titolare

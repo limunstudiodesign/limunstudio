@@ -166,7 +166,10 @@
         ${S.email ? `<p>New projects:<br><a href="mailto:${esc(S.email)}" data-mail>${esc(S.email)}</a><br><button type="button" class="pill" data-copy style="margin-top:.3em">Copy</button></p>` : ""}
         ${S.address ? `<p>Studio:<br>${lines(S.address)}</p>` : ""}
         ${S.instagram_url ? `<p>Instagram:<br><a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a></p>` : ""}
-      </div></div>`;
+      </div>
+        <div class="ct-priv"><button type="button" class="pill" id="privBtn" aria-expanded="false" data-priv>Privacy</button>
+          <div class="priv" id="priv" hidden>${paras(S.privacy || "")}<p><button type="button" class="pill" data-cookie-prefs>Cookie preferences</button></p></div>
+        </div></div>`;
     }
   };
 
@@ -186,9 +189,8 @@
         </div>
       </div>
       ${S.contacts_in_about ? contacts() : ""}
-      <div class="ipills">${team.length ? `<button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button>` : ""}<button type="button" class="pill" id="privBtn" aria-expanded="false">Privacy</button></div>
-      ${team.length ? `<div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}
-      <div class="team priv" id="priv" hidden>${paras(S.privacy || "")}<p><button type="button" class="pill" data-cookie-prefs>Cookie preferences</button></p></div>`;
+      ${team.length ? `<div class="ipills"><button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button></div>
+      <div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}`;
     $("#foot").innerHTML = `<div>${S.name ? esc(S.name) + "<br>" : ""}${lines(S.address)}</div>
       <div>${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a>` : ""}</div>`;
     const vat = (S.vat || []).filter(v => v && v.number);
@@ -196,10 +198,9 @@
     if (S.instagram_url) $("#dockIg").href = S.instagram_url;
     const tb = $("#teamBtn");
     if (tb) tb.addEventListener("click", () => { const t = $("#team"); t.hidden = !t.hidden; tb.setAttribute("aria-expanded", !t.hidden); });
-    $("#privBtn").addEventListener("click", () => showPrivacy($("#priv").hidden));
   }
 
-  function showPrivacy(open){ const p = $("#priv"), b = $("#privBtn"); if (!p) return; p.hidden = !open; b.setAttribute("aria-expanded", open); }
+  function showPrivacy(open){ const p = $("#priv"), b = $("#privBtn"); if (!p) return; p.hidden = !open; b.setAttribute("aria-expanded", open); if (open) p.scrollIntoView({ block: "start" }); }
 
   /* Banner dei cookie: Accetta e Rifiuta con lo stesso peso */
   function banner(show){
@@ -255,7 +256,7 @@
     let key = "home", html;
     if (h === "about"){ setAbout(true); html = VIEWS.home(); }
     else if (h === "contact"){ key = "contact"; html = VIEWS.contact(); }
-    else if (h === "privacy"){ html = VIEWS.home(); setAbout(true); showPrivacy(true); }
+    else if (h === "privacy"){ key = "contact"; html = VIEWS.contact(); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
     else html = VIEWS.home();
     if (key !== "project") document.title = S.name || "Limun Studio Design";
@@ -264,12 +265,14 @@
     app.innerHTML = html;
     document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === key ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
     window.scrollTo(0, 0);
+    if (h === "privacy") showPrivacy(true);
   }
   window.addEventListener("hashchange", route);
 
   app.addEventListener("click", e => {
     const a = e.target.closest("[data-acc]");
     if (a){ const s = a.parentElement, open = !s.classList.contains("open"); s.classList.toggle("open", open); a.setAttribute("aria-expanded", open); return; }
+    if (e.target.closest("[data-priv]")){ showPrivacy($("#priv").hidden); return; }
     const sb = e.target.closest("[data-season]");
     if (sb){
       const pod = sb.closest("[data-pod]");
