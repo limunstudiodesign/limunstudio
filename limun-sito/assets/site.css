@@ -75,8 +75,8 @@ img,video{display:block;max-width:100%}
 .p-gal{row-gap:8px}
 .span2{grid-column:span 2}
 .m img,.m video{width:100%;height:auto}
-.m .emb{position:relative;width:100%;aspect-ratio:var(--r,16/9);background:var(--ph1)}
-.m .emb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.emb{position:relative;width:100%;max-width:100%;aspect-ratio:var(--r,16/9);background:var(--ph1)}
+.emb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .m figcaption{font-size:.6em;letter-spacing:0;margin-top:.4em}
 
 /* Fisarmonica delle lavorazioni */
@@ -91,6 +91,25 @@ img,video{display:block;max-width:100%}
 .acc-c{padding-block:2px 28px;opacity:0;transition:opacity .25s ease}
 .acc.open .acc-c{opacity:1;transition:opacity .4s ease .15s}
 .acc-c > p{margin-bottom:1em}
+/* Podcast: riquadro colorato con le stagioni, player ed episodi */
+.pod{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;align-items:start}
+.pod > *{min-width:0}
+.pod-l{position:sticky;top:calc(env(safe-area-inset-top, 0px) + 52px);background:var(--pc);color:var(--pi);padding:8px 10px 10px;display:flex;flex-direction:column;justify-content:space-between;gap:2em;min-height:clamp(300px,34vw,560px)}
+.pod-l ::selection{background:var(--sel);color:#000}
+.pod-s{list-style:none;margin:0;padding:0;font-size:calc(var(--t) * 1.9);line-height:1.02;letter-spacing:-.032em}
+.pod-s button:hover,.pod-s button[aria-pressed="true"]{font-style:italic}
+.pod-foot{display:flex;justify-content:space-between;gap:1em}
+.pod-r{display:flex;flex-direction:column;gap:8px}
+.pod-empty{display:flex;align-items:center;justify-content:center;color:#555}
+.pod-empty span{font-size:.8em}
+.pod-eps{list-style:none;margin:0;padding:0;border-bottom:1.5px solid var(--fg)}
+.pod-eps button{width:100%;display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:8px;border-top:1.5px solid var(--fg);padding-block:5px 7px}
+.pod-eps button:hover,.pod-eps button[aria-pressed="true"]{font-style:italic}
+@media (max-width:640px){
+  .pod{grid-template-columns:1fr}
+  .pod-l{position:static;min-height:0}
+}
+
 .next{display:block;margin-top:clamp(48px,7vw,100px)}
 .next:hover .nt,.next:focus-visible .nt{font-style:italic}
 

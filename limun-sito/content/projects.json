@@ -22,29 +22,78 @@
       "media": [],
       "works": [
         {
+          "type": "podcast",
           "title": "Podcast | Ruota Libera",
           "text": "",
-          "media": []
+          "color": "#b8a6f7",
+          "seasons": [
+            {
+              "label": "S01",
+              "title": "",
+              "episodes": [
+                {
+                  "title": "Episodio 1",
+                  "guest": "",
+                  "url": ""
+                },
+                {
+                  "title": "Episodio 2",
+                  "guest": "",
+                  "url": ""
+                },
+                {
+                  "title": "Episodio 3",
+                  "guest": "",
+                  "url": ""
+                }
+              ]
+            },
+            {
+              "label": "S02",
+              "title": "",
+              "episodes": [
+                {
+                  "title": "Episodio 1",
+                  "guest": "",
+                  "url": ""
+                },
+                {
+                  "title": "Episodio 2",
+                  "guest": "",
+                  "url": ""
+                },
+                {
+                  "title": "Episodio 3",
+                  "guest": "",
+                  "url": ""
+                }
+              ]
+            }
+          ]
         },
         {
           "title": "Pura R",
           "text": "",
-          "media": []
+          "media": [],
+          "type": "standard"
         },
         {
           "title": "Countach",
           "text": "",
-          "media": []
+          "media": [],
+          "type": "standard"
         },
         {
           "title": "Team Picnic PostNL",
           "text": "",
-          "media": []
+          "media": [],
+          "type": "standard"
         },
         {
           "title": "Behind The Athlete",
           "text": "",
-          "media": []
+          "media": [],
+          "type": "standard"
         }
       ]
     },
@@ -72,7 +121,37 @@
         }
       ],
       "media": [],
-      "works": []
+      "works": [
+        {
+          "type": "podcast",
+          "title": "Excellence Podcast",
+          "text": "",
+          "color": "#b8a6f7",
+          "seasons": [
+            {
+              "label": "S01",
+              "title": "",
+              "episodes": [
+                {
+                  "title": "Episodio 1",
+                  "guest": "",
+                  "url": ""
+                },
+                {
+                  "title": "Episodio 2",
+                  "guest": "",
+                  "url": ""
+                },
+                {
+                  "title": "Episodio 3",
+                  "guest": "",
+                  "url": ""
+                }
+              ]
+            }
+          ]
+        }
+      ]
     },
     {
       "client": "Belluscio Assicurazioni",
@@ -193,12 +272,14 @@
         {
           "title": "FW 26/27",
           "text": "",
-          "media": []
+          "media": [],
+          "type": "standard"
         },
         {
           "title": "SS27",
           "text": "",
-          "media": []
+          "media": [],
+          "type": "standard"
         }
       ]
     },

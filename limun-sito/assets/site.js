@@ -53,6 +53,40 @@
     return `<div class="g2 p-gal">${items.join("")}</div>`;
   }
 
+  /* ---------- Podcast: stagioni a sinistra, player ed episodi a destra ---------- */
+  const PODS = {};
+  const pad = n => String(n).padStart(2, "0");
+  function ink(hex){
+    const m = /^#?([0-9a-f]{6})/i.exec(hex || ""); if (!m) return "#000";
+    const n = parseInt(m[1], 16), r = n >> 16 & 255, g = n >> 8 & 255, b = n & 255;
+    const L = [r, g, b].map(v => { v /= 255; return v <= .03928 ? v / 12.92 : ((v + .055) / 1.055) ** 2.4; });
+    return (.2126 * L[0] + .7152 * L[1] + .0722 * L[2]) > .22 ? "#000" : "#fff";
+  }
+  function podcast(w, key){
+    const seasons = (w.seasons || []).filter(s => s && (s.label || s.title)).map(s => ({ ...s, episodes: (s.episodes || []).filter(e => e && (e.title || e.url)) }));
+    PODS[key] = seasons;
+    const color = /^#[0-9a-f]{6}/i.test(w.color || "") ? w.color.slice(0, 7) : "#b8a6f7";
+    const total = seasons.reduce((n, s) => n + s.episodes.length, 0);
+    return `<div class="pod" data-pod="${key}" style="--pc:${color};--pi:${ink(color)}">
+      <div class="pod-l">
+        <ol class="pod-s">${seasons.map((s, i) => `<li><button type="button" data-season="${i}" aria-pressed="${i === 0}">${esc(s.label || "S" + pad(i + 1))}${s.title ? " " + esc(s.title) : ""}</button></li>`).join("")}</ol>
+        <div class="pod-foot"><span>${esc(w.title)}</span><span>${total} ${total === 1 ? "episode" : "episodes"}</span></div>
+      </div>
+      <div class="pod-r">${podRight(key, 0, 0, false)}</div>
+    </div>`;
+  }
+  function podRight(key, si, ei, autoplay){
+    const s = PODS[key][si]; if (!s) return "";
+    const e = s.episodes[ei];
+    const id = e ? ytId(e.url) : null;
+    const player = id
+      ? `<div class="emb" style="--r:16/9"><iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}" title="${esc(e.title)}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+      : `<div class="emb pod-empty" style="--r:16/9"><span>${e ? "Video in arrivo" : "Nessun episodio"}</span></div>`;
+    return `<div class="pod-now">${esc(s.label || "S" + pad(si + 1))}${e ? ` — E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>
+      ${player}
+      <ol class="pod-eps">${s.episodes.map((x, k) => `<li><button type="button" data-ep="${k}" data-season-of="${si}" aria-pressed="${k === ei}"><span>E${pad(k + 1)}</span><span>${esc(x.title)}${x.guest ? " — " + esc(x.guest) : ""}</span></button></li>`).join("")}</ol>`;
+  }
+
   /* ---------- Viste ---------- */
   function tile(p){
     const i = idx(p);
@@ -78,7 +112,7 @@
         </div>
         ${works.length ? `<div class="works">${works.map((w, k) => `<section class="acc">
             <button type="button" class="acc-h" data-acc aria-expanded="false"><span>${esc(w.title)}</span><span class="ic" aria-hidden="true"></span></button>
-            <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${gallery(w.media, i + k * 3)}</div></div></div>
+            <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3)}</div></div></div>
           </section>`).join("")}</div>` : gallery(p.media, i)}
         ${PROJECTS.length > 1 ? `<a class="next" href="#p-${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
       </article>`;
@@ -156,6 +190,19 @@
   app.addEventListener("click", e => {
     const a = e.target.closest("[data-acc]");
     if (a){ const s = a.parentElement, open = !s.classList.contains("open"); s.classList.toggle("open", open); a.setAttribute("aria-expanded", open); return; }
+    const sb = e.target.closest("[data-season]");
+    if (sb){
+      const pod = sb.closest("[data-pod]");
+      pod.querySelectorAll("[data-season]").forEach(b => b.setAttribute("aria-pressed", b === sb));
+      pod.querySelector(".pod-r").innerHTML = podRight(pod.dataset.pod, +sb.dataset.season, 0, false);
+      return;
+    }
+    const eb = e.target.closest("[data-ep]");
+    if (eb){
+      const pod = eb.closest("[data-pod]");
+      pod.querySelector(".pod-r").innerHTML = podRight(pod.dataset.pod, +eb.dataset.seasonOf, +eb.dataset.ep, true);
+      return;
+    }
     const c = e.target.closest("[data-copy]");
     if (c){
       const done = () => { c.textContent = "Copied"; setTimeout(() => c.textContent = "Copy", 1500); };

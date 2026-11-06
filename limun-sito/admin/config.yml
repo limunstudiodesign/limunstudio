@@ -105,12 +105,39 @@ collections:
                 label_singular: Lavorazione
                 widget: list
                 required: false
-                hint: "Le strisce a fisarmonica. Se ne aggiungi almeno una, il progetto mostra le strisce al posto di «Foto e video»."
-                summary: "{{fields.title}}"
-                fields:
-                  - { name: title, label: Titolo, widget: string, hint: "Es. Lancio nuova ruota, FW 26/27" }
-                  - { name: text, label: Testo, widget: text, required: false }
-                  - *media
+                hint: "Le strisce a fisarmonica. Scegli «Lavorazione» per foto e video, «Podcast» per stagioni ed episodi YouTube. Se ne aggiungi almeno una, il progetto mostra le strisce al posto di «Foto e video»."
+                types:
+                  - name: standard
+                    label: Lavorazione
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { name: title, label: Titolo, widget: string, hint: "Es. Pura R, FW 26/27" }
+                      - { name: text, label: Testo, widget: text, required: false }
+                      - *media
+                  - name: podcast
+                    label: Podcast
+                    summary: "Podcast: {{fields.title}}"
+                    fields:
+                      - { name: title, label: Titolo della striscia, widget: string, hint: "Es. Podcast | Ruota Libera" }
+                      - { name: text, label: Testo, widget: text, required: false }
+                      - { name: color, label: Colore del riquadro stagioni, widget: color, default: "#b8a6f7", allowInput: true }
+                      - name: seasons
+                        label: Stagioni
+                        label_singular: Stagione
+                        widget: list
+                        summary: "{{fields.label}} {{fields.title}}"
+                        fields:
+                          - { name: label, label: Sigla, widget: string, hint: "Es. S01" }
+                          - { name: title, label: Titolo della stagione, widget: string, required: false }
+                          - name: episodes
+                            label: Episodi
+                            label_singular: Episodio
+                            widget: list
+                            summary: "{{fields.title}}"
+                            fields:
+                              - { name: title, label: Titolo, widget: string }
+                              - { name: guest, label: Ospite, widget: string, required: false }
+                              - { name: url, label: Link YouTube, widget: string, required: false, hint: "Incolla il link del video su YouTube." }
 
       - name: settings
         label: Studio, About e Contact
