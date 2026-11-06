@@ -126,7 +126,12 @@ body[data-view="home"] .view{padding-top:0}
 /* Contact e footer */
 .blocks{display:flex;flex-direction:column;gap:1em;max-width:19em}
 .foot{margin-top:clamp(64px,10vh,140px);padding-bottom:80px}
-.foot .vat{grid-column:1 / -1;font-size:.6em;letter-spacing:0;line-height:1.35}
+.gate button{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:10px 12px;text-align:left;width:100%;cursor:pointer}
+.gate button:hover > span:first-child{font-style:italic}
+.gate-n{font-size:.6em;letter-spacing:0}
+.gate-n a{text-decoration:underline}
+.legal{max-width:38em;display:flex;flex-direction:column;gap:1em}
+.legal strong{font-weight:inherit;font-style:italic}
 
 @media (max-width:640px){
   .g2,.i2{grid-template-columns:1fr}

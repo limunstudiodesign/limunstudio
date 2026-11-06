@@ -18,6 +18,18 @@
   const cats = () => [...new Set(PROJECTS.map(p => p.category).filter(Boolean).concat(PROJECTS.flatMap(p => catsOf(p))))];
   const head = p => `${esc(p.client)}${p.subtitle ? SL + esc(p.subtitle) : ""}${p.year ? " — " + esc(p.year) : ""}`;
 
+  /* ---------- Contenuti esterni: si caricano solo dopo il consenso ---------- */
+  let ext = false;
+  try { ext = localStorage.getItem("limun-ext") === "1"; } catch (err) {}
+  function setExt(v){ ext = v; try { v ? localStorage.setItem("limun-ext", "1") : localStorage.removeItem("limun-ext"); } catch (err) {} }
+  const SERVICE = { youtube: "YouTube", vimeo: "Vimeo", instagram: "Instagram" };
+  function frame(service, src, ratio, title, allow){
+    const ifr = `<iframe src="${src}" title="${esc(title)}" loading="lazy" ${allow ? `allow="${allow}" allowfullscreen` : `scrolling="no"`}></iframe>`;
+    if (ext) return `<div class="emb" style="--r:${ratio}">${ifr}</div>`;
+    return `<div class="emb gate" style="--r:${ratio}"><button type="button" data-gate="${encodeURIComponent(ifr)}"><span>Contenuto su ${SERVICE[service]}.<br>Clicca per caricarlo.</span><span class="gate-n">${SERVICE[service]} può usare cookie propri. <a href="#privacy">Privacy</a></span></button></div>`;
+  }
+  const YTA = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
+
   /* ---------- Media: foto, video, YouTube, Vimeo, Instagram ---------- */
   function ytId(u){ const m = String(u).match(/(?:youtu\.be\/|v=|\/embed\/|\/shorts\/|\/live\/)([\w-]{11})/); return m ? m[1] : null; }
   function vimeoId(u){ const m = String(u).match(/vimeo\.com\/(?:video\/)?(\d+)/); return m ? m[1] : null; }
@@ -43,11 +55,11 @@
       case "youtube": {
         const id = ytId(m.url); if (!id) return "";
         const tall = /\/shorts\//.test(m.url);
-        return `<figure class="${cls}"><div class="emb" style="--r:${tall ? "9/16" : "16/9"}"><iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${esc(m.caption || "Video YouTube")}" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>${cap}</figure>`;
+        return `<figure class="${cls}">${frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0`, tall ? "9/16" : "16/9", m.caption || "Video YouTube", YTA)}${cap}</figure>`;
       }
       case "vimeo": {
         const id = vimeoId(m.url); if (!id) return "";
-        return `<figure class="${cls}"><div class="emb" style="--r:16/9"><iframe src="https://player.vimeo.com/video/${id}?dnt=1" title="${esc(m.caption || "Video Vimeo")}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>${cap}</figure>`;
+        return `<figure class="${cls}">${frame("vimeo", `https://player.vimeo.com/video/${id}?dnt=1`, "16/9", m.caption || "Video Vimeo", "autoplay; fullscreen; picture-in-picture")}${cap}</figure>`;
       }
       case "link": {
         if (!m.url) return "";
@@ -55,7 +67,7 @@
       }
       case "instagram": {
         const p = igPath(m.url); if (!p) return "";
-        return `<figure class="${cls}"><div class="emb" style="--r:9/14"><iframe src="https://www.instagram.com/${p}/embed/" title="${esc(m.caption || "Post Instagram")}" loading="lazy" scrolling="no"></iframe></div>${cap}</figure>`;
+        return `<figure class="${cls}">${frame("instagram", `https://www.instagram.com/${p}/embed/`, "9/14", m.caption || "Post Instagram", "")}${cap}</figure>`;
       }
       default: return "";
     }
@@ -97,7 +109,7 @@
     const e = s.episodes[ei];
     const id = e ? ytId(e.url) : null;
     const player = id
-      ? `<div class="emb" style="--r:16/9"><iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}" title="${esc(e.title)}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
+      ? frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}`, "16/9", e.title, YTA)
       : `<div class="emb pod-empty" style="--r:16/9"><span>${e ? "Video in arrivo" : "Nessun episodio"}</span></div>`;
     const sl = s.label === "" ? "" : esc(s.label || "S" + pad(si + 1));
     return `<div class="pod-now">${sl}${e ? `${sl ? " — " : ""}E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>
@@ -109,7 +121,7 @@
   function tile(p){
     const i = idx(p);
     let cover = ph(i, "4/3");
-    const yid = !p.cover_video && p.cover_youtube ? ytId(p.cover_youtube) : null;
+    const yid = !p.cover_video && p.cover_youtube && ext ? ytId(p.cover_youtube) : null;
     if (p.cover_video) cover = `<video class="cover" src="${esc(p.cover_video)}" ${p.cover ? `poster="${esc(p.cover)}"` : ""} autoplay muted loop playsinline preload="metadata"></video>`;
     else if (yid){
       const tall = /\/shorts\//.test(p.cover_youtube);
@@ -141,6 +153,12 @@
         ${PROJECTS.length > 1 ? `<a class="next" href="#p-${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
       </article>`;
     },
+    privacy(){
+      return `<div class="view"><div class="legal">${paras(S.privacy || "")}
+        <p>Contenuti esterni (YouTube, Vimeo, Instagram): ${ext ? "attualmente <strong>consentiti</strong> su questo browser." : "attualmente <strong>bloccati</strong> finché non li carichi."}<br>
+        <button type="button" class="pill" data-ext="${ext ? "0" : "1"}" style="margin-top:.4em">${ext ? "Blocca i contenuti esterni" : "Consenti i contenuti esterni"}</button></p>
+      </div></div>`;
+    },
     contact(){
       return `<div class="view"><div class="blocks">
         ${S.email ? `<p>New projects:<br><a href="mailto:${esc(S.email)}" data-mail>${esc(S.email)}</a><br><button type="button" class="pill" data-copy style="margin-top:.3em">Copy</button></p>` : ""}
@@ -171,7 +189,8 @@
     $("#foot").innerHTML = `<div>${S.name ? esc(S.name) + "<br>" : ""}${lines(S.address)}</div>
       <div>${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a>` : ""}</div>`;
     const vat = (S.vat || []).filter(v => v && v.number);
-    if (vat.length) $("#foot").insertAdjacentHTML("beforeend", `<div class="vat">${vat.map(v => `${v.name ? esc(v.name) + " — " : ""}P.IVA ${esc(v.number)}`).join("<br>")}</div>`);
+    if (vat.length) $("#foot > div").insertAdjacentHTML("beforeend", `<br>P.IVA ${vat.map(v => esc(v.number)).join(" — ")}`);
+    $("#foot > div:last-child").insertAdjacentHTML("beforeend", `<br><a href="#privacy">Privacy</a>`);
     if (S.instagram_url) $("#dockIg").href = S.instagram_url;
     const tb = $("#teamBtn");
     if (tb) tb.addEventListener("click", () => { const t = $("#team"); t.hidden = !t.hidden; tb.setAttribute("aria-expanded", !t.hidden); });
@@ -213,6 +232,7 @@
     let key = "home", html;
     if (h === "about"){ setAbout(true); html = VIEWS.home(); }
     else if (h === "contact"){ key = "contact"; html = VIEWS.contact(); }
+    else if (h === "privacy"){ key = "privacy"; html = VIEWS.privacy(); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
     else html = VIEWS.home();
     if (key !== "project") document.title = S.name || "Limun Studio Design";
@@ -227,6 +247,14 @@
   app.addEventListener("click", e => {
     const a = e.target.closest("[data-acc]");
     if (a){ const s = a.parentElement, open = !s.classList.contains("open"); s.classList.toggle("open", open); a.setAttribute("aria-expanded", open); return; }
+    const g = e.target.closest("[data-gate]");
+    if (g && !e.target.closest("a")){
+      setExt(true);
+      document.querySelectorAll(".emb.gate").forEach(box => { const b = box.querySelector("[data-gate]"); box.classList.remove("gate"); box.innerHTML = decodeURIComponent(b.dataset.gate); });
+      return;
+    }
+    const x = e.target.closest("[data-ext]");
+    if (x){ setExt(x.dataset.ext === "1"); route(); return; }
     const sb = e.target.closest("[data-season]");
     if (sb){
       const pod = sb.closest("[data-pod]");
