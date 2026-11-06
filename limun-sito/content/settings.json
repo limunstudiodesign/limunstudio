@@ -2,43 +2,50 @@
   "name": "Limun Studio Design",
   "about": "Nato a Vicenza nel 2017, Limun Studio Design non è un'agenzia di comunicazione, ma uno studio creativo che lavora a stretto contatto con i reparti marketing e comunicazione nella progettazione e produzione di contenuti visivi.\n\nNon ci limitiamo a realizzare contenuti: diventiamo un'estensione del team, un partner creativo che supporta le aziende nei diversi ambiti della comunicazione.",
   "services": [
-    "Photography",
+    "Art & creative direction",
     "Video",
     "Podcast formats",
     "Graphic design",
-    "Visual identity",
-    "Art & creative direction"
+    "Brand & Visual identity",
+    "Photography"
   ],
   "clients": [
-    "Ursus",
+    "Unipol",
     "Diesel",
     "Decathlon",
     "Sonus Faber",
-    "Comune di Thiene",
-    "3MTecnofer",
-    "Glamourlab",
-    "Haute & Craft"
+    "Bottecchia",
+    "Ursus",
+    "Passione Beauty"
   ],
   "team": [
     {
       "name": "Umberto Badia",
-      "role": "Videomaker"
+      "role": "Filmmarker & Manager Area Video"
     },
     {
       "name": "Francesco Bigon",
-      "role": "Visual Designer"
+      "role": "Creative Director"
     },
     {
-      "name": "Roberto Povero",
-      "role": "Photographer"
+      "name": "Erica Sartore",
+      "role": "Art Director & Brand Strategy"
     },
     {
       "name": "Matteo Nicolin",
       "role": "Video & Audio Editor"
+    },
+    {
+      "name": "Irene Mascarino",
+      "role": "Project Manager"
+    },
+    {
+      "name": "Martina Nori",
+      "role": "Photographer"
     }
   ],
-  "address": "Via Quintarello 92\nVillaggio Montegrappa (VI)",
+  "address": "Studio Creativo - Vicenza",
   "email": "info@limunstudiodesign.com",
-  "instagram_url": "https://www.instagram.com/limunstudiodesign/",
-  "instagram_handle": "@limunstudiodesign"
+  "instagram_url": "",
+  "instagram_handle": ""
 }
