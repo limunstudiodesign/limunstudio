@@ -212,10 +212,21 @@
           ]
         },
         {
-          "type": "standard",
+          "type": "series",
           "title": "Behind The Athlete",
           "text": "",
-          "media": []
+          "episodes": [
+            {
+              "title": "Episodio 1",
+              "guest": "",
+              "url": ""
+            },
+            {
+              "title": "Episodio 2",
+              "guest": "",
+              "url": ""
+            }
+          ]
         }
       ]
     },

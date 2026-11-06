@@ -63,7 +63,7 @@ collections:
                 widget: list
                 required: false
                 hint: "Trascina per cambiare l'ordine. Se il progetto ha lavorazioni, qui le foto non si vedono: vanno dentro ogni lavorazione."
-                types:
+                types: &mtypes
                   - name: image
                     label: Foto
                     summary: "Foto {{fields.caption}}"
@@ -103,6 +103,13 @@ collections:
                       - { name: url, label: Link Vimeo, widget: string }
                       - *size
                       - *caption
+                  - name: link
+                    label: Link
+                    summary: "Link {{fields.label}}"
+                    fields:
+                      - { name: label, label: Testo del link, widget: string, hint: "Es. Guarda la campagna, Leggi l'articolo" }
+                      - { name: url, label: Indirizzo, widget: string, hint: "Incolla il link completo, https://…" }
+                      - *size
                   - name: instagram
                     label: Instagram (post o reel)
                     summary: "Instagram {{fields.url}}"
@@ -124,6 +131,21 @@ collections:
                       - { name: title, label: Titolo, widget: string, hint: "Es. Pura R, FW 26/27" }
                       - { name: text, label: Testo, widget: text, required: false }
                       - *media
+                  - name: series
+                    label: Serie video
+                    summary: "Serie video: {{fields.title}}"
+                    fields:
+                      - { name: title, label: Titolo della striscia, widget: string, hint: "Es. Behind The Athlete" }
+                      - { name: text, label: Testo, widget: text, required: false }
+                      - name: episodes
+                        label: Episodi
+                        label_singular: Episodio
+                        widget: list
+                        summary: "{{fields.title}}"
+                        fields:
+                          - { name: title, label: Titolo, widget: string }
+                          - { name: guest, label: Ospite, widget: string, required: false }
+                          - { name: url, label: Link YouTube, widget: string, required: false, hint: "Incolla il link del video su YouTube." }
                   - name: podcast
                     label: Podcast
                     summary: "Podcast: {{fields.title}}"
@@ -148,6 +170,13 @@ collections:
                               - { name: title, label: Titolo, widget: string }
                               - { name: guest, label: Ospite, widget: string, required: false }
                               - { name: url, label: Link YouTube, widget: string, required: false, hint: "Incolla il link del video su YouTube." }
+              - name: extra
+                label: Dopo le strisce
+                label_singular: Elemento
+                widget: list
+                required: false
+                hint: "Foto, video e link liberi che compaiono sotto tutte le strisce, fuori dalla fisarmonica."
+                types: *mtypes
 
       - name: settings
         label: Studio, About e Contact

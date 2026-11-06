@@ -48,6 +48,10 @@
         const id = vimeoId(m.url); if (!id) return "";
         return `<figure class="${cls}"><div class="emb" style="--r:16/9"><iframe src="https://player.vimeo.com/video/${id}?dnt=1" title="${esc(m.caption || "Video Vimeo")}" loading="lazy" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>${cap}</figure>`;
       }
+      case "link": {
+        if (!m.url) return "";
+        return `<p class="m lnk ${m.size === "full" ? "span2" : ""}"><a href="${esc(m.url)}" target="_blank" rel="noopener">${esc(m.label || m.url)} <span aria-hidden="true">↗</span></a></p>`;
+      }
       case "instagram": {
         const p = igPath(m.url); if (!p) return "";
         return `<figure class="${cls}"><div class="emb" style="--r:9/14"><iframe src="https://www.instagram.com/${p}/embed/" title="${esc(m.caption || "Post Instagram")}" loading="lazy" scrolling="no"></iframe></div>${cap}</figure>`;
@@ -83,6 +87,10 @@
       <div class="pod-r">${podRight(key, 0, 0, false)}</div>
     </div>`;
   }
+  function series(w, key){
+    PODS[key] = [{ label: "", episodes: (w.episodes || []).filter(e => e && (e.title || e.url)) }];
+    return `<div class="ser" data-pod="${key}"><div class="pod-r">${podRight(key, 0, 0, false)}</div></div>`;
+  }
   function podRight(key, si, ei, autoplay){
     const s = PODS[key][si]; if (!s) return "";
     const e = s.episodes[ei];
@@ -90,7 +98,8 @@
     const player = id
       ? `<div class="emb" style="--r:16/9"><iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}" title="${esc(e.title)}" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div>`
       : `<div class="emb pod-empty" style="--r:16/9"><span>${e ? "Video in arrivo" : "Nessun episodio"}</span></div>`;
-    return `<div class="pod-now">${esc(s.label || "S" + pad(si + 1))}${e ? ` — E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>
+    const sl = s.label === "" ? "" : esc(s.label || "S" + pad(si + 1));
+    return `<div class="pod-now">${sl}${e ? `${sl ? " — " : ""}E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>
       ${player}
       <ol class="pod-eps">${s.episodes.map((x, k) => `<li><button type="button" data-ep="${k}" data-season-of="${si}" aria-pressed="${k === ei}"><span>E${pad(k + 1)}</span><span>${esc(x.title)}${x.guest ? " — " + esc(x.guest) : ""}</span></button></li>`).join("")}</ol>`;
   }
@@ -125,8 +134,9 @@
         </div>
         ${works.length ? `<div class="works">${works.map((w, k) => `<section class="acc">
             <button type="button" class="acc-h" data-acc aria-expanded="false"><span>${esc(w.title)}</span><span class="ic" aria-hidden="true"></span></button>
-            <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3)}</div></div></div>
+            <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : w.type === "series" ? series(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3)}</div></div></div>
           </section>`).join("")}</div>` : gallery(p.media, i)}
+        ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="g2 p-gal after">${x.join("")}</div>` : ""; })()}
         ${PROJECTS.length > 1 ? `<a class="next" href="#p-${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
       </article>`;
     },

@@ -115,6 +115,10 @@ img,video{display:block;max-width:100%}
   .pod-l{position:static;min-height:0}
 }
 
+.ser .pod-r{max-width:100%}
+.after{margin-top:clamp(32px,4vw,64px)}
+.lnk{align-self:start}
+.lnk a:hover{font-style:italic}
 .next{display:block;margin-top:clamp(48px,7vw,100px)}
 .next:hover .nt,.next:focus-visible .nt{font-style:italic}
 
