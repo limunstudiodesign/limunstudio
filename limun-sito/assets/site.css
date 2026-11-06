@@ -126,6 +126,7 @@ body[data-view="home"] .view{padding-top:0}
 /* Contact e footer */
 .blocks{display:flex;flex-direction:column;gap:1em;max-width:19em}
 .foot{margin-top:clamp(64px,10vh,140px);padding-bottom:80px}
+.foot .vat{grid-column:1 / -1;font-size:.6em;letter-spacing:0;line-height:1.35}
 
 @media (max-width:640px){
   .g2,.i2{grid-template-columns:1fr}

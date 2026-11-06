@@ -202,3 +202,12 @@ collections:
           - { name: email, label: E-mail, required: false, widget: string }
           - { name: instagram_url, label: Link Instagram, widget: string, required: false }
           - { name: instagram_handle, label: Nome Instagram, widget: string, required: false, hint: "Es. @limunstudiodesign" }
+          - name: vat
+            label: Partite IVA (footer)
+            label_singular: Titolare
+            widget: list
+            required: false
+            summary: "{{fields.name}} — {{fields.number}}"
+            fields:
+              - { name: name, label: Nome, required: false, widget: string }
+              - { name: number, label: Partita IVA, required: false, widget: string }

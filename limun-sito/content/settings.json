@@ -48,5 +48,15 @@
   "email": "info@limunstudiodesign.com",
   "instagram_url": "https://www.instagram.com/limunstudiodesign/",
   "instagram_handle": "@limunstudiodesign",
-  "contacts_in_about": false
+  "contacts_in_about": false,
+  "vat": [
+    {
+      "name": "Francesco Bigon",
+      "number": "00000000000"
+    },
+    {
+      "name": "Umberto Badia",
+      "number": "00000000000"
+    }
+  ]
 }
