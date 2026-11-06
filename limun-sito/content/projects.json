@@ -25,26 +25,66 @@
           "type": "podcast",
           "title": "Podcast | Ruota Libera",
           "text": "",
-          "color": "#b8a6f7",
+          "color": "#7cfc00",
           "seasons": [
             {
               "label": "S01",
               "title": "",
               "episodes": [
                 {
-                  "title": "Episodio 1",
-                  "guest": "",
-                  "url": ""
+                  "title": "Episodio 01",
+                  "guest": "Alessandro Petacchi",
+                  "url": "https://www.youtube.com/watch?v=oFD_GzErcgQ"
                 },
                 {
-                  "title": "Episodio 2",
-                  "guest": "",
-                  "url": ""
+                  "title": "Episodio 02",
+                  "guest": "Tommaso Lupi e Matteo Tugnolo",
+                  "url": "https://www.youtube.com/watch?v=8S4AE7Z-I5M&list=PLM67bliZrgJj_-ADHB0Nlu0Mm0FWh2Z3p&index=1"
                 },
                 {
-                  "title": "Episodio 3",
-                  "guest": "",
-                  "url": ""
+                  "title": "Episodio 03",
+                  "guest": "Guderzo e Sangalli",
+                  "url": "https://www.youtube.com/watch?v=w2FH4a49hE4&list=PLM67bliZrgJj_-ADHB0Nlu0Mm0FWh2Z3p&index=3"
+                },
+                {
+                  "title": "Episodio 04",
+                  "guest": "Laura Martinelli",
+                  "url": "https://www.youtube.com/watch?v=ZGYTI0nBXYw&list=PLM67bliZrgJj_-ADHB0Nlu0Mm0FWh2Z3p&index=4"
+                },
+                {
+                  "title": "Episodio 05",
+                  "guest": "Marco Benfatto",
+                  "url": "https://www.youtube.com/watch?v=P1lA_sqoFmg&t=14s"
+                },
+                {
+                  "title": "Episodio 06",
+                  "guest": "Nicola Minali",
+                  "url": "https://www.youtube.com/watch?v=ITPXj0rvhRk&t=4s"
+                },
+                {
+                  "title": "Episodio 07",
+                  "guest": "Gaia Tormena",
+                  "url": "https://www.youtube.com/watch?v=r4AgS9bwN6s&t=1468s"
+                },
+                {
+                  "title": "Episodio 08",
+                  "guest": "La Coppa d'Oro",
+                  "url": "https://www.youtube.com/watch?v=aRqTkE_jL8I"
+                },
+                {
+                  "title": "Episodio 09",
+                  "guest": "Giulia Baroncini",
+                  "url": "https://www.youtube.com/watch?v=3PO9k7ULHas"
+                },
+                {
+                  "title": "Episodio 10",
+                  "guest": "Alessia Piccolo",
+                  "url": "https://www.youtube.com/watch?v=ogWD4wgscY0"
+                },
+                {
+                  "title": "Episodio 11",
+                  "guest": "Pengo e Giacomin",
+                  "url": "https://www.youtube.com/watch?v=IKwICoAp1H8"
                 }
               ]
             },
@@ -53,47 +93,98 @@
               "title": "",
               "episodes": [
                 {
-                  "title": "Episodio 1",
-                  "guest": "",
-                  "url": ""
+                  "title": "Episodio 01",
+                  "guest": "Alessandro Ballan",
+                  "url": "https://www.youtube.com/watch?v=ccOGA6llU9s&t=33s"
                 },
                 {
-                  "title": "Episodio 2",
-                  "guest": "",
-                  "url": ""
+                  "title": "Episodio 02",
+                  "guest": "Angelo Furlan",
+                  "url": "https://www.youtube.com/watch?v=ABaaZ57HT2c"
                 },
                 {
-                  "title": "Episodio 3",
-                  "guest": "",
-                  "url": ""
+                  "title": "Episodio 03",
+                  "guest": "Diego Bragato",
+                  "url": "https://www.youtube.com/watch?v=U36I5oeKwuw"
+                },
+                {
+                  "title": "Episodio 04",
+                  "guest": "Niklas Quetri",
+                  "url": "https://www.youtube.com/watch?v=a0ZbB8jTCWg"
+                },
+                {
+                  "title": "Episodio 05",
+                  "guest": "Manuel Bisello",
+                  "url": "https://www.youtube.com/watch?v=P1cb2ntijU0"
+                },
+                {
+                  "title": "Episodio 06",
+                  "guest": "Marta Cavalli",
+                  "url": "https://www.youtube.com/watch?v=1-KTpfZiGjU&t=248s"
+                },
+                {
+                  "title": "Episodio 07",
+                  "guest": "Filippo Pozzato",
+                  "url": "https://www.youtube.com/watch?v=CsNqHeF6BXI&t=117s"
+                }
+              ]
+            },
+            {
+              "label": "S03",
+              "title": "",
+              "episodes": [
+                {
+                  "title": "Episodio 01",
+                  "guest": "Paolo Artuso",
+                  "url": "https://www.youtube.com/watch?v=tcSt6Lep5bA&t=9s"
+                },
+                {
+                  "title": "Episodio 02",
+                  "guest": "Moreno Biscaro",
+                  "url": "https://www.youtube.com/watch?v=qAYhtQGnNKo&t=504s"
+                },
+                {
+                  "title": "Episodio 03",
+                  "guest": "Alessandra Cappellotto",
+                  "url": "https://www.youtube.com/watch?v=Ob9itVCjKWQ&t=952s"
+                },
+                {
+                  "title": "Episodio 04",
+                  "guest": "Stefano Garzelli",
+                  "url": "https://www.youtube.com/watch?v=Xm14rs915QU"
+                },
+                {
+                  "title": "Episodio 05",
+                  "guest": "Mattia Gaffurri",
+                  "url": "https://www.youtube.com/watch?v=VdlC9d5LdJM&t=3s"
                 }
               ]
             }
           ]
         },
         {
+          "type": "standard",
           "title": "Pura R",
           "text": "",
-          "media": [],
-          "type": "standard"
+          "media": []
         },
         {
+          "type": "standard",
           "title": "Countach",
           "text": "",
-          "media": [],
-          "type": "standard"
+          "media": []
         },
         {
+          "type": "standard",
           "title": "Team Picnic PostNL",
           "text": "",
-          "media": [],
-          "type": "standard"
+          "media": []
         },
         {
+          "type": "standard",
           "title": "Behind The Athlete",
           "text": "",
-          "media": [],
-          "type": "standard"
+          "media": []
         }
       ]
     },
@@ -270,16 +361,16 @@
       "media": [],
       "works": [
         {
+          "type": "standard",
           "title": "FW 26/27",
           "text": "",
-          "media": [],
-          "type": "standard"
+          "media": []
         },
         {
+          "type": "standard",
           "title": "SS27",
           "text": "",
-          "media": [],
-          "type": "standard"
+          "media": []
         }
       ]
     },
