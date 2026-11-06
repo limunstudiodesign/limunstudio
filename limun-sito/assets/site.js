@@ -162,7 +162,7 @@
         </div>
       </div>
       <div class="i4">
-        <div>${S.name ? esc(S.name) + "<br>" : ""}${lines(S.address)}</div>
+        <div>${lines(S.address)}</div>
         <div style="grid-column:span 2">${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">Instagram</a>` : ""}</div>
       </div>
       ${team.length ? `<div class="ipills"><button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button></div>
@@ -187,6 +187,15 @@
       ...cats().map(c => `<button type="button" class="pill" data-f="${esc(c)}" aria-pressed="${filter === c}">${esc(c)}</button>`)].join("");
     fbtn.textContent = filter ? "Filters: " + filter : "Filters";
   }
+  /* Click sul nome in alto: torna davvero alla home, senza filtri */
+  $("#brand").addEventListener("click", e => {
+    e.preventDefault();
+    filter = null; fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); fillBar();
+    setAbout(false);
+    if (location.hash && location.hash !== "#home") location.hash = "home";
+    else route();
+  });
+
   fbtn.addEventListener("click", () => { fbar.hidden = !fbar.hidden; fbtn.setAttribute("aria-expanded", !fbar.hidden); fillBar(); });
   fbar.addEventListener("click", e => {
     const f = e.target.closest("[data-f]"); if (!f) return;
@@ -205,6 +214,7 @@
     else html = VIEWS.home();
     if (key !== "project") document.title = S.name || "Limun Studio Design";
     if (key !== "home"){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
+    document.body.dataset.view = key;
     app.innerHTML = html;
     document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === key ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
     window.scrollTo(0, 0);

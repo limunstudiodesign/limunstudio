@@ -64,6 +64,7 @@ img,video{display:block;max-width:100%}
 /* Pagine */
 #app{padding-bottom:12vh;min-height:60vh}
 .view{padding-top:clamp(10px,1.6vw,24px)}
+body[data-view="home"] .view{padding-top:0}
 .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:clamp(20px,2.6vw,40px)}
 .g2 > *{min-width:0}
 .tile{display:flex;flex-direction:column;gap:.28em}
