@@ -3,7 +3,7 @@
 :root{
   --bg:#ffffff;
   --fg:#000000;
-  --sel:#ffe500;
+  --sel:#ffff00;
   --ph1:#e6e6e6; --ph2:#dadada; --ph3:#cecece; --ph4:#c2c2c2;
   --sans:Helvetica, "Helvetica Neue", Arial, "Nimbus Sans", "Liberation Sans", sans-serif;
   --t:clamp(16px, 1.6vw, 25px);
