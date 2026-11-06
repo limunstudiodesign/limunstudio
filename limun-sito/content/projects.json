@@ -3,7 +3,7 @@
     {
       "client": "Ursus",
       "subtitle": "",
-      "year": "2022–",
+      "year": "2022/----",
       "category": "Social Contents",
       "hidden": false,
       "cover": "",
@@ -12,36 +12,32 @@
       "credits": [
         {
           "name": "Umberto Badia",
-          "role": "Videomaker"
+          "role": "Filmmaker"
         },
         {
           "name": "Francesco Bigon",
-          "role": "Visual Designer"
-        },
-        {
-          "name": "Roberto Povero",
-          "role": "Photographer"
+          "role": "Art Director"
         }
       ],
       "media": [],
       "works": [
         {
-          "title": "Podcast — Ruota Libera",
+          "title": "Podcast | Ruota Libera",
           "text": "",
           "media": []
         },
         {
-          "title": "Lancio nuova ruota",
+          "title": "Pura R",
           "text": "",
           "media": []
         },
         {
-          "title": "Lancio nuova ruota",
+          "title": "Countach",
           "text": "",
           "media": []
         },
         {
-          "title": "Team World Tour",
+          "title": "Team Picnic PostNL",
           "text": "",
           "media": []
         },
