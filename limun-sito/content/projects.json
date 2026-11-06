@@ -194,11 +194,17 @@
           "text": "",
           "media": [
             {
-              "type": "image",
-              "src": "/media/p1070170.webp",
-              "alt": "",
+              "type": "gallery",
               "size": "half",
-              "caption": ""
+              "caption": "",
+              "images": [
+                "/media/p1070170.webp",
+                "/media/p1070479.webp",
+                "/media/p1070487.webp",
+                "/media/p1070638.webp",
+                "/media/p1070647.webp",
+                "/media/p1070729.webp"
+              ]
             }
           ]
         },
