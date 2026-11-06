@@ -217,16 +217,34 @@
           "text": "",
           "episodes": [
             {
-              "title": "Episodio 1",
-              "guest": "",
-              "url": ""
+              "title": "Episodio 01",
+              "guest": "Maverick Viñales",
+              "url": "https://www.youtube.com/watch?v=_mw506teE8Q&t=29s"
             },
             {
-              "title": "Episodio 2",
-              "guest": "",
-              "url": ""
+              "title": "Episodio 02",
+              "guest": "Jacopo Cerutti",
+              "url": "https://www.youtube.com/watch?v=hZNWhWJT-uc"
+            },
+            {
+              "title": "Episodio 03",
+              "guest": "Gaia Tormena",
+              "url": "https://www.youtube.com/watch?v=kTDHx003kD0&t=189s"
+            },
+            {
+              "title": "Episodio 04",
+              "guest": "Alberto Maffei",
+              "url": "https://www.youtube.com/watch?v=mQz7JOHCdHA"
             }
           ]
+        }
+      ],
+      "extra": [
+        {
+          "type": "youtube",
+          "size": "half",
+          "caption": "",
+          "url": "https://www.youtube.com/watch?v=llanNMGFNK0"
         }
       ]
     },
@@ -285,7 +303,8 @@
             }
           ]
         }
-      ]
+      ],
+      "extra": []
     },
     {
       "client": "Belluscio Assicurazioni",
@@ -299,7 +318,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Diesel",
@@ -313,7 +333,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Decathlon",
@@ -327,7 +348,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Comune di Thiene",
@@ -341,7 +363,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "SDR Pack",
@@ -355,7 +378,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "3MTecnofer",
@@ -369,7 +393,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Gianeletti",
@@ -383,7 +408,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Sonus Faber",
@@ -397,7 +423,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Vicario Cinque",
@@ -424,7 +451,8 @@
           "text": "",
           "media": []
         }
-      ]
+      ],
+      "extra": []
     },
     {
       "client": "Haute & Craft",
@@ -438,7 +466,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "RP Several",
@@ -452,7 +481,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Colbax",
@@ -466,7 +496,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Digital Boot Camp",
@@ -480,7 +511,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Isoli",
@@ -494,7 +526,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Tera",
@@ -508,7 +541,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "H.D. Consultants",
@@ -522,7 +556,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Macarons",
@@ -536,7 +571,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Zebra Cultural Zoo",
@@ -550,7 +586,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Glamourlab",
@@ -564,7 +601,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Ideandum",
@@ -578,7 +616,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "Neus",
@@ -592,7 +631,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     },
     {
       "client": "BCH",
@@ -606,7 +646,8 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": []
+      "works": [],
+      "extra": []
     }
   ]
 }
