@@ -166,19 +166,41 @@
           "type": "standard",
           "title": "Pura R",
           "text": "",
-          "media": []
+          "media": [
+            {
+              "type": "youtube",
+              "size": "full",
+              "caption": "",
+              "url": "https://www.youtube.com/watch?v=yBgpKd72_wg"
+            }
+          ]
         },
         {
           "type": "standard",
           "title": "Countach",
           "text": "",
-          "media": []
+          "media": [
+            {
+              "type": "youtube",
+              "size": "full",
+              "caption": "",
+              "url": "https://www.youtube.com/watch?v=fA2LRKZ3T1Y"
+            }
+          ]
         },
         {
           "type": "standard",
           "title": "Team Picnic PostNL",
           "text": "",
-          "media": []
+          "media": [
+            {
+              "type": "image",
+              "src": "/media/p1070170.webp",
+              "alt": "",
+              "size": "half",
+              "caption": ""
+            }
+          ]
         },
         {
           "type": "standard",
