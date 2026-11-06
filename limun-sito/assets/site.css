@@ -1,0 +1,107 @@
+/* Limun Studio Design: un solo corpo in Helvetica regular, griglia a due colonne,
+   About che si apre in alto e resta fisso, pillole in basso. */
+:root{
+  --bg:#ffffff;
+  --fg:#000000;
+  --sel:#ffe500;
+  --ph1:#e6e6e6; --ph2:#dadada; --ph3:#cecece; --ph4:#c2c2c2;
+  --sans:Helvetica, "Helvetica Neue", Arial, "Nimbus Sans", "Liberation Sans", sans-serif;
+  --t:clamp(16px, 1.6vw, 25px);
+  --gut:max(16px, env(safe-area-inset-left, 0px));
+  --gutR:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--sans);font-weight:400;font-size:var(--t);line-height:1.04;letter-spacing:-.022em;
+  padding-left:var(--gut);padding-right:var(--gutR);
+  padding-top:env(safe-area-inset-top, 0px);
+  -webkit-font-smoothing:antialiased;
+}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:10;background:var(--bg)}
+::selection{background:var(--sel);color:#000}
+[hidden]{display:none!important}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;letter-spacing:inherit;background:none;border:0;padding:0;cursor:pointer;text-align:left}
+:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+h1,p,ul,figure{margin:0}
+ul{list-style:none;padding:0}
+img,video{display:block;max-width:100%}
+.sl{display:inline-block;margin:0 .1em}
+.pill{display:inline-block;border:1.5px solid var(--fg);border-radius:999px;padding:.06em .42em .1em;line-height:1;white-space:nowrap;background:var(--bg);color:var(--fg)}
+.pill:hover,.pill[aria-current="page"],.pill[aria-pressed="true"],.pill[aria-expanded="true"]{background:var(--fg);color:var(--bg)}
+
+/* Segnaposto quando manca una foto */
+.ph{display:block;width:100%;max-width:100%;aspect-ratio:var(--r,4/3);background:var(--tone,var(--ph1))}
+
+/* Header e pannello About */
+.top{position:sticky;top:env(safe-area-inset-top, 0px);z-index:20;background:var(--bg)}
+.bar{display:flex;justify-content:space-between;align-items:center;padding-block:8px}
+.info{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.22,.8,.2,1)}
+.top.open .info{grid-template-rows:1fr}
+.info-in{min-height:0;overflow:hidden}
+.info-c{max-height:calc(100dvh - 150px);overflow-y:auto;border-bottom:1.5px solid var(--fg);padding-bottom:12px;opacity:0;transform:translateY(-10px);transition:opacity .35s ease .1s, transform .45s cubic-bezier(.22,.8,.2,1) .05s}
+.top.open .info-c{opacity:1;transform:none}
+.i2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:1em}
+.i2 > *{min-width:0}
+.i4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;margin-top:1em}
+.i4 > *{min-width:0}
+.ipills{display:flex;gap:3px;margin-top:1em}
+.team{margin-top:.6em}
+.info-c p + p{margin-top:.8em}
+
+/* Pillole in basso */
+.dock{position:fixed;z-index:30;left:var(--gut);right:var(--gutR);bottom:calc(10px + env(safe-area-inset-bottom, 0px));display:flex;flex-direction:column;justify-content:flex-end;gap:3px;pointer-events:none}
+.dock > div{display:flex;gap:3px;pointer-events:auto}
+.dock > .drow{justify-content:space-between;pointer-events:none}
+.drow > div{display:flex;gap:3px;pointer-events:auto}
+.fbar{flex-wrap:wrap;max-width:min(100%,820px)}
+.fbar:not([hidden]){animation:fup .35s cubic-bezier(.22,.8,.2,1)}
+@keyframes fup{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Pagine */
+#app{padding-bottom:12vh;min-height:60vh}
+.view{padding-top:clamp(10px,1.6vw,24px)}
+.g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:clamp(20px,2.6vw,40px)}
+.g2 > *{min-width:0}
+.tile{display:flex;flex-direction:column;gap:.28em}
+.tile .cover{width:100%;aspect-ratio:4/3;object-fit:cover;background:var(--ph1)}
+.empty{padding-block:2em}
+
+/* Progetto */
+.p-text{display:flex;flex-direction:column;gap:1em;margin-bottom:clamp(40px,6vw,88px)}
+.p-gal{row-gap:8px}
+.span2{grid-column:span 2}
+.m img,.m video{width:100%;height:auto}
+.m .emb{position:relative;width:100%;aspect-ratio:var(--r,16/9);background:var(--ph1)}
+.m .emb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.m figcaption{font-size:.6em;letter-spacing:0;margin-top:.4em}
+
+/* Fisarmonica delle lavorazioni */
+.works{border-bottom:1.5px solid var(--fg)}
+.acc-h{width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:16px;border-top:1.5px solid var(--fg);padding-block:6px 8px}
+.acc-h:hover{font-style:italic}
+.acc-h .ic::before{content:"+"}
+.acc.open .acc-h .ic::before{content:"–"}
+.acc-b{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s cubic-bezier(.22,.8,.2,1)}
+.acc.open .acc-b{grid-template-rows:1fr}
+.acc-in{min-height:0;overflow:hidden}
+.acc-c{padding-block:2px 28px;opacity:0;transition:opacity .25s ease}
+.acc.open .acc-c{opacity:1;transition:opacity .4s ease .15s}
+.acc-c > p{margin-bottom:1em}
+.next{display:block;margin-top:clamp(48px,7vw,100px)}
+.next:hover .nt,.next:focus-visible .nt{font-style:italic}
+
+/* Contact e footer */
+.blocks{display:flex;flex-direction:column;gap:1em;max-width:19em}
+.foot{margin-top:clamp(64px,10vh,140px);padding-bottom:80px}
+
+@media (max-width:640px){
+  .g2,.i2{grid-template-columns:1fr}
+  .i4{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:1em}
+  .span2{grid-column:auto}
+  .dock .soc{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
