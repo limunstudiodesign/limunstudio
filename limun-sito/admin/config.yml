@@ -1,16 +1,16 @@
 # Pannello di modifica del sito Limun Studio Design (Sveltia CMS)
 backend:
   name: github
-  repo: limunstudiodesign/limun-sito
+  repo: limunstudiodesign/limunstudio
   branch: main
   auth_methods: [token]
 
-media_folder: media
+media_folder: limun-sito/media
 public_folder: /media
 media_libraries:
   default:
     config:
-      max_file_size: 26214400 # 25 MB, il limite di Cloudflare Pages per file
+      max_file_size: 26214400
       slugify_filename: true
       transformations:
         raster_image:
@@ -19,7 +19,7 @@ media_libraries:
           width: 2400
 
 app_title: Limun Studio Design
-site_url: https://limun-sito.pages.dev
+site_url: https://limunstudio.pages.dev
 
 collections:
   - name: sito
@@ -27,7 +27,7 @@ collections:
     files:
       - name: projects
         label: Progetti
-        file: content/projects.json
+        file: limun-sito/content/projects.json
         format: json
         fields:
           - name: projects
@@ -114,7 +114,7 @@ collections:
 
       - name: settings
         label: Studio, About e Contact
-        file: content/settings.json
+        file: limun-sito/content/settings.json
         format: json
         fields:
           - { name: name, label: Nome dello studio, widget: string }
