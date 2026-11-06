@@ -97,16 +97,12 @@ body[data-view="home"] .view{padding-top:0}
 .acc-c{padding-block:2px 28px;opacity:0;transition:opacity .25s ease}
 .acc.open .acc-c{opacity:1;transition:opacity .4s ease .15s}
 .acc-c > p{margin-bottom:1em}
-/* Podcast e serie: pillole delle stagioni a sinistra, player ed episodi nella metà destra */
-.pod,.ser{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:8px;align-items:start}
-.pod > *,.ser > *{min-width:0}
-.pod-pills{grid-column:1;display:flex;flex-wrap:wrap;gap:3px;align-content:flex-start}
-.pod > .pod-r,.ser > .pod-r{grid-column:2}
-@media (max-width:640px){
-  .pod,.ser{grid-template-columns:1fr}
-  .pod-pills{position:static}
-  .pod > .pod-r,.ser > .pod-r{grid-column:1}
-}
+/* Podcast e serie: a sinistra pillole delle stagioni ed elenco puntate, a destra il player */
+.pod{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:16px;align-items:start}
+.pod > *{min-width:0}
+.pod-l{display:flex;flex-direction:column;gap:10px}
+.pod-pills{display:flex;flex-wrap:wrap;gap:3px}
+@media (max-width:640px){ .pod{grid-template-columns:1fr} .pod-r{grid-row:1} }
 .pod-r{display:flex;flex-direction:column;gap:8px}
 .pod-empty{display:flex;align-items:center;justify-content:center;color:#555}
 .pod-empty span{font-size:.8em}

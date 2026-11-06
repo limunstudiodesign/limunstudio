@@ -96,29 +96,35 @@
     return (.2126 * L[0] + .7152 * L[1] + .0722 * L[2]) > .22 ? "#000" : "#fff";
   }
   function podcast(w, key){
-    const seasons = (w.seasons || []).filter(s => s && ((s.episodes || []).length || s.label || s.title)).map(s => ({ ...s, label: "", episodes: (s.episodes || []).filter(e => e && (e.title || e.url)) }));
+    const seasons = (w.seasons || []).filter(s => s && ((s.episodes || []).length || s.label || s.title)).map(s => ({ ...s, episodes: (s.episodes || []).filter(e => e && (e.title || e.url)) }));
     PODS[key] = seasons;
     return `<div class="pod" data-pod="${key}">
-      ${seasons.length > 1 ? `<div class="pod-pills">${seasons.map((s, i) => `<button type="button" class="pill" data-season="${i}" aria-pressed="${i === 0}">Stagione ${pad(i + 1)}</button>`).join("")}</div>` : ""}
-      <div class="pod-r">${podRight(key, 0, 0, false)}</div>
+      <div class="pod-l">
+        ${seasons.length > 1 ? `<div class="pod-pills">${seasons.map((s, i) => `<button type="button" class="pill" data-season="${i}" aria-pressed="${i === 0}">Stagione ${pad(i + 1)}</button>`).join("")}</div>` : ""}
+        <div class="pod-list">${podList(key, 0, 0)}</div>
+      </div>
+      <div class="pod-r">${podPlayer(key, 0, 0, false)}</div>
     </div>`;
   }
-
   function series(w, key){
-    PODS[key] = [{ label: "", episodes: (w.episodes || []).filter(e => e && (e.title || e.url)) }];
-    return `<div class="ser" data-pod="${key}"><div class="pod-r">${podRight(key, 0, 0, false)}</div></div>`;
+    PODS[key] = [{ episodes: (w.episodes || []).filter(e => e && (e.title || e.url)) }];
+    return `<div class="pod" data-pod="${key}">
+      <div class="pod-l"><div class="pod-list">${podList(key, 0, 0)}</div></div>
+      <div class="pod-r">${podPlayer(key, 0, 0, false)}</div>
+    </div>`;
   }
-  function podRight(key, si, ei, autoplay){
+  function podList(key, si, ei){
+    const s = PODS[key][si]; if (!s) return "";
+    return `<ol class="pod-eps">${s.episodes.map((x, k) => `<li><button type="button" data-ep="${k}" data-season-of="${si}" aria-pressed="${k === ei}"><span>E${pad(k + 1)}</span><span>${esc(x.title)}${x.guest ? " — " + esc(x.guest) : ""}</span></button></li>`).join("")}</ol>`;
+  }
+  function podPlayer(key, si, ei, autoplay){
     const s = PODS[key][si]; if (!s) return "";
     const e = s.episodes[ei];
     const id = e ? ytId(e.url) : null;
     const player = id
       ? frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}`, "16/9", e.title, YTA, e.url)
       : `<div class="emb pod-empty" style="--r:16/9"><span>${e ? "Video in arrivo" : "Nessun episodio"}</span></div>`;
-    const sl = s.label === "" ? "" : esc(s.label || "S" + pad(si + 1));
-    return `<div class="pod-now">${sl}${e ? `${sl ? " — " : ""}E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>
-      ${player}
-      <ol class="pod-eps">${s.episodes.map((x, k) => `<li><button type="button" data-ep="${k}" data-season-of="${si}" aria-pressed="${k === ei}"><span>E${pad(k + 1)}</span><span>${esc(x.title)}${x.guest ? " — " + esc(x.guest) : ""}</span></button></li>`).join("")}</ol>`;
+    return `${player}<div class="pod-now">${e ? `E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>`;
   }
 
   /* ---------- Viste ---------- */
@@ -291,13 +297,15 @@
     if (sb){
       const pod = sb.closest("[data-pod]");
       pod.querySelectorAll("[data-season]").forEach(b => b.setAttribute("aria-pressed", b === sb));
-      pod.querySelector(".pod-r").innerHTML = podRight(pod.dataset.pod, +sb.dataset.season, 0, false);
+      pod.querySelector(".pod-list").innerHTML = podList(pod.dataset.pod, +sb.dataset.season, 0);
+      pod.querySelector(".pod-r").innerHTML = podPlayer(pod.dataset.pod, +sb.dataset.season, 0, false);
       return;
     }
     const eb = e.target.closest("[data-ep]");
     if (eb){
       const pod = eb.closest("[data-pod]");
-      pod.querySelector(".pod-r").innerHTML = podRight(pod.dataset.pod, +eb.dataset.seasonOf, +eb.dataset.ep, true);
+      pod.querySelectorAll("[data-ep]").forEach(b => b.setAttribute("aria-pressed", b === eb));
+      pod.querySelector(".pod-r").innerHTML = podPlayer(pod.dataset.pod, +eb.dataset.seasonOf, +eb.dataset.ep, true);
       return;
     }
     const c = e.target.closest("[data-copy]");
