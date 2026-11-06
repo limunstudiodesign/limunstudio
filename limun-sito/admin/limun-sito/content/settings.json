@@ -1,0 +1,44 @@
+{
+  "name": "Limun Studio Design",
+  "about": "Nato a Vicenza nel 2017, Limun Studio Design non è un'agenzia di comunicazione, ma uno studio creativo che lavora a stretto contatto con i reparti marketing e comunicazione nella progettazione e produzione di contenuti visivi.\n\nNon ci limitiamo a realizzare contenuti: diventiamo un'estensione del team, un partner creativo che supporta le aziende nei diversi ambiti della comunicazione.",
+  "services": [
+    "Photography",
+    "Video",
+    "Podcast formats",
+    "Graphic design",
+    "Visual identity",
+    "Art & creative direction"
+  ],
+  "clients": [
+    "Ursus",
+    "Diesel",
+    "Decathlon",
+    "Sonus Faber",
+    "Comune di Thiene",
+    "3MTecnofer",
+    "Glamourlab",
+    "Haute & Craft"
+  ],
+  "team": [
+    {
+      "name": "Umberto Badia",
+      "role": "Videomaker"
+    },
+    {
+      "name": "Francesco Bigon",
+      "role": "Visual Designer"
+    },
+    {
+      "name": "Roberto Povero",
+      "role": "Photographer"
+    },
+    {
+      "name": "Matteo Nicolin",
+      "role": "Video & Audio Editor"
+    }
+  ],
+  "address": "Via Quintarello 92\nVillaggio Montegrappa (VI)",
+  "email": "info@limunstudiodesign.com",
+  "instagram_url": "https://www.instagram.com/limunstudiodesign/",
+  "instagram_handle": "@limunstudiodesign"
+}
