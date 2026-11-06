@@ -151,6 +151,10 @@
   };
 
   /* ---------- Parti fisse: About, footer ---------- */
+  function contacts(){ return `<div class="i4">
+        <div>${lines(S.address)}</div>
+        <div style="grid-column:span 2">${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">Instagram</a>` : ""}</div>
+      </div>`; }
   function renderChrome(){
     const team = (S.team || []).filter(t => t && t.name);
     $("#infoContent").innerHTML = `
@@ -161,10 +165,7 @@
           ${S.clients?.length ? `<p>Clients → ${S.clients.map(esc).join(SL)}</p>` : ""}
         </div>
       </div>
-      <div class="i4">
-        <div>${lines(S.address)}</div>
-        <div style="grid-column:span 2">${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">Instagram</a>` : ""}</div>
-      </div>
+      ${S.contacts_in_about ? contacts() : ""}
       ${team.length ? `<div class="ipills"><button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button></div>
       <div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}`;
     $("#foot").innerHTML = `<div>${S.name ? esc(S.name) + "<br>" : ""}${lines(S.address)}</div>

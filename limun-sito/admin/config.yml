@@ -197,6 +197,7 @@ collections:
             fields:
               - { name: name, label: Nome, required: false, widget: string }
               - { name: role, label: Ruolo, widget: string, required: false }
+          - { name: contacts_in_about, label: Mostra i contatti anche nell'About, widget: boolean, default: false, required: false, hint: "Indirizzo, e-mail e Instagram si vedono sempre nel footer e in Contact." }
           - { name: address, label: Indirizzo, required: false, widget: text, hint: "Una riga per volta, come deve apparire." }
           - { name: email, label: E-mail, required: false, widget: string }
           - { name: instagram_url, label: Link Instagram, widget: string, required: false }

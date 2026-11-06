@@ -44,8 +44,9 @@
       "role": "Photographer"
     }
   ],
-  "address": "",
-  "email": "",
-  "instagram_url": "",
-  "instagram_handle": ""
+  "address": "Via Quintarello 92\nVillaggio Montegrappa (VI)",
+  "email": "info@limunstudiodesign.com",
+  "instagram_url": "https://www.instagram.com/limunstudiodesign/",
+  "instagram_handle": "@limunstudiodesign",
+  "contacts_in_about": false
 }
