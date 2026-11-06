@@ -97,9 +97,16 @@ body[data-view="home"] .view{padding-top:0}
 .acc-c{padding-block:2px 28px;opacity:0;transition:opacity .25s ease}
 .acc.open .acc-c{opacity:1;transition:opacity .4s ease .15s}
 .acc-c > p{margin-bottom:1em}
-/* Podcast: stagioni come pillole, poi player ed episodi */
-.pod{display:flex;flex-direction:column;gap:8px}
-.pod-pills{display:flex;flex-wrap:wrap;gap:3px}
+/* Podcast e serie: pillole delle stagioni a sinistra, player ed episodi nella metà destra */
+.pod,.ser{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:8px;align-items:start}
+.pod > *,.ser > *{min-width:0}
+.pod-pills{grid-column:1;display:flex;flex-wrap:wrap;gap:3px;align-content:flex-start}
+.pod > .pod-r,.ser > .pod-r{grid-column:2}
+@media (max-width:640px){
+  .pod,.ser{grid-template-columns:1fr}
+  .pod-pills{position:static}
+  .pod > .pod-r,.ser > .pod-r{grid-column:1}
+}
 .pod-r{display:flex;flex-direction:column;gap:8px}
 .pod-empty{display:flex;align-items:center;justify-content:center;color:#555}
 .pod-empty span{font-size:.8em}
@@ -107,7 +114,6 @@ body[data-view="home"] .view{padding-top:0}
 .pod-eps button{width:100%;display:grid;grid-template-columns:3.2em minmax(0,1fr);gap:8px;border-top:1.5px solid var(--fg);padding-block:5px 7px}
 .pod-eps button:hover,.pod-eps button[aria-pressed="true"]{font-style:italic}
 
-.ser .pod-r{max-width:100%}
 .after{margin-top:clamp(32px,4vw,64px)}
 .lnk{align-self:start}
 .lnk a:hover{font-style:italic}
