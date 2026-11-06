@@ -159,7 +159,7 @@
           </section>`).join("")}</div>` : gallery(p.media, i)}
         ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="g2 p-gal after">${x.join("")}</div>` : ""; })()}
         <nav class="pnav" aria-label="Progetti">
-          <a class="back" href="/"><span class="nt">Back to portfolio</span></a>
+          <a class="back" href="/">Back to:<br><span class="nt">Portfolio</span></a>
           ${PROJECTS.length > 1 ? `<a class="next" href="/work/${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
         </nav>
       </article>`;

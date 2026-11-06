@@ -123,10 +123,11 @@ body[data-view="home"] .view{padding-top:0}
 .pnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;align-items:end;margin-top:clamp(48px,7vw,100px)}
 .pnav .next{grid-column:2}
 /* Ogni scritta cliccabile diventa corsiva al passaggio del mouse */
-a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span,.back:hover .nt{font-style:italic}
+a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span{font-style:italic}
 .pill:hover,.pill:focus-visible{font-style:normal}
-.next:hover,.next:focus-visible{font-style:normal}
-.next:hover .nt,.next:focus-visible .nt{font-style:italic}
+#brand:hover,#brand:focus-visible{font-style:normal}
+.next:hover,.next:focus-visible,.back:hover,.back:focus-visible{font-style:normal}
+.next:hover .nt,.next:focus-visible .nt,.back:hover .nt,.back:focus-visible .nt{font-style:italic}
 /* Dissolvenza tra le pagine */
 .view{animation:vin .18s ease-out}
 @keyframes vin{from{opacity:0}to{opacity:1}}
