@@ -120,8 +120,16 @@ body[data-view="home"] .view{padding-top:0}
 .after{margin-top:clamp(32px,4vw,64px)}
 .lnk{align-self:start}
 .lnk a:hover{font-style:italic}
-.next{display:block;margin-top:clamp(48px,7vw,100px)}
+.pnav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;align-items:end;margin-top:clamp(48px,7vw,100px)}
+.pnav .next{grid-column:2}
+/* Ogni scritta cliccabile diventa corsiva al passaggio del mouse */
+a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span,.back:hover .nt{font-style:italic}
+.pill:hover,.pill:focus-visible{font-style:normal}
+.next:hover,.next:focus-visible{font-style:normal}
 .next:hover .nt,.next:focus-visible .nt{font-style:italic}
+/* Dissolvenza tra le pagine */
+.view{animation:vin .18s ease-out}
+@keyframes vin{from{opacity:0}to{opacity:1}}
 
 /* Contact e footer */
 .blocks{display:flex;flex-direction:column;gap:1em;max-width:19em}

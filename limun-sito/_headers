@@ -1,6 +1,0 @@
-# Finché il sito è in lavorazione non va indicizzato. Al lancio togliere questo blocco.
-/*
-  X-Robots-Tag: noindex, nofollow
-
-/content/*
-  Cache-Control: no-cache

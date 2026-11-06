@@ -5,7 +5,7 @@ backend:
   branch: main
   auth_methods: [token]
 
-media_folder: limun-sito/media
+media_folder: media
 public_folder: /media
 media_libraries:
   default:
@@ -27,7 +27,7 @@ collections:
     files:
       - name: projects
         label: Progetti
-        file: limun-sito/content/projects.json
+        file: content/projects.json
         format: json
         fields:
           - name: projects
@@ -181,7 +181,7 @@ collections:
 
       - name: settings
         label: Studio, About e Contact
-        file: limun-sito/content/settings.json
+        file: content/settings.json
         format: json
         fields:
           - { name: name, label: Nome dello studio, required: false, widget: string }

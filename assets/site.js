@@ -136,7 +136,7 @@
       cover = `<span class="cover cvr${tall ? " tall" : ""}"${p.cover ? ` style="background:center/cover url('${esc(p.cover)}')"` : ""}><iframe src="https://www.youtube-nocookie.com/embed/${yid}?autoplay=1&mute=1&loop=1&playlist=${yid}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0" title="" tabindex="-1" aria-hidden="true" loading="lazy" allow="autoplay; encrypted-media"></iframe></span>`;
     }
     else if (p.cover) cover = `<img class="cover" src="${esc(p.cover)}" alt="" loading="${i < 4 ? "eager" : "lazy"}" decoding="async">`;
-    return `<a class="tile" href="#p-${p.slug}">${cover}<span>${esc(p.client)}${p.subtitle ? SL + esc(p.subtitle) : ""}<br>${esc(p.category)}</span></a>`;
+    return `<a class="tile" href="/work/${p.slug}">${cover}<span>${esc(p.client)}${p.subtitle ? SL + esc(p.subtitle) : ""}<br>${esc(p.category)}</span></a>`;
   }
   const VIEWS = {
     home(){
@@ -158,7 +158,10 @@
             <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : w.type === "series" ? series(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3)}</div></div></div>
           </section>`).join("")}</div>` : gallery(p.media, i)}
         ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="g2 p-gal after">${x.join("")}</div>` : ""; })()}
-        ${PROJECTS.length > 1 ? `<a class="next" href="#p-${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
+        <nav class="pnav" aria-label="Progetti">
+          <a class="back" href="/"><span class="nt">Back to portfolio</span></a>
+          ${PROJECTS.length > 1 ? `<a class="next" href="/work/${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
+        </nav>
       </article>`;
     },
     contact(){
@@ -209,7 +212,7 @@
     if (!el){
       el = document.createElement("div"); el.id = "cookie"; el.className = "cookie"; el.setAttribute("role", "dialog"); el.setAttribute("aria-label", "Cookie");
       el.innerHTML = `<p>Questo sito mostra video e post di YouTube, Vimeo e Instagram, che possono usare cookie propri. Li carichiamo solo se accetti.</p>
-        <div class="cookie-b"><button type="button" class="pill" data-consent="1">Accetta</button><button type="button" class="pill" data-consent="0">Rifiuta</button><a class="pill" href="#privacy">Privacy</a></div>`;
+        <div class="cookie-b"><button type="button" class="pill" data-consent="1">Accetta</button><button type="button" class="pill" data-consent="0">Rifiuta</button><a class="pill" href="/privacy">Privacy</a></div>`;
       document.body.appendChild(el);
     }
     el.hidden = false;
@@ -238,21 +241,29 @@
     e.preventDefault();
     filter = null; fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); fillBar();
     setAbout(false);
-    if (location.hash && location.hash !== "#home") location.hash = "home";
-    else route();
+    go("/");
   });
 
   fbtn.addEventListener("click", () => { fbar.hidden = !fbar.hidden; fbtn.setAttribute("aria-expanded", !fbar.hidden); fillBar(); });
   fbar.addEventListener("click", e => {
     const f = e.target.closest("[data-f]"); if (!f) return;
     filter = f.dataset.f || null; fillBar();
-    if (location.hash && location.hash !== "#home"){ location.hash = "home"; return; }
+    if (location.pathname !== "/"){ go("/"); return; }
     app.innerHTML = VIEWS.home(); window.scrollTo(0, 0);
   });
 
   /* Router */
+  /* Indirizzi veri: /work/nome-progetto, /contact, /privacy, /about */
+  function go(path){ if (location.pathname + location.hash !== path) history.pushState(null, "", path); route(); }
   function route(){
-    const h = decodeURIComponent(location.hash.slice(1));
+    const old = decodeURIComponent(location.hash.slice(1));
+    if (old){ /* vecchi link con # */
+      const map = { home: "/", contact: "/contact", privacy: "/privacy", about: "/about" };
+      const to = old.startsWith("p-") ? "/work/" + old.slice(2) : map[old];
+      if (to){ history.replaceState(null, "", to); }
+    }
+    const path = decodeURIComponent(location.pathname).replace(/\/+$/, "") || "/";
+    const h = path === "/" ? "home" : path.startsWith("/work/") ? "p-" + path.slice(6) : path.slice(1);
     let key = "home", html;
     if (h === "about"){ setAbout(true); html = VIEWS.home(); }
     else if (h === "contact"){ key = "contact"; html = VIEWS.contact(); }
@@ -267,7 +278,14 @@
     window.scrollTo(0, 0);
     if (h === "privacy") showPrivacy(true);
   }
-  window.addEventListener("hashchange", route);
+  window.addEventListener("popstate", route);
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[href^='/']");
+    if (!a || a.target === "_blank" || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;
+    const href = a.getAttribute("href");
+    if (/^\/(admin|media|assets|content)(\/|$)/.test(href)) return;
+    e.preventDefault(); go(href);
+  });
 
   app.addEventListener("click", e => {
     const a = e.target.closest("[data-acc]");
@@ -298,8 +316,8 @@
   async function load(){
     try {
       const [p, s] = await Promise.all([
-        fetch("content/projects.json", { cache: "no-cache" }).then(r => r.json()),
-        fetch("content/settings.json", { cache: "no-cache" }).then(r => r.json())
+        fetch("/content/projects.json", { cache: "no-cache" }).then(r => r.json()),
+        fetch("/content/settings.json", { cache: "no-cache" }).then(r => r.json())
       ]);
       S = s || {};
       const seen = {};

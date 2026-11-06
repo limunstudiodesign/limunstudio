@@ -1,6 +1,6 @@
 # Sito Limun Studio Design
 
-Il sito è statico: non serve nessuna compilazione.
+Il sito è statico: non serve nessuna compilazione. La cartella `functions/` genera le anteprime dei link di ogni progetto (/work/nome-progetto).
 
 - `index.html`, `assets/`: il sito.
 - `content/projects.json`: i progetti, nell'ordine del portfolio.
