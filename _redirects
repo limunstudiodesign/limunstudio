@@ -1,1 +1,3 @@
+/admin  /admin/  301
+/limun-sito/*  /:splat  301
 /*  /limun-sito/:splat  200
