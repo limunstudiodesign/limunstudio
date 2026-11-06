@@ -128,7 +128,8 @@ body[data-view="home"] .view{padding-top:0}
 .foot{margin-top:clamp(64px,10vh,140px);padding-bottom:80px}
 .ext-off a:hover{font-style:italic}
 .priv p + p{margin-top:.6em}
-.cookie{position:fixed;z-index:40;left:var(--gut);right:var(--gutR);bottom:calc(42px + env(safe-area-inset-bottom, 0px));display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;background:var(--bg);border-top:1.5px solid var(--fg);padding-block:8px 10px}
+.cookie{position:fixed;z-index:25;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;background:var(--bg);padding:10px var(--gutR) calc(46px + env(safe-area-inset-bottom, 0px)) var(--gut)}
+.cookie::before{content:"";position:absolute;top:0;left:var(--gut);right:var(--gutR);border-top:1.5px solid var(--fg)}
 .cookie p{max-width:34em}
 .cookie-b{display:flex;gap:3px}
 
