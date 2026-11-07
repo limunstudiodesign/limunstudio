@@ -88,6 +88,7 @@ collections:
                     fields:
                       - { name: src, label: File video, widget: file, hint: "mp4, massimo 25 MB. Per video più lunghi usa YouTube o Vimeo." }
                       - { name: poster, label: Immagine di anteprima, widget: image, required: false }
+                      - { name: sound, label: Con audio e controlli, widget: boolean, default: false, required: false, hint: "Attivo: il video ha l'audio e si avvia con il play. Spento: parte da solo, muto e in loop." }
                       - *size
                       - *caption
                   - name: youtube

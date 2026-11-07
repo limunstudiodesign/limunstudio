@@ -9,7 +9,7 @@
         "Podcast"
       ],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/ursus-ursus.webp",
       "cover_video": "/media/ursus-copertina.mp4",
       "cover_youtube": "https://www.youtube.com/watch?v=yBgpKd72_wg",
       "description": "Ursus è un'azienda italiana che produce ruote e componenti ad alte prestazioni per il ciclismo, sinonimo di qualità e innovazione. Presente al Giro d'Italia 2025 con il team Picnic PostNL e al Tour de France con Total Direct Energie Pro Cycling Team.\nLo studio ha viaggiato in Europa per realizzare video con ambassador d'eccezione come Maverick Viñales e Alessandro Petacchi, raccontando storie di sport e passione con il format Behind The Athlete.\nInoltre viene seguita la produzione del podcast \"Ruota Libera\" con Giada Borgato, ex ciclista professionista e commentatrice Rai. Con Ursus vengono sviluppati contenuti digitali e comunicativi, dal lancio di nuovi prodotti alla gestione della comunicazione social.",
@@ -211,6 +211,14 @@
                 "/media/p1070729.webp"
               ],
               "per_row": "4"
+            },
+            {
+              "type": "video",
+              "src": "/media/ursus-ursus-reel-team-picnic-postnl.mp4",
+              "poster": "/media/ursus-ursus-reel-team-picnic-postnl.webp",
+              "sound": true,
+              "size": "half",
+              "caption": ""
             }
           ]
         },
@@ -248,6 +256,58 @@
           "size": "half",
           "caption": "",
           "url": "https://www.youtube.com/watch?v=llanNMGFNK0"
+        },
+        {
+          "type": "video",
+          "src": "/media/ursus-ursus-reel-gaia-tormena.mp4",
+          "poster": "/media/ursus-ursus-reel-gaia-tormena.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/ursus-ursus-reel-miura-tc47.mp4",
+          "poster": "/media/ursus-ursus-reel-miura-tc47.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/ursus-miura-pro.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/ursus-hursus-miura-pro-sub-hd-1.mp4",
+          "poster": "/media/ursus-hursus-miura-pro-sub-hd-1.webp",
+          "sound": false,
+          "size": "full",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/ursus-p1000481.webp",
+            "/media/ursus-p1023123.webp",
+            "/media/ursus-p1023044.webp",
+            "/media/ursus-p1000419.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/ursus-ruota.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
         }
       ]
     },
@@ -258,7 +318,7 @@
       "category": "Podcast",
       "categories": [],
       "hidden": false,
-      "cover": "/media/8adc0a_e6c92d16597e453daa98cd8100de2483~mv2.jpg.webp",
+      "cover": "/media/delivera-ep.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "Excellence Podcast è un progetto che unisce due anime, Sales Excellence e Marketing Excellence, per raccontare le migliori pratiche nei processi di vendita e marketing.\nOgni episodio è un viaggio tra storie di innovazione e leadership, con interviste a professionisti e imprenditori che condividono strategie, sfide e successi.\nLa produzione, l'editing e il taglio stilistico sono studiati per garantire un'esperienza di ascolto e visione coinvolgente, capace di catturare l'essenza del business moderno e ispirare nuove idee. Il risultato è un progetto che punta all'eccellenza, proprio come i suoi protagonisti.",
@@ -523,12 +583,69 @@
       "category": "Creative Direction",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/belluscio-belluscio.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/belluscio-img-4435.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/belluscio-risorsa-12-100.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/belluscio-senza-titolo-1.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/belluscio-img-1857.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/belluscio-stories-01.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/belluscio-senza-titolo-1.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/belluscio-schermata-2025-07-10-alle-11-59-56.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -539,12 +656,47 @@
       "category": "Media Contents",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/diesel-diesel-visual.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "video",
+          "src": "/media/diesel-renzo-rosso-sito.mp4",
+          "poster": "/media/diesel-renzo-rosso-sito.webp",
+          "sound": true,
+          "size": "full",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/diesel-senza-titolo-1-2.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/diesel-dsc0093.webp",
+            "/media/diesel-dsc0149.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/diesel-video-sito-22.mp4",
+          "poster": "/media/diesel-video-sito-22.webp",
+          "sound": true,
+          "size": "full",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -555,12 +707,31 @@
       "category": "Contents",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/decathlon-dsc5854.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/decathlon-dsc5854.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/decathlon-dsc5275.webp",
+            "/media/decathlon-dsc5809.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -587,12 +758,93 @@
       "category": "Art Direction",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/sdr-pack-senza-titolo-1-tavola-disegno-1.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/sdr-pack-senza-titolo-1-tavola-disegno-1.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/sdr-pack-bilancio-sdr.mp4",
+          "poster": "/media/sdr-pack-bilancio-sdr.webp",
+          "sound": false,
+          "size": "full",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/sdr-pack-dsc09473.webp",
+            "/media/sdr-pack-dsc09476.webp",
+            "/media/sdr-pack-dsc09479.webp",
+            "/media/sdr-pack-dsc09483.webp",
+            "/media/sdr-pack-dsc09488.webp",
+            "/media/sdr-pack-dsc09490.webp"
+          ],
+          "per_row": "3",
+          "ratio": "2/3",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/sdr-pack-dsc09317.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/sdr-pack-dsc09644.webp",
+            "/media/sdr-pack-dsc09777.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/sdr-pack-senza-titolo-2.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/sdr-pack-nano-banana-2025-10-13t10-26-00.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/sdr-pack-bob16-specialedition-page-0001-1.mp4",
+          "poster": "/media/sdr-pack-bob16-specialedition-page-0001-1.webp",
+          "sound": false,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/sdr-pack-sdr-bob.mp4",
+          "poster": "/media/sdr-pack-sdr-bob.webp",
+          "sound": false,
+          "size": "full",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -619,12 +871,71 @@
       "category": "Brand Identity",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/gianeletti-dsc6485.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "gallery",
+          "images": [
+            "/media/gianeletti-dsc6485.webp",
+            "/media/gianeletti-dsc6138.webp",
+            "/media/gianeletti-dsc6322.webp"
+          ],
+          "per_row": "3",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/gianeletti-dsc7005-2.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/gianeletti-dsc6996.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/gianeletti-composizione-1-1.mp4",
+          "poster": "/media/gianeletti-composizione-1-1.webp",
+          "sound": false,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/gianeletti-risorsa-2-100.mp4",
+          "poster": "/media/gianeletti-risorsa-2-100.webp",
+          "sound": false,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/gianeletti-0015.webp",
+            "/media/gianeletti-0007.webp",
+            "/media/gianeletti-0017.webp",
+            "/media/gianeletti-0018.webp",
+            "/media/gianeletti-0019.webp",
+            "/media/gianeletti-0020.webp",
+            "/media/gianeletti-0023.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -635,12 +946,67 @@
       "category": "Media Contents",
       "categories": [],
       "hidden": false,
-      "cover": "",
-      "cover_video": "",
+      "cover": "/media/sonus-faber-ig-post-12.webp",
+      "cover_video": "/media/sonus-faber-banner-sito-sonus.mp4",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "gallery",
+          "images": [
+            "/media/sonus-faber-dsc00678.webp",
+            "/media/sonus-faber-dsc00715.webp",
+            "/media/sonus-faber-dsc00814.webp",
+            "/media/sonus-faber-dsc01399.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/sonus-faber-reel-vicenza-jazz-festival-foyer-unito.mp4",
+          "poster": "/media/sonus-faber-reel-vicenza-jazz-festival-foyer-unito.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/sonus-faber-sessione-di-ascolto-domenica-25-05-reel-1.mp4",
+          "poster": "/media/sonus-faber-sessione-di-ascolto-domenica-25-05-reel-1.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/sonus-faber-long-cut-amati-verticale-modificata-24-07.mp4",
+          "poster": "/media/sonus-faber-long-cut-amati-verticale-modificata-24-07.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/sonus-faber-ig-post-12.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/sonus-faber-dsc01287.webp",
+            "/media/sonus-faber-dsc01408.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -651,7 +1017,7 @@
       "category": "Creative Direction",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/vicario-cinque-v5-fw26-27-72.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
@@ -662,7 +1028,39 @@
           "type": "standard",
           "title": "FW 26/27",
           "text": "",
-          "media": []
+          "media": [
+            {
+              "type": "video",
+              "src": "/media/vicario-cinque-fondale-v5-copia.mp4",
+              "poster": "/media/vicario-cinque-fondale-v5-copia.webp",
+              "sound": true,
+              "size": "full",
+              "caption": ""
+            },
+            {
+              "type": "gallery",
+              "images": [
+                "/media/vicario-cinque-v5-fw26-27-39.webp",
+                "/media/vicario-cinque-v5-fw26-27-37.webp",
+                "/media/vicario-cinque-v5-fw26-27-50.webp",
+                "/media/vicario-cinque-v5-fw26-27-72.webp",
+                "/media/vicario-cinque-v5-fw26-27-83.webp",
+                "/media/vicario-cinque-v5-fw26-27-85.webp",
+                "/media/vicario-cinque-v5-fw26-27-90.webp"
+              ],
+              "per_row": "3",
+              "ratio": "2/3",
+              "caption": ""
+            },
+            {
+              "type": "video",
+              "src": "/media/vicario-cinque-v5-per-sito.mp4",
+              "poster": "/media/vicario-cinque-v5-per-sito.webp",
+              "sound": false,
+              "size": "half",
+              "caption": ""
+            }
+          ]
         },
         {
           "type": "standard",
@@ -671,7 +1069,32 @@
           "media": []
         }
       ],
-      "extra": []
+      "extra": [
+        {
+          "type": "image",
+          "src": "/media/vicario-cinque-a7406575-2.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/vicario-cinque-intro-ok-vicario.mp4",
+          "poster": "/media/vicario-cinque-intro-ok-vicario.webp",
+          "sound": false,
+          "size": "full",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/vicario-cinque-vicario-5-int.mp4",
+          "poster": "/media/vicario-cinque-vicario-5-int.webp",
+          "sound": false,
+          "size": "half",
+          "caption": ""
+        }
+      ]
     },
     {
       "client": "Haute & Craft",
@@ -680,12 +1103,51 @@
       "category": "Creative Direction",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/haute-craft-nano-banana-1770023969635.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "gallery",
+          "images": [
+            "/media/haute-craft-nano-banana-1770023969635.webp",
+            "/media/haute-craft-nano-banana-1769416877196.webp",
+            "/media/haute-craft-nano-banana-1770028070228.webp",
+            "/media/haute-craft-nano-banana-1770031247543.webp",
+            "/media/haute-craft-nano-banana-1770031871776.webp",
+            "/media/haute-craft-vfvf.webp"
+          ],
+          "per_row": "3",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/haute-craft-web.mp4",
+          "poster": "/media/haute-craft-web.webp",
+          "sound": false,
+          "size": "full",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/haute-craft-welcome-flyer.mp4",
+          "poster": "/media/haute-craft-welcome-flyer.webp",
+          "sound": false,
+          "size": "full",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/haute-craft-0-2.mp4",
+          "poster": "/media/haute-craft-0-2.webp",
+          "sound": false,
+          "size": "full",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -744,12 +1206,33 @@
       "category": "Art Direction",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/isoli-dsc00267.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "video",
+          "src": "/media/isoli-trailer-small.mp4",
+          "poster": "/media/isoli-trailer-small.webp",
+          "sound": true,
+          "size": "full",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/isoli-dsc00267.webp",
+            "/media/isoli-dsc00301.webp",
+            "/media/isoli-dsc00311.webp",
+            "/media/isoli-dsc00330.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -760,12 +1243,31 @@
       "category": "Video Corporate",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/tera-a7407318.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/tera-a7407318.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/tera-2.webp",
+            "/media/tera-1.webp"
+          ],
+          "per_row": "2",
+          "ratio": "1/1",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -778,7 +1280,7 @@
         "Podcast"
       ],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/hd-consultants-hd-2.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
@@ -871,7 +1373,34 @@
           ]
         }
       ],
-      "extra": []
+      "extra": [
+        {
+          "type": "image",
+          "src": "/media/hd-consultants-hd.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/hd-consultants-h.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/hd-consultants-post-tavola-disegno-1-copia.webp",
+            "/media/hd-consultants-post-tavola-disegno-1.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ]
     },
     {
       "client": "Bibetech",
@@ -982,12 +1511,45 @@
       "category": "Visual Identity",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/macarons-dsc9074.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "gallery",
+          "images": [
+            "/media/macarons-g.webp",
+            "/media/macarons-dsc9352.webp",
+            "/media/macarons-dsc9100.webp",
+            "/media/macarons-dsc9291.webp",
+            "/media/macarons-dsc8421.webp",
+            "/media/macarons-h.webp"
+          ],
+          "per_row": "3",
+          "ratio": "2/3",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/macarons-senza-titolo-1.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "gallery",
+          "images": [
+            "/media/macarons-2.webp",
+            "/media/macarons-shopping.webp"
+          ],
+          "per_row": "2",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -998,12 +1560,45 @@
       "category": "Visual Identity",
       "categories": [],
       "hidden": false,
-      "cover": "",
-      "cover_video": "",
+      "cover": "/media/zebra-zebra.webp",
+      "cover_video": "/media/zebra-logo-animation.mp4",
       "cover_youtube": "",
       "description": "",
       "credits": [],
-      "media": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/zebra-zebra.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/zebra-5.mp4",
+          "poster": "/media/zebra-5.webp",
+          "sound": false,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/zebra-bc-1-fabricated-2.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/zebra-iphone-x-mockup-paul.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     },
@@ -1068,6 +1663,135 @@
       "description": "",
       "credits": [],
       "media": [],
+      "works": [],
+      "extra": []
+    },
+    {
+      "client": "Andreas",
+      "subtitle": "",
+      "year": "",
+      "category": "Social Contents",
+      "categories": [],
+      "hidden": false,
+      "cover": "/media/andreas-3-paper-box-mockup.webp",
+      "cover_video": "",
+      "cover_youtube": "",
+      "description": "",
+      "credits": [],
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/andreas-3-paper-box-mockup.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-competition.mp4",
+          "poster": "/media/andreas-competition.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-evolution.mp4",
+          "poster": "/media/andreas-evolution.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-maracana.mp4",
+          "poster": "/media/andreas-maracana.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-match-pro.mp4",
+          "poster": "/media/andreas-match-pro.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-modello-bomber.mp4",
+          "poster": "/media/andreas-modello-bomber.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-modello-champion.mp4",
+          "poster": "/media/andreas-modello-champion.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-modello-no-nome.mp4",
+          "poster": "/media/andreas-modello-no-nome.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-squadra.mp4",
+          "poster": "/media/andreas-squadra.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-suola-turf-calcio-5.mp4",
+          "poster": "/media/andreas-suola-turf-calcio-5.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-touch.mp4",
+          "poster": "/media/andreas-touch.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-video-spiegazione.mp4",
+          "poster": "/media/andreas-video-spiegazione.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-giulio-giacomin.mp4",
+          "poster": "/media/andreas-giulio-giacomin.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/andreas-instagram-clip.mp4",
+          "poster": "/media/andreas-instagram-clip.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        }
+      ],
       "works": [],
       "extra": []
     }

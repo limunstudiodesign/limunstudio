@@ -59,7 +59,8 @@
       }
       case "video":
         if (!m.src) return "";
-        return `<figure class="${cls}"><video src="${esc(m.src)}" ${m.poster ? `poster="${esc(m.poster)}"` : ""} autoplay muted loop playsinline preload="metadata"></video>${cap}</figure>`;
+        if (m.sound) return `<figure class="${cls}"><video src="${esc(m.src)}" ${m.poster ? `poster="${esc(m.poster)}"` : ""} controls playsinline preload="none"></video>${cap}</figure>`;
+        return `<figure class="${cls}"><video data-auto src="${esc(m.src)}" ${m.poster ? `poster="${esc(m.poster)}"` : ""} muted loop playsinline preload="none"></video>${cap}</figure>`;
       case "youtube": {
         const id = ytId(m.url); if (!id) return "";
         const tall = /\/shorts\//.test(m.url);
@@ -135,7 +136,7 @@
     const i = idx(p);
     let cover = ph(i, "4/3");
     const yid = !p.cover_video && p.cover_youtube && ext ? ytId(p.cover_youtube) : null;
-    if (p.cover_video) cover = `<video class="cover" src="${esc(p.cover_video)}" ${p.cover ? `poster="${esc(p.cover)}"` : ""} autoplay muted loop playsinline preload="metadata"></video>`;
+    if (p.cover_video) cover = `<video class="cover" data-auto src="${esc(p.cover_video)}" ${p.cover ? `poster="${esc(p.cover)}"` : ""} muted loop playsinline preload="none"></video>`;
     else if (yid){
       const tall = /\/shorts\//.test(p.cover_youtube);
       cover = `<span class="cover cvr${tall ? " tall" : ""}"${p.cover ? ` style="background:center/cover url('${esc(p.cover)}')"` : ""}><iframe src="https://www.youtube-nocookie.com/embed/${yid}?autoplay=1&mute=1&loop=1&playlist=${yid}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0" title="" tabindex="-1" aria-hidden="true" loading="lazy" allow="autoplay; encrypted-media"></iframe></span>`;
@@ -256,6 +257,15 @@
     go(c ? "/category/" + slugify(c) : "/");
   });
 
+  /* Video in loop: partono solo quando sono sullo schermo, così la pagina resta leggera */
+  const io = "IntersectionObserver" in window ? new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target;
+    if (e.isIntersecting){ if (v.preload !== "auto") v.preload = "auto"; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+    else v.pause();
+  }), { rootMargin: "200px 0px" }) : null;
+  function watchVideos(){ document.querySelectorAll("video[data-auto]").forEach(v => { if (v.dataset.watched) return; v.dataset.watched = "1"; if (io) io.observe(v); else { v.autoplay = true; v.play().catch(() => {}); } }); }
+  document.addEventListener("click", e => { if (e.target.closest(".acc-h")) setTimeout(watchVideos, 50); });
+
   /* Router */
   /* Indirizzi veri: /work/nome-progetto, /contact, /privacy, /about */
   function go(path){ if (location.pathname + location.hash !== path) history.pushState(null, "", path); route(); }
@@ -282,6 +292,7 @@
     if (key !== "home"){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
     document.body.dataset.view = key;
     app.innerHTML = html;
+    watchVideos();
     document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === key ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
     window.scrollTo(0, 0);
     if (h === "privacy") showPrivacy(true);
