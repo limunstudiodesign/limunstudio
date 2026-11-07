@@ -444,7 +444,9 @@
                 }
               ]
             }
-          ]
+          ],
+          "open": true,
+          "start_season": 3
         },
         {
           "type": "podcast",

@@ -7,7 +7,7 @@
   const SL = '<span class="sl">╱</span>';
   const TONES = ["var(--ph1)","var(--ph2)","var(--ph3)","var(--ph4)"];
   const ph = (n, r, cls = "") => `<span class="ph ${cls}" style="--r:${r};--tone:${TONES[((n % 4) + 4) % 4]}"></span>`;
-  const paras = t => String(t || "").split(/\n\s*\n/).map(s => s.trim()).filter(Boolean).map(s => `<p>${esc(s).replace(/\n/g, "<br>")}</p>`).join("");
+  const paras = t => String(t || "").split(/\n+/).map(s => s.trim()).filter(Boolean).map(s => `<p>${esc(s)}</p>`).join("");
   const lines = t => esc(t).replace(/\n/g, "<br>");
   const slugify = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
