@@ -874,6 +874,108 @@
       "extra": []
     },
     {
+      "client": "Bibetech",
+      "subtitle": "",
+      "year": "2025/----",
+      "category": "Podcast",
+      "categories": [],
+      "hidden": false,
+      "cover": "",
+      "cover_video": "",
+      "cover_youtube": "",
+      "description": "",
+      "credits": [],
+      "media": [],
+      "works": [
+        {
+          "type": "podcast",
+          "title": "Podcast | Bibetech Pills e Bibetaste",
+          "text": "",
+          "seasons": [
+            {
+              "label": "S01",
+              "title": "Bibetech Pills",
+              "episodes": [
+                {
+                  "number": "",
+                  "title": "La bufala che conquista il mondo",
+                  "guest": "Fattorie Garofalo",
+                  "url": "https://www.youtube.com/watch?v=tD2rFgPij_Y"
+                },
+                {
+                  "number": "",
+                  "title": "5 miliardi di api protette",
+                  "guest": "Mielizia",
+                  "url": "https://www.youtube.com/watch?v=moFpSVcU1_Y"
+                },
+                {
+                  "number": "",
+                  "title": "Gelato proteico d'albume",
+                  "guest": "Yoeggs",
+                  "url": "https://www.youtube.com/watch?v=HJWeuQZlFJc"
+                },
+                {
+                  "number": "",
+                  "title": "Dal mais soffiato al peanut butter",
+                  "guest": "Fiorentini",
+                  "url": "https://www.youtube.com/watch?v=otBKKraxyAU"
+                },
+                {
+                  "number": "",
+                  "title": "L'alternativa alla mozzarella che non ti aspetti",
+                  "guest": "Frescolat",
+                  "url": "https://www.youtube.com/watch?v=VOg-VoBgl80"
+                },
+                {
+                  "number": "",
+                  "title": "Tiramisù monoporzione",
+                  "guest": "Martinucci",
+                  "url": "https://www.youtube.com/watch?v=pbuPlhlSdAs"
+                },
+                {
+                  "number": "",
+                  "title": "La Francia incontra il Veneto nel Dairy",
+                  "guest": "Eurial",
+                  "url": "https://www.youtube.com/watch?v=UwoRGRUHJSA"
+                }
+              ]
+            },
+            {
+              "label": "S02",
+              "title": "Bibetaste26",
+              "episodes": [
+                {
+                  "number": "",
+                  "title": "Fiorentini",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=wYbUIVq51IE"
+                },
+                {
+                  "number": "",
+                  "title": "Garofalo",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=gFojoKHctGw"
+                },
+                {
+                  "number": "",
+                  "title": "Mielizia",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=HyTgxudfVSg"
+                },
+                {
+                  "number": "",
+                  "title": "Kaneka",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=bfQnPmFlS8o"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "extra": []
+    },
+    {
       "client": "Macarons",
       "subtitle": "",
       "year": "",
