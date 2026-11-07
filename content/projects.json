@@ -5,7 +5,9 @@
       "subtitle": "",
       "year": "2022/----",
       "category": "Social Contents",
-      "categories": [],
+      "categories": [
+        "Podcast"
+      ],
       "hidden": false,
       "cover": "",
       "cover_video": "/media/ursus-copertina.mp4",
