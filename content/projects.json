@@ -276,12 +276,11 @@
       "works": [
         {
           "type": "podcast",
-          "title": "Excellence Podcast",
+          "title": "Sales Excellence Podcast",
           "text": "",
-          "color": "#b8a6f7",
           "seasons": [
             {
-              "label": "S01",
+              "label": "",
               "title": "",
               "episodes": [
                 {
@@ -293,9 +292,27 @@
                   "title": "Episodio 2",
                   "guest": "",
                   "url": ""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "podcast",
+          "title": "Marketing Excellence Podcast",
+          "text": "",
+          "seasons": [
+            {
+              "label": "",
+              "title": "",
+              "episodes": [
+                {
+                  "title": "Episodio 1",
+                  "guest": "",
+                  "url": ""
                 },
                 {
-                  "title": "Episodio 3",
+                  "title": "Episodio 2",
                   "guest": "",
                   "url": ""
                 }
