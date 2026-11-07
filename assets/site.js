@@ -96,14 +96,16 @@
     return (.2126 * L[0] + .7152 * L[1] + .0722 * L[2]) > .22 ? "#000" : "#fff";
   }
   function podcast(w, key){
+    const n = (w.seasons || []).filter(s => s && ((s.episodes || []).length || s.label || s.title)).length;
+    const si = Math.min(Math.max((parseInt(w.start_season, 10) || 1) - 1, 0), Math.max(n - 1, 0));
     const seasons = (w.seasons || []).filter(s => s && ((s.episodes || []).length || s.label || s.title)).map(s => ({ ...s, episodes: (s.episodes || []).filter(e => e && (e.title || e.url)) }));
     PODS[key] = seasons;
     return `<div class="pod" data-pod="${key}">
       <div class="pod-l">
-        ${seasons.length > 1 ? `<div class="pod-pills">${seasons.map((s, i) => `<button type="button" class="pill" data-season="${i}" aria-pressed="${i === 0}">Stagione ${pad(i + 1)}</button>`).join("")}</div>` : ""}
-        <div class="pod-list">${podList(key, 0, 0)}</div>
+        ${seasons.length > 1 ? `<div class="pod-pills">${seasons.map((s, i) => `<button type="button" class="pill" data-season="${i}" aria-pressed="${i === si}">Stagione ${pad(i + 1)}</button>`).join("")}</div>` : ""}
+        <div class="pod-list">${podList(key, si, 0)}</div>
       </div>
-      <div class="pod-r">${podPlayer(key, 0, 0, false)}</div>
+      <div class="pod-r">${podPlayer(key, si, 0, false)}</div>
     </div>`;
   }
   function series(w, key){
@@ -155,8 +157,8 @@
           ${paras(p.description)}
           ${credits.length ? `<p>${credits.map(c => `${esc(c.name)}${c.role ? " — " + esc(c.role) : ""}`).join("<br>")}</p>` : ""}
         </div>
-        ${works.length ? `<div class="works">${works.map((w, k) => `<section class="acc">
-            <button type="button" class="acc-h" data-acc aria-expanded="false"><span>${esc(w.title)}</span><span class="ic" aria-hidden="true"></span></button>
+        ${works.length ? `<div class="works">${works.map((w, k) => `<section class="acc${w.open ? " open" : ""}">
+            <button type="button" class="acc-h" data-acc aria-expanded="${!!w.open}"><span>${esc(w.title)}</span><span class="ic" aria-hidden="true"></span></button>
             <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : w.type === "series" ? series(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3)}</div></div></div>
           </section>`).join("")}</div>` : gallery(p.media, i)}
         ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="g2 p-gal after">${x.join("")}</div>` : ""; })()}

@@ -130,6 +130,7 @@ collections:
                     summary: "{{fields.title}}"
                     fields:
                       - { name: title, label: Titolo, widget: string, hint: "Es. Pura R, FW 26/27" }
+                      - { name: open, label: Aperta all'apertura della pagina, widget: boolean, default: false, required: false }
                       - { name: text, label: Testo, widget: text, required: false }
                       - *media
                   - name: series
@@ -137,6 +138,7 @@ collections:
                     summary: "Serie video: {{fields.title}}"
                     fields:
                       - { name: title, label: Titolo della striscia, widget: string, hint: "Es. Behind The Athlete" }
+                      - { name: open, label: Aperta all'apertura della pagina, widget: boolean, default: false, required: false }
                       - { name: text, label: Testo, widget: text, required: false }
                       - name: episodes
                         label: Episodi
@@ -152,6 +154,8 @@ collections:
                     summary: "Podcast: {{fields.title}}"
                     fields:
                       - { name: title, label: Titolo della striscia, widget: string, hint: "Es. Podcast | Ruota Libera" }
+                      - { name: open, label: Aperta all'apertura della pagina, widget: boolean, default: false, required: false }
+                      - { name: start_season, label: Stagione mostrata all'apertura, widget: number, value_type: int, min: 1, required: false, hint: "Es. 3 per partire dalla Stagione 03. Vuoto = la prima." }
                       - { name: text, label: Testo, widget: text, required: false }
                       - name: seasons
                         label: Stagioni
