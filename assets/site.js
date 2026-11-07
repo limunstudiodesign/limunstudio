@@ -124,7 +124,7 @@
     const player = id
       ? frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}`, "16/9", e.title, YTA, e.url)
       : `<div class="emb pod-empty" style="--r:16/9"><span>${e ? "Video in arrivo" : "Nessun episodio"}</span></div>`;
-    return `${player}<div class="pod-now">${e ? `E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br>with ${esc(e.guest)}` : ""}` : ""}</div>`;
+    return `${player}<div class="pod-now">${e ? `E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br><em>with</em> ${esc(e.guest)}` : ""}` : ""}</div>`;
   }
 
   /* ---------- Viste ---------- */
