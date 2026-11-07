@@ -772,7 +772,9 @@
       "subtitle": "",
       "year": "",
       "category": "Communication",
-      "categories": [],
+      "categories": [
+        "Podcast"
+      ],
       "hidden": false,
       "cover": "",
       "cover_video": "",
@@ -780,7 +782,93 @@
       "description": "",
       "credits": [],
       "media": [],
-      "works": [],
+      "works": [
+        {
+          "type": "podcast",
+          "title": "Podcast | inaltadefinizione",
+          "text": "",
+          "seasons": [
+            {
+              "label": "S01",
+              "title": "",
+              "episodes": [
+                {
+                  "number": "",
+                  "title": "Innovazione nel mondo della concia",
+                  "guest": "Lanfranco Arena, Prodital Leather",
+                  "url": "https://www.youtube.com/watch?v=h5gQBbB6mN0"
+                },
+                {
+                  "number": "",
+                  "title": "Una nuova vita ai materiali di scarto",
+                  "guest": "Filippo Dall'Amico, LaPrima Plastics",
+                  "url": "https://www.youtube.com/watch?v=bDypw7zuhTk"
+                },
+                {
+                  "number": "",
+                  "title": "Dove il viaggio di gruppo diventa un'avventura",
+                  "guest": "Francesco Zanconato, Conmigo Adventure",
+                  "url": "https://www.youtube.com/watch?v=iYCwyDlGnLY"
+                },
+                {
+                  "number": "04",
+                  "title": "Parte 1",
+                  "guest": "Alessandro De Losa, Babylon Cloud e Laura Locci, Pasubio Tecnologia",
+                  "url": "https://www.youtube.com/watch?v=_AVCrbuzNlM"
+                },
+                {
+                  "number": "04",
+                  "title": "Parte 2",
+                  "guest": "Alessandro De Losa, Babylon Cloud e Laura Locci, Pasubio Tecnologia",
+                  "url": "https://www.youtube.com/watch?v=mz4xLJfJiHM"
+                },
+                {
+                  "number": "04",
+                  "title": "Parte 3",
+                  "guest": "Alessandro De Losa, Babylon Cloud e Laura Locci, Pasubio Tecnologia",
+                  "url": "https://www.youtube.com/watch?v=P81h8NxgvUc"
+                }
+              ]
+            },
+            {
+              "label": "S02",
+              "title": "",
+              "episodes": [
+                {
+                  "number": "",
+                  "title": "Costruire un'impresa: visione e squadra",
+                  "guest": "Marco Negro Marcigaglia, The Bridge",
+                  "url": "https://www.youtube.com/watch?v=jLGNNdXWYO8"
+                },
+                {
+                  "number": "",
+                  "title": "Innovazione e futuro: la crescita di Smart Future",
+                  "guest": "Alessandro Fracasso",
+                  "url": "https://www.youtube.com/watch?v=Sd18yDxzhMA"
+                },
+                {
+                  "number": "",
+                  "title": "Robotica, automazione e mercati internazionali",
+                  "guest": "Maicol Cavedon, CEO di GEVA",
+                  "url": "https://www.youtube.com/watch?v=e60jbHclrrs"
+                },
+                {
+                  "number": "",
+                  "title": "Dalla pesca sportiva all'economia circolare",
+                  "guest": "Domenico Cappozzo, fondatore di Ecostar",
+                  "url": "https://www.youtube.com/watch?v=8BmooUirxyU"
+                },
+                {
+                  "number": "",
+                  "title": "Franco Marcolin, AD di TFM",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=Jf-HwrPCbV0"
+                }
+              ]
+            }
+          ]
+        }
+      ],
       "extra": []
     },
     {

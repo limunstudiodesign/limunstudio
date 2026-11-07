@@ -115,9 +115,10 @@
       <div class="pod-r">${podPlayer(key, 0, 0, false)}</div>
     </div>`;
   }
+  const epNum = (e, k) => { const n = String(e.number ?? "").trim(); return n ? esc(/^\d$/.test(n) ? "0" + n : n) : pad(k + 1); };
   function podList(key, si, ei){
     const s = PODS[key][si]; if (!s) return "";
-    return `<ol class="pod-eps">${s.episodes.map((x, k) => `<li><button type="button" data-ep="${k}" data-season-of="${si}" aria-pressed="${k === ei}"><span>E${pad(k + 1)}</span><span>${esc(x.title)}${x.guest ? " — " + esc(x.guest) : ""}</span></button></li>`).join("")}</ol>`;
+    return `<ol class="pod-eps">${s.episodes.map((x, k) => `<li><button type="button" data-ep="${k}" data-season-of="${si}" aria-pressed="${k === ei}"><span>E${epNum(x, k)}</span><span>${esc(x.title)}${x.guest ? " — " + esc(x.guest) : ""}</span></button></li>`).join("")}</ol>`;
   }
   function podPlayer(key, si, ei, autoplay){
     const s = PODS[key][si]; if (!s) return "";
@@ -126,7 +127,7 @@
     const player = id
       ? frame("youtube", `https://www.youtube-nocookie.com/embed/${id}?rel=0${autoplay ? "&autoplay=1" : ""}`, "16/9", e.title, YTA, e.url)
       : `<div class="emb pod-empty" style="--r:16/9"><span>${e ? "Video in arrivo" : "Nessun episodio"}</span></div>`;
-    return `${player}<div class="pod-now">${e ? `E${pad(ei + 1)} ${esc(e.title)}${e.guest ? `<br><em>with</em> ${esc(e.guest)}` : ""}` : ""}</div>`;
+    return `${player}<div class="pod-now">${e ? `E${epNum(e, ei)} ${esc(e.title)}${e.guest ? `<br><em>with</em> ${esc(e.guest)}` : ""}` : ""}</div>`;
   }
 
   /* ---------- Viste ---------- */

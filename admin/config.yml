@@ -146,6 +146,7 @@ collections:
                         widget: list
                         summary: "{{fields.title}}"
                         fields:
+                          - { name: number, label: Numero, widget: string, required: false, hint: "Facoltativo: es. 04 per tutte le parti della stessa puntata. Vuoto = numerazione automatica." }
                           - { name: title, label: Titolo, widget: string }
                           - { name: guest, label: Ospite, widget: string, required: false }
                           - { name: url, label: Link YouTube, widget: string, required: false, hint: "Incolla il link del video su YouTube." }
@@ -171,6 +172,7 @@ collections:
                             widget: list
                             summary: "{{fields.title}}"
                             fields:
+                              - { name: number, label: Numero, widget: string, required: false, hint: "Facoltativo: es. 04 per tutte le parti della stessa puntata. Vuoto = numerazione automatica." }
                               - { name: title, label: Titolo, widget: string }
                               - { name: guest, label: Ospite, widget: string, required: false }
                               - { name: url, label: Link YouTube, widget: string, required: false, hint: "Incolla il link del video su YouTube." }
