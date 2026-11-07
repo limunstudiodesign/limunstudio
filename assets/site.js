@@ -11,7 +11,7 @@
   const lines = t => esc(t).replace(/\n/g, "<br>");
   const slugify = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
-  let PROJECTS = [], S = {}, filter = null;
+  let PROJECTS = [], S = {}, filter = null, lastList = "/";
   const idx = p => PROJECTS.indexOf(p);
   const bySlug = s => PROJECTS.find(p => p.slug === s);
   const catsOf = p => [p.category, ...(Array.isArray(p.categories) ? p.categories : [])].filter(Boolean);
@@ -164,7 +164,7 @@
           </section>`).join("")}</div>` : gallery(p.media, i)}
         ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="g2 p-gal after">${x.join("")}</div>` : ""; })()}
         <nav class="pnav" aria-label="Progetti">
-          <a class="back" href="/">Back to:<br><span class="nt">Portfolio</span></a>
+          <a class="back" href="${lastList}">Back to:<br><span class="nt">${lastList === "/" || !filter ? "Portfolio" : esc(filter)}</span></a>
           ${PROJECTS.length > 1 ? `<a class="next" href="/work/${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
         </nav>
       </article>`;
@@ -252,9 +252,8 @@
   fbtn.addEventListener("click", () => { fbar.hidden = !fbar.hidden; fbtn.setAttribute("aria-expanded", !fbar.hidden); fillBar(); });
   fbar.addEventListener("click", e => {
     const f = e.target.closest("[data-f]"); if (!f) return;
-    filter = f.dataset.f || null; fillBar();
-    if (location.pathname !== "/"){ go("/"); return; }
-    app.innerHTML = VIEWS.home(); window.scrollTo(0, 0);
+    const c = f.dataset.f || null;
+    go(c ? "/category/" + slugify(c) : "/");
   });
 
   /* Router */
@@ -268,14 +267,18 @@
       if (to){ history.replaceState(null, "", to); }
     }
     const path = decodeURIComponent(location.pathname).replace(/\/+$/, "") || "/";
-    const h = path === "/" ? "home" : path.startsWith("/work/") ? "p-" + path.slice(6) : path.slice(1);
+    let h = path === "/" ? "home" : path.startsWith("/work/") ? "p-" + path.slice(6) : path.slice(1);
+    if (path === "/") filter = null;
+    if (path.startsWith("/category/")){ const sl = path.slice(10); filter = cats().find(c => slugify(c) === sl) || null; h = "home"; }
+    if (h === "home") lastList = filter ? "/category/" + slugify(filter) : "/";
+    fillBar();
     let key = "home", html;
     if (h === "about"){ setAbout(true); html = VIEWS.home(); }
     else if (h === "contact"){ key = "contact"; html = VIEWS.contact(); }
     else if (h === "privacy"){ key = "contact"; html = VIEWS.contact(); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
     else html = VIEWS.home();
-    if (key !== "project") document.title = S.name || "Limun Studio Design";
+    if (key !== "project") document.title = (key === "home" && filter ? filter + " — " : "") + (S.name || "Limun Studio Design");
     if (key !== "home"){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
     document.body.dataset.view = key;
     app.innerHTML = html;
