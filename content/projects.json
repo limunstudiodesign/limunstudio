@@ -280,18 +280,165 @@
           "text": "",
           "seasons": [
             {
-              "label": "",
+              "label": "S01",
               "title": "",
               "episodes": [
                 {
-                  "title": "Episodio 1",
+                  "title": "Cerved Marketing Intelligence",
                   "guest": "",
-                  "url": ""
+                  "url": "https://www.youtube.com/watch?v=pQtFG9i75DA"
                 },
                 {
-                  "title": "Episodio 2",
+                  "title": "Mevis SpA",
                   "guest": "",
-                  "url": ""
+                  "url": "https://www.youtube.com/watch?v=chA0Oztiuvg"
+                },
+                {
+                  "title": "CAREL Industries Spa",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=FEAgb6tiB64"
+                },
+                {
+                  "title": "EBARA Pumps Europe",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=42UBmPOyMf0"
+                },
+                {
+                  "title": "Forgital Group",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=M5umK_k5Vf8"
+                },
+                {
+                  "title": "Carter & Benson",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=jdkLOjebmzY"
+                },
+                {
+                  "title": "Fastweb",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=u34I9oWKQXw"
+                },
+                {
+                  "title": "Safilo",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=J1V2wZFA9Y4"
+                },
+                {
+                  "title": "Comau",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=u-ocjSyY9S8"
+                },
+                {
+                  "title": "Orange1 Holding",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=FUXHlTXPQyg"
+                }
+              ]
+            },
+            {
+              "label": "S02",
+              "title": "",
+              "episodes": [
+                {
+                  "title": "TeamSystem",
+                  "guest": "Cristiano Zanetti",
+                  "url": "https://www.youtube.com/watch?v=kpwj-QW2qzw"
+                },
+                {
+                  "title": "Italiaonline",
+                  "guest": "Maria Grazia Bizzarri",
+                  "url": "https://www.youtube.com/watch?v=kGq1y70Cjhk"
+                },
+                {
+                  "title": "Openjobmetis SpA",
+                  "guest": "Laura Piccolo",
+                  "url": "https://www.youtube.com/watch?v=wM2Al36Suaw"
+                },
+                {
+                  "title": "LEM Industries / BTT",
+                  "guest": "Omar Cescut",
+                  "url": "https://www.youtube.com/watch?v=9lxgMwdmBrI"
+                },
+                {
+                  "title": "Gi Group",
+                  "guest": "Domiziano Pontone",
+                  "url": "https://www.youtube.com/watch?v=NbqlnnJ_9Gw"
+                },
+                {
+                  "title": "Sebastiano Zanolli",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=iGA4400K-YI"
+                },
+                {
+                  "title": "LinkedIn",
+                  "guest": "Nicola D'Alba",
+                  "url": "https://www.youtube.com/watch?v=q2v0MV1Cj_I"
+                },
+                {
+                  "title": "Paolo Guenzi",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=r76cLyLl1_A"
+                },
+                {
+                  "title": "SAP",
+                  "guest": "Matteo Cremaschi",
+                  "url": "https://www.youtube.com/watch?v=lgnykfzPCUc"
+                },
+                {
+                  "title": "IBM",
+                  "guest": "Nico Losito",
+                  "url": "https://www.youtube.com/watch?v=COtc6l-uVQs"
+                }
+              ]
+            },
+            {
+              "label": "S03",
+              "title": "",
+              "episodes": [
+                {
+                  "title": "ELITE (Gruppo EURONEXT)",
+                  "guest": "Mauro Iacobuzio",
+                  "url": "https://www.youtube.com/watch?v=vh_9mLgir1Q"
+                },
+                {
+                  "title": "Aon",
+                  "guest": "Giuseppe Faragò",
+                  "url": "https://www.youtube.com/watch?v=gG-yoryvxQI"
+                },
+                {
+                  "title": "Unifarco Biomedical",
+                  "guest": "Alessandro Fiorani",
+                  "url": "https://www.youtube.com/watch?v=T9UMPpC6RnM"
+                },
+                {
+                  "title": "Lorenzo Comaschi",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=DNOEDAD2Yqc"
+                },
+                {
+                  "title": "Mercuri International Italia",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=5sp7-LMkON4"
+                },
+                {
+                  "title": "Hilti",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=dfCqR5zctpw"
+                },
+                {
+                  "title": "Italmatch Chemicals Spa",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=k9_3U_D4sLI"
+                },
+                {
+                  "title": "Olympus",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=7pL9YL0y7GM"
+                },
+                {
+                  "title": "Paola Caiozzo",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=IYN8vctrwiw"
                 }
               ]
             }
@@ -303,18 +450,58 @@
           "text": "",
           "seasons": [
             {
-              "label": "",
+              "label": "S01",
               "title": "",
               "episodes": [
                 {
-                  "title": "Episodio 1",
+                  "title": "Procter & Gamble",
                   "guest": "",
-                  "url": ""
+                  "url": "https://www.youtube.com/watch?v=JSx8Fv8Wcqs"
                 },
                 {
-                  "title": "Episodio 2",
+                  "title": "Open Influence",
                   "guest": "",
-                  "url": ""
+                  "url": "https://www.youtube.com/watch?v=hmIJjp7Idyc"
+                },
+                {
+                  "title": "Paolo Iabichino",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=5GNc-gjpOVU"
+                },
+                {
+                  "title": "Procter & Gamble",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=WN9gJsL0v_k"
+                },
+                {
+                  "title": "Not Just Analytics",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=UQ5oumG6Y3s"
+                },
+                {
+                  "title": "Marketing Arena",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=2HRTI13tszg"
+                },
+                {
+                  "title": "Dexelance Spa",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=q1Cf9JMmWY0"
+                },
+                {
+                  "title": "Build the Forest",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=WIc_qQYFlcs"
+                },
+                {
+                  "title": "Serenis",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=nJjWyJEE-Ak"
+                },
+                {
+                  "title": "Fabiana Andreani",
+                  "guest": "",
+                  "url": "https://www.youtube.com/watch?v=oW6h-D-HhC4"
                 }
               ]
             }
