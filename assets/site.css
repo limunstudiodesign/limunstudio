@@ -82,9 +82,6 @@ body[data-view="home"] .view{padding-top:0}
 .cvr iframe{position:absolute;top:50%;left:50%;width:133.34%;height:100%;transform:translate(-50%,-50%);border:0;pointer-events:none}
 .cvr.tall iframe{width:100%;height:237.04%}
 .emb{position:relative;width:100%;max-width:100%;aspect-ratio:var(--r,16/9);background:var(--ph1)}
-/* Video e player non più alti dello schermo: se serve si restringono mantenendo le proporzioni */
-.emb{width:min(100%, calc((100svh - 110px) * (var(--r,16/9))))}
-.m video{max-height:calc(100svh - 110px);width:auto;max-width:100%}
 .emb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .m figcaption{font-size:.6em;letter-spacing:0;margin-top:.4em}
 

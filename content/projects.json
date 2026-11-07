@@ -579,15 +579,24 @@
     {
       "client": "Belluscio Assicurazioni",
       "subtitle": "",
-      "year": "",
+      "year": "2018/----",
       "category": "Creative Direction",
       "categories": [],
       "hidden": false,
       "cover": "/media/belluscio-belluscio.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Per la Belluscio Assicurazioni è stata sviluppata un sistema di comunicazione integrato, articolato su più canali e linguaggi. Su YouTube sono stati prodotti contenuti informativi dedicati alle novità in ambito assicurativo, mentre su TikTok è stato costruito un racconto più fresco e territoriale.\nLa comunicazione su Instagram è stata invece strutturata attraverso caroselli e contenuti di approfondimento legati al contesto locale.\nIl progetto è stato affiancato da campagne OOH in punti strategici come lo Stadio Romeo Menti, l'Ospedale San Bortolo e Borgo Berga. In occasione dei 50 anni è stata sviluppata una linea celebrativa completa, comprensiva di visual dedicato, documentario ed evento.\nL'attività si inserisce inoltre in un contesto di sponsorizzazioni rilevanti, tra cui il Giro d'Italia (edizioni 2013 e 2025) e la partnership con L.R. Vicenza.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Creative Director"
+        }
+      ],
       "media": [
         {
           "type": "image",
@@ -652,15 +661,28 @@
     {
       "client": "Diesel",
       "subtitle": "",
-      "year": "",
+      "year": "2022",
       "category": "Media Contents",
       "categories": [],
       "hidden": false,
       "cover": "/media/diesel-diesel-visual.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Diesel è un marchio globale che unisce spirito innovativo e radici italiane, con una comunicazione capace di parlare a pubblici diversi in tutto il mondo.\nPer il brand sono state realizzate due interviste esclusive a Renzo Rosso, una delle quali pubblicata su Vogue China, portando la visione del fondatore su un palcoscenico internazionale. Parallelamente è stato sviluppato un contenuto foto e video dedicato alla comunicazione interna, focalizzato sul progetto How to apply the new paper tag, pensato per diffondere in maniera chiara e coinvolgente le nuove linee guida aziendali.\nCon Diesel viene curata una produzione che combina storytelling, immagini di forte impatto e coerenza con l'identità del brand, rafforzando la sua presenza sia nei canali media globali sia all'interno dell'organizzazione.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Visual Designer"
+        },
+        {
+          "name": "Giulio Savio",
+          "role": "Photographer"
+        }
+      ],
       "media": [
         {
           "type": "video",
@@ -703,7 +725,7 @@
     {
       "client": "Decathlon",
       "subtitle": "",
-      "year": "",
+      "year": "2019/2021",
       "category": "Contents",
       "categories": [],
       "hidden": false,
@@ -711,7 +733,20 @@
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
-      "credits": [],
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Art Director"
+        },
+        {
+          "name": "Giulio Savio",
+          "role": "Photographer"
+        }
+      ],
       "media": [
         {
           "type": "image",
@@ -754,15 +789,36 @@
     {
       "client": "SDR Pack",
       "subtitle": "",
-      "year": "",
+      "year": "2024/2025",
       "category": "Art Direction",
       "categories": [],
       "hidden": false,
       "cover": "/media/sdr-pack-senza-titolo-1-tavola-disegno-1.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "SDR PACK è un'azienda italiana specializzata nel packaging alimentare B2B, impegnata da anni in un percorso di evoluzione visiva e comunicativa strutturato e coerente.\nIn occasione della special edition di BOB, il magazine aziendale, è stato sviluppato un concept visivo a partire dal payoff \"Vestiamo il tuo prodotto\", trasformato in sei soggetti creativi in cui prodotti (dai ravioli ai saponi) diventano protagonisti di un racconto ironico e memorabile. I visual, realizzati attraverso AI e post-produzione, hanno dato vita a una campagna fortemente riconoscibile, utilizzata sia come strumento operativo per la rete commerciale sia come elemento decorativo per la nuova sede, SDR Lab.\nIl progetto si inserisce in un piano più ampio di comunicazione corporate che comprende la direzione creativa dello shooting aziendale, la produzione di contenuti video brevi per raccontare l'identità del brand e lo sviluppo di materiali editoriali e istituzionali.\nLavorazioni svolte: Special edition Magazine BOB, Shooting aziendale, Agende e calendari 2023/2024 – 2025/2026, Bilancio di sostenibilità 2023 e 2024, EXPO Concept & Graphic per TUTTOfood 2025.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Creative Director"
+        },
+        {
+          "name": "Martina Miglioranza",
+          "role": "Photographer"
+        },
+        {
+          "name": "Leonardo Guerra",
+          "role": "Graphic Designer"
+        },
+        {
+          "name": "Erica Sartore",
+          "role": "Art Director"
+        }
+      ],
       "media": [
         {
           "type": "image",
@@ -851,15 +907,20 @@
     {
       "client": "3MTecnofer",
       "subtitle": "",
-      "year": "",
+      "year": "2023/----",
       "category": "Communication",
       "categories": [],
       "hidden": false,
       "cover": "",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Canale YouTube. Obiettivo: creare un database di consulenza che rispondesse alle principali domande che utenti e clienti ponevano sia nelle ricerche locali su Google sia nello showroom durante una sessione commerciale. Distribuzione: ADV Awareness, contenuti per il sito corporate. Risultato: 1k views.\nCanale TikTok. Obiettivo: creare contenuti facilmente fruibili, coinvolgenti e in linea con il tono di voce del brand, semplice e alla portata di tutti. Distribuzione: ADV Awareness. Risultato: +255k views, +4k like, +1k salvataggi.\nCanale Instagram. Obiettivo: creare format di comunicazione efficaci su progettazione, affiliazione dei clienti, realizzazione e posa in opera, presentazione prodotti. Distribuzione: ADV. Risultato: +1k like del profilo.\nAltre lavorazioni: cataloghi e landing page per le campagne ADV.",
+      "credits": [
+        {
+          "name": "Francesco Bigon",
+          "role": "Communication Manager"
+        }
+      ],
       "media": [],
       "works": [],
       "extra": []
@@ -867,15 +928,28 @@
     {
       "client": "Gianeletti",
       "subtitle": "",
-      "year": "",
+      "year": "2021",
       "category": "Brand Identity",
       "categories": [],
       "hidden": false,
       "cover": "/media/gianeletti-dsc6485.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Gianeletti è un brand italiano di occhialeria che unisce design contemporaneo e qualità accessibile, posizionandosi tra i protagonisti del settore.\nLa nuova brand identity si ispira a minimalismo, modernismo e Swiss design, con un logotipo essenziale e una palette total black & white che rafforza l'immaginario premium. Il progetto ha incluso la definizione di tipografia, immaginario visivo e linee guida per la comunicazione social, con uno stile che spazia dall'astratto al pop-art, mantenendo sempre un tocco elegante e riconoscibile.\nLa collezione offre montature per ogni fascia d'età, dai più giovani agli adulti, con varianti dotate di clip magnetici e lenti ultrapolarizzanti. Materiali testati e componenti resistenti assicurano affidabilità, mentre la nuova immagine rende il marchio più competitivo e distintivo sul mercato eyewear.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Assistant"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Art & Creative Director"
+        },
+        {
+          "name": "Giulio Savio",
+          "role": "Photographer"
+        }
+      ],
       "media": [
         {
           "type": "gallery",
@@ -942,15 +1016,28 @@
     {
       "client": "Sonus Faber",
       "subtitle": "",
-      "year": "",
+      "year": "2022/----",
       "category": "Media Contents",
       "categories": [],
       "hidden": false,
       "cover": "/media/sonus-faber-ig-post-12.webp",
       "cover_video": "/media/sonus-faber-banner-sito-sonus.mp4",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Sonus faber è un'azienda italiana che realizza diffusori acustici di altissima gamma, simbolo di artigianalità e innovazione nel settore audio. Presente nei principali eventi internazionali dedicati all'hi-fi e al design, è un punto di riferimento per gli appassionati di suono in tutto il mondo.\nLo studio ha curato la comunicazione per l'evento Sonus faber al Teatro Nuovo di Vicenza in occasione del Vicenza Jazz Festival, uno dei più importanti in Italia, producendo contenuti video e fotografici per le serate di apertura e chiusura. L'edizione 2025 ha ospitato artisti di rilievo come Celeste Dalla Porta, William Parker, Ava Mendoza, Hamid Drake, Ludmilla Faccenda e Riccardo Brazzale.\nLo studio ha inoltre seguito il lancio del nuovo modello Anima Supreme, realizzando contenuti video per i canali social e il sito, e raccontato la listening session con Raffaele Costantino, creando un racconto visivo elegante e immersivo.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Sam Mohamed",
+          "role": "Assistant"
+        },
+        {
+          "name": "Martina Miglioranza",
+          "role": "Photographer"
+        }
+      ],
       "media": [
         {
           "type": "gallery",
@@ -1013,15 +1100,44 @@
     {
       "client": "Vicario Cinque",
       "subtitle": "",
-      "year": "",
+      "year": "2025/2026",
       "category": "Creative Direction",
       "categories": [],
       "hidden": false,
       "cover": "/media/vicario-cinque-v5-fw26-27-72.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Vicario Cinque presenta la collezione Venezia FW26/27 attraverso un concept sviluppato e studiato dallo studio creativo, che ha scelto l'acqua come elemento narrativo centrale. L'effetto acqua diventa linguaggio visivo: superfici mosse, riflessi profondi e sfondi più scuri, privi di bagliori invadenti, costruiscono un'atmosfera elegante e sospesa.\nL'acqua è interpretata come simbolo di fluidità, trasformazione e raffinatezza, in dialogo con l'identità del brand. Il risultato è una narrazione coerente e immersiva, in cui luce, materia e composizione si fondono per evocare Venezia in chiave contemporanea, valorizzando la collezione con sobrietà e intensità.\nVicario Cinque celebra inoltre dieci anni di eleganza con The Shade of Senses, un video che racconta la storia del brand attraverso un viaggio sensoriale. Nato nel 2015 con l'idea di un'eleganza discreta, fatta di qualità, equilibrio e rispetto del tempo, Vicario Cinque ha costruito un'estetica capace di parlare ai sensi.\nIl video esplora le sfumature della vista, dell'olfatto, del tatto, del suono e del gusto, intrecciando capi, profumi, ambienti e suggestioni in un racconto visivo e poetico. Un omaggio ai colori, alle emozioni e alla sensibilità che definiscono da sempre l'anima del brand.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker & Area Manager"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Creative Director"
+        },
+        {
+          "name": "Erica Sartore",
+          "role": "Art Director"
+        },
+        {
+          "name": "Irene Mascarino",
+          "role": "Project Manager"
+        },
+        {
+          "name": "Martina Nori",
+          "role": "Photographer"
+        },
+        {
+          "name": "Sam Mohammed",
+          "role": "Assistant"
+        },
+        {
+          "name": "Giacomo Rossetto",
+          "role": "Assistant"
+        }
+      ],
       "media": [],
       "works": [
         {
@@ -1099,7 +1215,7 @@
     {
       "client": "Haute & Craft",
       "subtitle": "",
-      "year": "",
+      "year": "2023/----",
       "category": "Creative Direction",
       "categories": [],
       "hidden": false,
@@ -1107,7 +1223,12 @@
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
-      "credits": [],
+      "credits": [
+        {
+          "name": "Francesco Bigon",
+          "role": "Brand Manager"
+        }
+      ],
       "media": [
         {
           "type": "gallery",
@@ -1186,7 +1307,7 @@
     {
       "client": "Digital Boot Camp",
       "subtitle": "",
-      "year": "",
+      "year": "2024",
       "category": "Creative Direction",
       "categories": [],
       "hidden": false,
@@ -1194,7 +1315,28 @@
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
-      "credits": [],
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Art Director"
+        },
+        {
+          "name": "Martina Miglioranza",
+          "role": "Photographer"
+        },
+        {
+          "name": "Sam Mohamed Ali",
+          "role": "Assistant"
+        },
+        {
+          "name": "Giacomo Rossetto",
+          "role": "Assistant"
+        }
+      ],
       "media": [],
       "works": [],
       "extra": []
@@ -1202,15 +1344,40 @@
     {
       "client": "Isoli",
       "subtitle": "",
-      "year": "",
+      "year": "2025",
       "category": "Art Direction",
       "categories": [],
       "hidden": false,
       "cover": "/media/isoli-dsc00267.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Isoli è un'azienda italiana leader nella produzione di allestimenti speciali per veicoli industriali, sinonimo di robustezza e affidabilità. Presente al Bauma 2025 con le ultime novità in ambito soccorso stradale e mezzi speciali, porta in fiera un concept visivo che esalta potenza e tecnologia attraverso un linguaggio scenografico di luci e ombre.\nLo studio creativo ha curato la direzione artistica e la produzione fotografica, raccontando l'anima industriale del brand con uno stile cinematografico e d'impatto. Parallelamente viene seguita la realizzazione di contenuti digitali e video per presentare le macchine in azione, valorizzando i plus tecnici e la tradizione di eccellenza italiana.\nCon Isoli si sviluppano strumenti di comunicazione che uniscono storytelling ed estetica, dal lancio in fiera alla gestione della presenza social.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Creative Director"
+        },
+        {
+          "name": "Martina Miglioranza",
+          "role": "Photographer"
+        },
+        {
+          "name": "Leonardo Guerra",
+          "role": "Video Editor"
+        },
+        {
+          "name": "Sam Mohamed Ali",
+          "role": "Assistant"
+        },
+        {
+          "name": "Giacomo Rossetto",
+          "role": "Assistant"
+        }
+      ],
       "media": [
         {
           "type": "video",
@@ -1239,15 +1406,36 @@
     {
       "client": "Tera",
       "subtitle": "",
-      "year": "",
+      "year": "2025",
       "category": "Video Corporate",
       "categories": [],
       "hidden": false,
       "cover": "/media/tera-a7407318.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Tera è un brand italiano che unisce design e sostenibilità, pensato per chi vive con consapevolezza ogni scelta quotidiana.\nCon il progetto Tera People vengono raccontate storie autentiche di persone che amano i dettagli, preferiscono la bicicletta all'auto, scelgono il mercato per ridurre gli sprechi e danno nuova vita agli oggetti anziché disfarsene. Lo storytelling si sviluppa attraverso scene di vita reale, in cui il vaso non è mai protagonista ma parte naturale dell'ambiente, rivelandosi solo alla fine con discrezione ed eleganza.\nLo studio ha curato la direzione creativa e la produzione di contenuti foto e video, con un linguaggio visivo che integra stile, semplicità e rispetto per l'ambiente. Con Tera viene realizzata una comunicazione che non impone ma accompagna, valorizzando il prodotto come elemento armonico di uno stile di vita sostenibile.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Creative Director"
+        },
+        {
+          "name": "Sam Mohamed Ali",
+          "role": "Photographer"
+        },
+        {
+          "name": "Irene Mascherino",
+          "role": "Project Manager"
+        },
+        {
+          "name": "Giacomo Rossetto",
+          "role": "Assistant"
+        }
+      ],
       "media": [
         {
           "type": "image",
@@ -1274,7 +1462,7 @@
     {
       "client": "H.D. Consultants",
       "subtitle": "",
-      "year": "",
+      "year": "2023/----",
       "category": "Communication",
       "categories": [
         "Podcast"
@@ -1284,7 +1472,16 @@
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
-      "credits": [],
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Communication Specialist"
+        }
+      ],
       "media": [],
       "works": [
         {
@@ -1412,8 +1609,21 @@
       "cover": "",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Bibetech ha presentato il format Pills all'interno di TUTTOFOOD, realizzando videopodcast con professionisti e aziende del settore food che hanno condiviso strategie, sfide e visioni sull'innovazione.\nLo studio ha curato la produzione e la regia dei contenuti, offrendo un racconto autentico delle esperienze e delle pratiche di chi ogni giorno lavora per cambiare le regole del mercato. L'iniziativa ha generato confronto, curiosità ed entusiasmo attorno al lancio del nuovo packaging, confermando l'importanza di comunicare una visione chiara e di creare connessioni reali.\nLe aziende che hanno partecipato ai videopodcast sono: EURIAL, Martinucci s.r.l., YOEGGS, Mielizia, Marcigaglia The Bridge, Frescolat S.R.L., Fattorie Garofalo, HPP Italia.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Project Manager"
+        },
+        {
+          "name": "Matteo Nicolin",
+          "role": "Video & Audio Editor"
+        }
+      ],
       "media": [],
       "works": [
         {
@@ -1507,15 +1717,28 @@
     {
       "client": "Macarons",
       "subtitle": "",
-      "year": "",
+      "year": "2022",
       "category": "Visual Identity",
       "categories": [],
       "hidden": false,
       "cover": "/media/macarons-dsc9074.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Macarons Store è un brand italiano di abbigliamento che unisce estetica contemporanea e spirito streetwear, posizionandosi tra i nuovi protagonisti della scena fashion. La sua identità visiva si ispira al minimalismo e alla cultura urbana, con un logotipo pulito e una palette neutra arricchita da tonalità pastello che evocano leggerezza e creatività.\nIl progetto ha incluso la definizione della tipografia, dell'immaginario visivo e delle linee guida per la comunicazione social, con uno stile che alterna atmosfere lifestyle e accenti pop, mantenendo sempre un linguaggio coerente e riconoscibile.\nLa collezione propone capi versatili e genderless, dalle felpe oversize alle t-shirt essenziali, realizzati con materiali di qualità e fit contemporanei. La nuova immagine rafforza il posizionamento del marchio nel panorama streetwear italiano, rendendolo più competitivo e distintivo.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Art Director"
+        },
+        {
+          "name": "Giulio Savio",
+          "role": "Photographer"
+        }
+      ],
       "media": [
         {
           "type": "gallery",
@@ -1556,15 +1779,24 @@
     {
       "client": "Zebra Cultural Zoo",
       "subtitle": "",
-      "year": "",
+      "year": "2021/2025",
       "category": "Visual Identity",
       "categories": [],
       "hidden": false,
       "cover": "/media/zebra-zebra.webp",
       "cover_video": "/media/zebra-logo-animation.mp4",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Zebra Cultural Zoo è un'associazione culturale italiana che promuove la danza contemporanea come linguaggio di relazione, innovazione e comunità. Fondata da tre coreografe venete, unisce percorsi artistici differenti in una visione condivisa che mette al centro il corpo come strumento di ricerca e connessione sociale.\nLa nuova identità dell'associazione riflette valori di apertura, sostenibilità e inclusione, con una direzione estetica essenziale e modulare, ispirata al minimalismo e al dialogo tra discipline.\nIl progetto si articola tra produzioni performative, attività formative e progetti site-specific, sviluppando un immaginario visivo che fonde movimento, partecipazione e ambiente. Zebra costruisce reti, sostiene giovani talenti e favorisce la crescita culturale del territorio, posizionandosi oggi tra le realtà più significative della scena contemporanea italiana.",
+      "credits": [
+        {
+          "name": "Francesco Bigon",
+          "role": "Creative Director"
+        },
+        {
+          "name": "Erica Sartore",
+          "role": "Graphic Designer"
+        }
+      ],
       "media": [
         {
           "type": "image",
@@ -1667,17 +1899,26 @@
       "extra": []
     },
     {
-      "client": "Andreas",
+      "client": "New Andreas",
       "subtitle": "",
-      "year": "",
+      "year": "2023",
       "category": "Social Contents",
       "categories": [],
       "hidden": false,
       "cover": "/media/andreas-3-paper-box-mockup.webp",
       "cover_video": "",
       "cover_youtube": "",
-      "description": "",
-      "credits": [],
+      "description": "Per New Andreas, marchio di scarpe da calcio, è stata sviluppata una direzione creativa orientata al digitale, costruendo un linguaggio contemporaneo capace di valorizzare identità e prodotto.\nIl lavoro ha incluso il lancio su TikTok, con l'ideazione di format nativi pensati per la piattaforma, e una ridefinizione della comunicazione su Instagram, attraverso nuovi format editoriali e una linea visiva più riconoscibile, portata avanti nell'arco di un anno.\nIl progetto si completa con la realizzazione di un video corporate in chiave ASMR, concepito per esaltare la dimensione sensoriale e la qualità manifatturiera del prodotto, mettendo in evidenza materiali, dettagli e processi con un approccio immersivo e contemporaneo.",
+      "credits": [
+        {
+          "name": "Umberto Badia",
+          "role": "Videomaker"
+        },
+        {
+          "name": "Francesco Bigon",
+          "role": "Art Director"
+        }
+      ],
       "media": [
         {
           "type": "image",
