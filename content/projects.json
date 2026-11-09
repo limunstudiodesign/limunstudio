@@ -1100,7 +1100,15 @@
     {
       "client": "Bottecchia",
       "category": "Creative Direction",
-      "cover": "/media/bottecchia-copertina.webp"
+      "cover": "/media/bottecchia-titan-copertina.webp",
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/bottecchia-titan.webp",
+          "alt": "Bottecchia Titan gravel in titanio",
+          "size": "half"
+        }
+      ]
     },
     {
       "client": "Vicario Cinque",
