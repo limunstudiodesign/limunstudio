@@ -1445,11 +1445,9 @@
       ],
       "media": [
         {
-          "type": "image",
-          "src": "/media/tera-a7407318.webp",
-          "alt": "",
+          "type": "youtube",
+          "url": "https://www.youtube.com/watch?v=8OxWpxauJuw",
           "size": "full",
-          "ratio": "auto",
           "caption": ""
         },
         {
@@ -1461,10 +1459,35 @@
           "per_row": "2",
           "ratio": "1/1",
           "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/tera-reel-1.mp4",
+          "poster": "/media/tera-reel-1.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/tera-reel-2.mp4",
+          "poster": "/media/tera-reel-2.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
+        },
+        {
+          "type": "video",
+          "src": "/media/tera-reel-3.mp4",
+          "poster": "/media/tera-reel-3.webp",
+          "sound": true,
+          "size": "half",
+          "caption": ""
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "layout": "rows"
     },
     {
       "client": "H.D. Consultants",

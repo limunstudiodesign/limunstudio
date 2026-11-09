@@ -59,6 +59,7 @@ collections:
                 fields:
                   - { name: name, label: Nome, widget: string }
                   - { name: role, label: Ruolo, widget: string, required: false }
+              - { name: layout, label: Impaginazione, widget: select, required: false, default: auto, options: [ { label: "Automatica: verticali in colonna a destra", value: auto }, { label: "Nell'ordine del pannello, a righe", value: rows } ], hint: "Con «Nell'ordine» foto e video restano nella sequenza che vedi qui e si dispongono in righe a tutta larghezza." }
               - &media
                 name: media
                 label: Foto e video
@@ -135,6 +136,7 @@ collections:
                       - { name: title, label: Titolo, widget: string, hint: "Es. Pura R, FW 26/27" }
                       - { name: open, label: Aperta all'apertura della pagina, widget: boolean, default: false, required: false }
                       - { name: text, label: Testo, widget: text, required: false }
+                      - { name: layout, label: Impaginazione, widget: select, required: false, default: auto, options: [ { label: "Automatica: verticali in colonna a destra", value: auto }, { label: "Nell'ordine del pannello, a righe", value: rows } ], hint: "Con «Nell'ordine» foto e video restano nella sequenza che vedi qui e si dispongono in righe a tutta larghezza." }
                       - *media
                   - name: series
                     label: Serie video

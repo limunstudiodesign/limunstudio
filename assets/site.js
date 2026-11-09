@@ -81,10 +81,10 @@
       default: return "";
     }
   }
-  function gallery(list, seed){
+  function gallery(list, seed, lay){
     const items = (list || []).map((m, k) => mediaItem(m, seed + k)).filter(Boolean);
     if (!items.length) return `<div class="g2 p-gal">${ph(seed,"16/9","span2")}${ph(seed+1,"4/5")}${ph(seed+2,"4/5")}</div>`;
-    return `<div class="pk p-gal">${items.join("")}</div>`;
+    return `<div class="pk p-gal"${lay === "rows" ? ' data-layout="rows"' : ""}>${items.join("")}</div>`;
   }
 
 
@@ -135,7 +135,7 @@
     return rs.map(r => {
       const s = sumA(list, r);
       if (!s) return `<div class="pk-row pk-solo">${r.map(i => list[i].html).join("")}</div>`;
-      const cap = maxH ? ` style="max-width:${Math.round(maxH * s + GAP * (r.length - 1))}px"` : "";
+      const cap = maxH && r.length === 1 && s < 1 ? ` style="max-width:${Math.round(maxH * s + GAP * (r.length - 1))}px"` : "";
       return `<div class="pk-row"${cap}>${r.map(i => list[i].html.replace(/^<(figure|div|p)\b/, `<$1 style="flex:${Math.round(list[i].a * 1000)} 1 0%;--a:${list[i].a}"`)).join("")}</div>`;
     }).join("");
   }
@@ -146,7 +146,7 @@
     const mobile = W < 600;
     const V = list.filter(it => it.a && it.a < .87), O = list.filter(it => !(it.a && it.a < .87));
     let html;
-    if (mobile || !V.length || !O.length){
+    if (mobile || !V.length || !O.length || box.dataset.layout === "rows"){
       const onlyV = !O.length;
       const T = mobile ? W * .62 : onlyV ? W * .36 : Math.min(Math.max(W * .34, 240), 620);
       html = rowsHTML(list, rows(list, W, T, mobile ? 3 : onlyV ? 5 : 4), maxH);
@@ -280,9 +280,9 @@
         </div>
         ${works.length ? `<div class="works">${works.map((w, k) => `<section class="acc${w.open ? " open" : ""}">
             <button type="button" class="acc-h" data-acc aria-expanded="${!!w.open}"><span>${esc(w.title)}</span><span class="ic" aria-hidden="true"></span></button>
-            <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : w.type === "series" ? series(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3)}</div></div></div>
-          </section>`).join("")}</div>` : gallery(p.media, i)}
-        ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="pk p-gal after">${x.join("")}</div>` : ""; })()}
+            <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : w.type === "series" ? series(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3, w.layout)}</div></div></div>
+          </section>`).join("")}</div>` : gallery(p.media, i, p.layout)}
+        ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="pk p-gal after"${p.layout === "rows" ? ' data-layout="rows"' : ""}>${x.join("")}</div>` : ""; })()}
         <nav class="pnav" aria-label="Progetti">
           <a class="back" href="${lastList}">Back to:<br><span class="nt">${lastList === "/" || !filter ? "Portfolio" : esc(filter)}</span></a>
           ${PROJECTS.length > 1 ? `<a class="next" href="/work/${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
