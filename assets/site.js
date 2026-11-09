@@ -27,8 +27,9 @@
   const SERVICE = { youtube: "YouTube", vimeo: "Vimeo", instagram: "Instagram" };
   function frame(service, src, ratio, title, allow, link){
     const ifr = `<iframe src="${src}" title="${esc(title)}" loading="lazy" ${allow ? `allow="${allow}" allowfullscreen` : `scrolling="no"`}></iframe>`;
-    if (ext) return `<div class="emb" style="--r:${ratio}">${ifr}</div>`;
-    return `<div class="emb ext-off" style="--r:${ratio}" data-gate="${encodeURIComponent(ifr)}" data-r="${ratio}"><button type="button" class="pill" data-load-ext>Mostra il video</button></div>`;
+    const cls = service === "instagram" ? "emb ig" : "emb";
+    if (ext) return `<div class="${cls}" style="--r:${ratio}">${ifr}</div>`;
+    return `<div class="${cls} ext-off" style="--r:${ratio}" data-gate="${encodeURIComponent(ifr)}" data-r="${ratio}"><button type="button" class="pill" data-load-ext>Mostra il video</button></div>`;
   }
   function loadAll(){
     document.querySelectorAll(".ext-off[data-gate]").forEach(d => {
@@ -76,7 +77,7 @@
       }
       case "instagram": {
         const p = igPath(m.url); if (!p) return "";
-        return `<figure class="${cls}">${frame("instagram", `https://www.instagram.com/${p}/embed/`, "9/14", m.caption || "Post Instagram", "", m.url)}${cap}</figure>`;
+        return `<figure class="${cls}">${frame("instagram", `https://www.instagram.com/${p}/embed/`, "9/16", m.caption || "Post Instagram", "", m.url)}${cap}</figure>`;
       }
       default: return "";
     }
