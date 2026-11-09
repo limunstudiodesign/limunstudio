@@ -50,6 +50,7 @@ collections:
               - { name: cover_video, label: Video di copertina, widget: file, required: false, hint: "Facoltativo: mp4 breve in loop al posto della copertina. Massimo 25 MB." }
               - { name: cover_youtube, label: Video di copertina da YouTube, widget: string, required: false, hint: "Facoltativo: incolla un link YouTube. In home parte da solo, muto e in loop, senza player. Se c'è anche il video mp4, vince l'mp4. La foto di copertina resta come anteprima mentre carica." }
               - { name: description, label: Testo, widget: text, required: false, hint: "Lascia una riga vuota tra un paragrafo e l'altro." }
+              - { name: summary, label: "Descrizione breve (Archive)", widget: string, required: false, hint: "Una frase che compare nella pagina Archive." }
               - name: credits
                 label: Crediti
                 label_singular: Credito
@@ -136,6 +137,7 @@ collections:
                     summary: "{{fields.title}}"
                     fields:
                       - { name: title, label: Titolo, widget: string, hint: "Es. Pura R, FW 26/27" }
+                      - { name: summary, label: "Descrizione breve (Archive)", widget: string, required: false, hint: "Una frase che compare nella pagina Archive." }
                       - { name: open, label: Aperta all'apertura della pagina, widget: boolean, default: false, required: false }
                       - { name: text, label: Testo, widget: text, required: false }
                       - { name: layout, label: Impaginazione, widget: select, required: false, default: auto, options: [ { label: "Automatica: verticali in colonna a destra", value: auto }, { label: "Nell'ordine del pannello, a righe", value: rows } ], hint: "Con «Nell'ordine» foto e video restano nella sequenza che vedi qui e si dispongono in righe a tutta larghezza." }
@@ -145,6 +147,7 @@ collections:
                     summary: "Serie video: {{fields.title}}"
                     fields:
                       - { name: title, label: Titolo della striscia, widget: string, hint: "Es. Behind The Athlete" }
+                      - { name: summary, label: "Descrizione breve (Archive)", widget: string, required: false, hint: "Una frase che compare nella pagina Archive." }
                       - { name: open, label: Aperta all'apertura della pagina, widget: boolean, default: false, required: false }
                       - { name: text, label: Testo, widget: text, required: false }
                       - name: episodes
@@ -162,6 +165,7 @@ collections:
                     summary: "Podcast: {{fields.title}}"
                     fields:
                       - { name: title, label: Titolo della striscia, widget: string, hint: "Es. Podcast | Ruota Libera" }
+                      - { name: summary, label: "Descrizione breve (Archive)", widget: string, required: false, hint: "Una frase che compare nella pagina Archive." }
                       - { name: open, label: Aperta all'apertura della pagina, widget: boolean, default: false, required: false }
                       - { name: start_season, label: Stagione mostrata all'apertura, widget: number, value_type: int, min: 1, required: false, hint: "Es. 3 per partire dalla Stagione 03. Vuoto = la prima." }
                       - { name: text, label: Testo, widget: text, required: false }

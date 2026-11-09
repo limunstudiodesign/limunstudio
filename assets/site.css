@@ -3,7 +3,7 @@
 :root{
   --bg:#ffffff;
   --fg:#000000;
-  --sel:#ffff00;
+  --sel:#ffff00; --mute:#b4b4b4;
   --ph1:#e6e6e6; --ph2:#dadada; --ph3:#cecece; --ph4:#c2c2c2;
   --sans:Helvetica, "Helvetica Neue", Arial, "Nimbus Sans", "Liberation Sans", sans-serif;
   --t:clamp(16px, 1.6vw, 25px);
@@ -140,7 +140,12 @@ a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span{font-style:ital
 .ext-off{display:flex;align-items:center;justify-content:center}
 /* Archive: indice di tutti i lavori */
 .arc{font-size:.72em;line-height:1.25}
-.arc-r{display:grid;grid-template-columns:4.2em minmax(0,1.3fr) minmax(0,1.3fr) minmax(0,1fr) minmax(0,3fr) 6.5em;column-gap:12px;padding-block:5px 6px;border-top:1px solid var(--fg)}
+.arc-r{display:grid;grid-template-columns:2.2em minmax(0,1.3fr) minmax(0,1.3fr) minmax(0,1fr) minmax(0,3fr) 6.5em;column-gap:12px;padding-block:5px 6px;border-top:1px solid var(--fg);transition:color .2s}
+.arc:has(a.arc-r:hover) a.arc-r:not(:hover){color:var(--mute)}
+.arc-d > span{display:inline-block;white-space:nowrap}
+.arc-d.mq{text-overflow:clip}
+.arc-d.mq > span{animation:arcmq var(--s,6s) linear .25s infinite alternate}
+@keyframes arcmq{to{transform:translateX(var(--d,0))}}
 .arc-r > span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .arc-r > span:last-child{text-align:right}
 .arc-hd{border-top:0;padding-bottom:4px;align-items:end}
@@ -149,7 +154,7 @@ a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span{font-style:ital
 .arc a.arc-r:last-child{border-bottom:1px solid var(--fg)}
 @media (max-width:640px){
   .arc{font-size:.8em}
-  .arc-r{grid-template-columns:3.6em minmax(0,1fr) minmax(0,1fr) 4.6em;column-gap:8px}
+  .arc-r{grid-template-columns:2.3em minmax(0,1fr) minmax(0,1fr) 4.6em;column-gap:8px}
   .arc-r > span:nth-child(3),.arc-r > span:nth-child(5){display:none}
 }
 /* Impaginazione automatica dei media */

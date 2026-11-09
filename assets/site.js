@@ -297,12 +297,13 @@
       PROJECTS.forEach(p => {
         const works = (p.works || []).filter(w => w && w.title);
         const first = t => { const x = String(t || "").replace(/\s+/g, " ").trim(); return x; };
-        if (works.length) works.forEach((w, k) => rows.push({ href: `/work/${p.slug}?s=${k}`, name: w.title, p, text: first(w.text) || first(p.description) }));
-        else rows.push({ href: `/work/${p.slug}`, name: p.subtitle || p.client, p, text: first(p.description) });
+        if (works.length) works.forEach((w, k) => rows.push({ href: `/work/${p.slug}?s=${k}`, name: w.title, p, text: first(w.summary) || first(w.text) || first(p.summary) || first(p.description) }));
+        else rows.push({ href: `/work/${p.slug}`, name: p.subtitle || p.client, p, text: first(p.summary) || first(p.description) });
       });
+      rows.sort((a, b) => a.name.localeCompare(b.name, "it", { sensitivity: "base" }));
       return `<div class="view"><div class="arc" role="table">
         <div class="arc-r arc-hd" role="row"><span>N°</span><span>Name</span><span>Category</span><span>Client</span><span>Description</span><span>Year</span></div>
-        ${rows.map((r, i) => `<a class="arc-r" role="row" href="${r.href}"><span>[${String(i + 1).padStart(3, "0")}]</span><span>${esc(r.name)}</span><span>${esc(catsOf(r.p).join(" / "))}</span><span>${esc(r.p.client)}</span><span>${esc(r.text)}</span><span>${esc(r.p.year || "")}</span></a>`).join("")}
+        ${rows.map((r, i) => `<a class="arc-r" role="row" href="${r.href}"><span>[${String(i + 1).padStart(3, "0")}]</span><span>${esc(r.name)}</span><span>${esc(catsOf(r.p).join(" / "))}</span><span>${esc(r.p.client)}</span><span class="arc-d"><span>${esc(r.text)}</span></span><span>${esc(r.p.year || "")}</span></a>`).join("")}
       </div></div>`;
     }
   };
@@ -479,6 +480,16 @@
       const fallback = () => { const m = $("[data-mail]"); const r = document.createRange(); r.selectNodeContents(m); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
       try { navigator.clipboard.writeText(S.email).then(done, fallback); } catch (err){ fallback(); }
     }
+  });
+
+  /* Archive: la descrizione scorre quando passi sopra alla riga */
+  document.addEventListener("mouseover", e => {
+    const r = e.target.closest("a.arc-r"); if (!r || r.dataset.mq) return;
+    const box = r.querySelector(".arc-d"), t = box && box.firstElementChild; if (!t) return;
+    r.dataset.mq = "1";
+    const d = t.scrollWidth - box.clientWidth;
+    if (d > 4){ box.style.setProperty("--d", -d - 16 + "px"); box.style.setProperty("--s", Math.max(2, d / 60) + "s"); box.classList.add("mq"); }
+    r.addEventListener("mouseleave", () => { box.classList.remove("mq"); delete r.dataset.mq; }, { once: true });
   });
 
   /* Caricamento contenuti */

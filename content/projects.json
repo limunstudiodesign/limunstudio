@@ -164,7 +164,8 @@
               ]
             }
           ],
-          "color": "#7cfc00"
+          "color": "#7cfc00",
+          "summary": "Il videopodcast di Ursus condotto da Giada Borgato, ex ciclista professionista e commentatrice Rai: tre stagioni di incontri con i protagonisti del ciclismo."
         },
         {
           "type": "standard",
@@ -177,7 +178,8 @@
               "size": "full",
               "caption": ""
             }
-          ]
+          ],
+          "summary": "Il video di lancio della ruota Pura R di Ursus."
         },
         {
           "type": "standard",
@@ -190,7 +192,8 @@
               "caption": "",
               "url": "https://www.youtube.com/watch?v=fA2LRKZ3T1Y"
             }
-          ]
+          ],
+          "summary": "Il video di lancio della ruota Countach di Ursus."
         },
         {
           "type": "standard",
@@ -220,7 +223,8 @@
               "size": "half",
               "caption": ""
             }
-          ]
+          ],
+          "summary": "Foto e reel con il team Picnic PostNL, al Giro d'Italia 2025 su ruote Ursus."
         },
         {
           "type": "series",
@@ -247,7 +251,8 @@
               "guest": "Alberto Maffei",
               "url": "https://www.youtube.com/watch?v=mQz7JOHCdHA"
             }
-          ]
+          ],
+          "summary": "Serie video girata in Europa con ambassador come Maverick Viñales e Alessandro Petacchi: la storia dietro l'atleta."
         }
       ],
       "extra": [
@@ -508,7 +513,8 @@
             }
           ],
           "open": true,
-          "start_season": 3
+          "start_season": 3,
+          "summary": "Tre stagioni di videopodcast sulle migliori pratiche di vendita, con interviste a professionisti e imprenditori."
         },
         {
           "type": "podcast",
@@ -571,7 +577,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summary": "Il videopodcast dedicato al marketing: strategie, sfide e successi raccontati da chi li ha vissuti."
         }
       ],
       "extra": []
@@ -648,7 +655,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Comunicazione integrata su YouTube, TikTok e Instagram, campagne OOH a Vicenza e la linea celebrativa per i 50 anni."
     },
     {
       "client": "Diesel",
@@ -712,7 +720,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Due interviste esclusive a Renzo Rosso, una pubblicata su Vogue China, e contenuti per la comunicazione interna."
     },
     {
       "client": "Decathlon",
@@ -760,7 +769,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Contenuti per Decathlon."
     },
     {
       "client": "Comune di Thiene",
@@ -776,7 +786,8 @@
       "credits": [],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "City branding per il Comune di Thiene."
     },
     {
       "client": "SDR Pack",
@@ -894,7 +905,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "La special edition del magazine BOB, shooting aziendale, agende, bilancio di sostenibilità e grafiche per TUTTOFOOD 2025."
     },
     {
       "client": "3MTecnofer",
@@ -915,7 +927,8 @@
       ],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Format per YouTube, TikTok e Instagram: su TikTok oltre 255 mila visualizzazioni."
     },
     {
       "client": "Gianeletti",
@@ -1003,7 +1016,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Nuova brand identity ispirata a minimalismo e Swiss design, in total black & white."
     },
     {
       "client": "Sonus Faber",
@@ -1087,7 +1101,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Foto e video per l'evento Sonus faber al Teatro Nuovo di Vicenza durante il Vicenza Jazz Festival."
     },
     {
       "client": "Bottecchia",
@@ -1102,7 +1117,8 @@
         }
       ],
       "cover_focus_x": "50",
-      "cover_focus_y": "75"
+      "cover_focus_y": "75",
+      "summary": "Direzione creativa per Bottecchia, storico marchio italiano di biciclette."
     },
     {
       "client": "Vicario Cinque",
@@ -1183,13 +1199,15 @@
               "size": "half",
               "caption": ""
             }
-          ]
+          ],
+          "summary": "La collezione Venezia FW26/27 raccontata attraverso l'acqua: riflessi profondi, superfici mosse, atmosfera sospesa."
         },
         {
           "type": "standard",
           "title": "SS27",
           "text": "",
-          "media": []
+          "media": [],
+          "summary": "La collezione SS27 di Vicario Cinque."
         }
       ],
       "extra": [
@@ -1277,7 +1295,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Direzione creativa per Haute & Craft."
     },
     {
       "client": "RP Several",
@@ -1293,7 +1312,8 @@
       "credits": [],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Brand identity per RP Several."
     },
     {
       "client": "Colbax",
@@ -1309,7 +1329,8 @@
       "credits": [],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Contenuti media per Colbax."
     },
     {
       "client": "Digital Boot Camp",
@@ -1346,7 +1367,8 @@
       ],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Direzione creativa per Digital Boot Camp."
     },
     {
       "client": "Isoli",
@@ -1408,7 +1430,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Direzione artistica e foto per il Bauma 2025: allestimenti per veicoli industriali raccontati con luci e ombre."
     },
     {
       "client": "Tera",
@@ -1487,7 +1510,8 @@
       ],
       "works": [],
       "extra": [],
-      "layout": "rows"
+      "layout": "rows",
+      "summary": "Tera People: storie di vita quotidiana sostenibile, in cui il vaso compare solo alla fine, con discrezione."
     },
     {
       "client": "H.D. Consultants",
@@ -1597,7 +1621,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summary": "inaltadefinizione, il videopodcast di H.D. Consultants: due stagioni."
         }
       ],
       "extra": [
@@ -1739,7 +1764,8 @@
                 }
               ]
             }
-          ]
+          ],
+          "summary": "I videopodcast Pills registrati a TUTTOFOOD con professionisti e aziende del food, e la serie Bibetaste."
         }
       ],
       "extra": []
@@ -1804,7 +1830,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Identità visiva per un brand streetwear: logotipo pulito, palette neutra e accenti pastello."
     },
     {
       "client": "Zebra Cultural Zoo",
@@ -1862,7 +1889,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Identità per un'associazione di danza contemporanea fondata da tre coreografe venete."
     },
     {
       "client": "Glamourlab",
@@ -1878,7 +1906,8 @@
       "credits": [],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Consulenza di comunicazione continuativa: grafica, art direction, brand e social."
     },
     {
       "client": "Passione Beauty",
@@ -1893,7 +1922,8 @@
         }
       ],
       "cover_focus_x": "50",
-      "cover_focus_y": "50"
+      "cover_focus_y": "50",
+      "summary": "Happy B-day: i contenuti per i 10 anni di Passione Unghie."
     },
     {
       "client": "Ideandum",
@@ -1909,7 +1939,8 @@
       "credits": [],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Contenuti video per Ideandum."
     },
     {
       "client": "Neus",
@@ -1925,7 +1956,8 @@
       "credits": [],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Identità visiva per Neus."
     },
     {
       "client": "BCH",
@@ -1941,7 +1973,8 @@
       "credits": [],
       "media": [],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Progetto grafico per BCH."
     },
     {
       "client": "New Andreas",
@@ -2079,7 +2112,8 @@
         }
       ],
       "works": [],
-      "extra": []
+      "extra": [],
+      "summary": "Lancio su TikTok, nuovi format Instagram e un video corporate in chiave ASMR per le scarpe da calcio New Andreas."
     }
   ]
 }
