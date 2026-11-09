@@ -1098,6 +1098,11 @@
       "extra": []
     },
     {
+      "client": "Bottecchia",
+      "category": "Creative Direction",
+      "cover": "/media/bottecchia-copertina.webp"
+    },
+    {
       "client": "Vicario Cinque",
       "subtitle": "",
       "year": "2025/2026",
@@ -1849,6 +1854,10 @@
       "media": [],
       "works": [],
       "extra": []
+    },
+    {
+      "client": "Passione Beauty",
+      "category": "Social Contents"
     },
     {
       "client": "Ideandum",

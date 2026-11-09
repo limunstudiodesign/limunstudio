@@ -259,6 +259,7 @@
   fbar.addEventListener("click", e => {
     const f = e.target.closest("[data-f]"); if (!f) return;
     const c = f.dataset.f || null;
+    if (!c){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
     go(c ? "/category/" + slugify(c) : "/");
   });
 
