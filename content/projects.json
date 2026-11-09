@@ -172,10 +172,12 @@
           "text": "",
           "media": [
             {
-              "type": "youtube",
+              "type": "video",
+              "src": "/media/ursus-pura-r.mp4",
+              "poster": "/media/ursus-pura-r.webp",
+              "sound": true,
               "size": "full",
-              "caption": "",
-              "url": "https://www.youtube.com/watch?v=yBgpKd72_wg"
+              "caption": ""
             }
           ]
         },
@@ -633,14 +635,6 @@
         {
           "type": "image",
           "src": "/media/belluscio-stories-01.webp",
-          "alt": "",
-          "size": "full",
-          "ratio": "auto",
-          "caption": ""
-        },
-        {
-          "type": "image",
-          "src": "/media/belluscio-senza-titolo-1.webp",
           "alt": "",
           "size": "full",
           "ratio": "auto",
@@ -1108,7 +1102,9 @@
           "alt": "Bottecchia Titan gravel in titanio",
           "size": "half"
         }
-      ]
+      ],
+      "cover_focus_x": "50",
+      "cover_focus_y": "75"
     },
     {
       "client": "Vicario Cinque",
@@ -1866,7 +1862,7 @@
     {
       "client": "Passione Beauty",
       "category": "Social Contents",
-      "cover": "/media/passione-beauty-copertina.webp",
+      "cover": "/media/passione-beauty-happy-bday.webp",
       "media": [
         {
           "type": "image",
@@ -1874,7 +1870,9 @@
           "alt": "Happy B-day Passione Unghie, foto di gruppo",
           "size": "full"
         }
-      ]
+      ],
+      "cover_focus_x": "50",
+      "cover_focus_y": "50"
     },
     {
       "client": "Ideandum",

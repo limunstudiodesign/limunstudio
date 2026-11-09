@@ -28,12 +28,11 @@
   function frame(service, src, ratio, title, allow, link){
     const ifr = `<iframe src="${src}" title="${esc(title)}" loading="lazy" ${allow ? `allow="${allow}" allowfullscreen` : `scrolling="no"`}></iframe>`;
     if (ext) return `<div class="emb" style="--r:${ratio}">${ifr}</div>`;
-    return `<p class="ext-off" data-gate="${encodeURIComponent(ifr)}" data-r="${ratio}"><a href="${esc(link || "#")}" target="_blank" rel="noopener">Guarda su ${SERVICE[service]} <span aria-hidden="true">↗</span></a></p>`;
+    return `<div class="emb ext-off" style="--r:${ratio}" data-gate="${encodeURIComponent(ifr)}" data-r="${ratio}"><button type="button" class="pill" data-load-ext>Mostra il video</button></div>`;
   }
   function loadAll(){
-    document.querySelectorAll(".ext-off[data-gate]").forEach(p => {
-      const d = document.createElement("div"); d.className = "emb"; d.style.setProperty("--r", p.dataset.r);
-      d.innerHTML = decodeURIComponent(p.dataset.gate); p.replaceWith(d);
+    document.querySelectorAll(".ext-off[data-gate]").forEach(d => {
+      d.innerHTML = decodeURIComponent(d.dataset.gate); d.classList.remove("ext-off"); delete d.dataset.gate;
     });
   }
   const YTA = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture";
@@ -45,17 +44,18 @@
   const RATIOS = ["1/1","4/5","3/4","2/3","4/3","3/2","16/9","9/16"];
   const fit = r => RATIOS.includes(r) ? ` style="aspect-ratio:${r};object-fit:cover"` : "";
   function mediaItem(m, n){
-    const cls = `m ${m.size === "full" ? "span2" : ""}`;
+    const cls = `m${m.size === "full" ? " span2" : ""}${m.type === "image" && RATIOS.includes(m.ratio) ? `" data-fixed="${m.ratio}` : ""}`;
     const cap = m.caption ? `<figcaption>${esc(m.caption)}</figcaption>` : "";
     switch (m.type){
       case "image":
         if (!m.src) return `<figure class="${cls}">${ph(n, "4/3")}</figure>`;
-        return `<figure class="${cls}"><img src="${esc(m.src)}" alt="${esc(m.alt || "")}" loading="lazy" decoding="async"${fit(m.ratio)}>${cap}</figure>`;
+        return `<figure class="${cls}"><img src="${esc(m.src)}" alt="${esc(m.alt || "")}" loading="lazy" decoding="async">${cap}</figure>`;
       case "gallery": {
         const imgs = (Array.isArray(m.images) ? m.images : [m.images]).filter(Boolean);
         if (!imgs.length) return "";
         const per = Math.min(4, Math.max(1, parseInt(m.per_row, 10) || (m.size === "full" ? 1 : 2)));
-        return `<figure class="m span2 grp" style="--n:${per}">${imgs.map(src => `<img src="${esc(src)}" alt="" loading="lazy" decoding="async"${fit(m.ratio)}>`).join("")}${cap}</figure>`;
+        const fx = RATIOS.includes(m.ratio) ? ` data-fixed="${m.ratio}"` : "";
+        return imgs.map(src => `<figure class="m"${fx}><img src="${esc(src)}" alt="" loading="lazy" decoding="async"></figure>`).join("");
       }
       case "video":
         if (!m.src) return "";
@@ -84,8 +84,123 @@
   function gallery(list, seed){
     const items = (list || []).map((m, k) => mediaItem(m, seed + k)).filter(Boolean);
     if (!items.length) return `<div class="g2 p-gal">${ph(seed,"16/9","span2")}${ph(seed+1,"4/5")}${ph(seed+2,"4/5")}</div>`;
-    return `<div class="g2 p-gal">${items.join("")}</div>`;
+    return `<div class="pk p-gal">${items.join("")}</div>`;
   }
+
+
+  /* ---------- Impaginazione automatica dei media ----------
+     Foto e video si dispongono in righe della stessa altezza che riempiono la larghezza.
+     Se nel blocco ci sono sia elementi verticali sia orizzontali, i verticali vanno
+     in una colonna a destra e le due colonne finiscono alla stessa altezza. */
+  const GAP = 8;
+  const rnum = r => { const [a, b] = String(r).split("/").map(Number); return a && b ? a / b : 0; };
+  function aspect(fig){
+    if (fig.dataset.a) return Promise.resolve(+fig.dataset.a);
+    const done = a => { fig.dataset.a = a; return a; };
+    if (fig.dataset.fixed) return Promise.resolve(done(rnum(fig.dataset.fixed)));
+    const emb = fig.querySelector(".emb");
+    if (emb) return Promise.resolve(done(rnum(emb.style.getPropertyValue("--r")) || 16 / 9));
+    const img = fig.querySelector("img"), vid = fig.querySelector("video");
+    let p;
+    if (img){
+      img.loading = "eager";
+      p = img.complete && img.naturalWidth ? Promise.resolve(img.naturalWidth / img.naturalHeight)
+        : new Promise(r => { img.addEventListener("load", () => r(img.naturalWidth / img.naturalHeight), { once: true }); img.addEventListener("error", () => r(4 / 3), { once: true }); });
+    } else if (vid){
+      p = vid.videoWidth ? Promise.resolve(vid.videoWidth / vid.videoHeight)
+        : new Promise(r => { vid.addEventListener("loadedmetadata", () => r(vid.videoWidth / vid.videoHeight), { once: true }); vid.addEventListener("error", () => r(16 / 9), { once: true }); if (vid.preload === "none"){ vid.preload = "metadata"; vid.load(); } });
+    } else return Promise.resolve(done(0));
+    return Promise.race([p, new Promise(r => setTimeout(() => r(16 / 9), 8000))]).then(a => done(a || 16 / 9));
+  }
+  /* Divide gli elementi in righe scegliendo le interruzioni più vicine all'altezza ideale */
+  function rows(list, W, T, maxN, noFull){
+    const out = []; let seg = [];
+    const dp = idx => {
+      const n = idx.length, best = Array(n + 1).fill(Infinity), prev = Array(n + 1).fill(0); best[0] = 0;
+      for (let j = 1; j <= n; j++) for (let k = Math.max(0, j - maxN); k < j; k++){
+        let s = 0; for (let t = k; t < j; t++) s += list[idx[t]].a;
+        const h = (W - GAP * (j - k - 1)) / s, c = best[k] + ((h - T) / T) ** 2;
+        if (c < best[j]){ best[j] = c; prev[j] = k; }
+      }
+      const r = []; for (let j = n; j > 0; j = prev[j]) r.unshift(idx.slice(prev[j], j)); return r;
+    };
+    const flush = () => { if (seg.length){ out.push(...dp(seg)); seg = []; } };
+    list.forEach((it, i) => { if (!it.a || (!noFull && it.full && it.a >= 1)){ flush(); out.push([i]); } else seg.push(i); });
+    flush(); return out;
+  }
+  const sumA = (list, r) => r.reduce((s, i) => s + list[i].a, 0);
+  /* altezza di una colonna di righe larga w */
+  const colH = (list, rs, w) => rs.reduce((h, r) => h + (list[r[0]].a ? (w - GAP * (r.length - 1)) / sumA(list, r) : 40), 0) + GAP * Math.max(0, rs.length - 1);
+  function rowsHTML(list, rs, maxH){
+    return rs.map(r => {
+      const s = sumA(list, r);
+      if (!s) return `<div class="pk-row pk-solo">${r.map(i => list[i].html).join("")}</div>`;
+      const cap = maxH ? ` style="max-width:${Math.round(maxH * s + GAP * (r.length - 1))}px"` : "";
+      return `<div class="pk-row"${cap}>${r.map(i => list[i].html.replace(/^<(figure|div|p)\b/, `<$1 style="flex:${Math.round(list[i].a * 1000)} 1 0%;--a:${list[i].a}"`)).join("")}</div>`;
+    }).join("");
+  }
+  function layout(box){
+    const list = box._items, W = box.clientWidth;
+    if (!W) return;
+    const maxH = Math.round(window.innerHeight * .86);
+    const mobile = W < 600;
+    const V = list.filter(it => it.a && it.a < .87), O = list.filter(it => !(it.a && it.a < .87));
+    let html;
+    if (mobile || !V.length || !O.length){
+      const onlyV = !O.length;
+      const T = mobile ? W * .62 : onlyV ? W * .36 : Math.min(Math.max(W * .34, 240), 620);
+      html = rowsHTML(list, rows(list, W, T, mobile ? 3 : onlyV ? 5 : 4), maxH);
+    } else {
+      /* due colonne: orizzontali a sinistra, verticali a destra, stessa altezza */
+      const avgV = V.reduce((s, it) => s + it.a, 0) / V.length;
+      let below = [], vRight = V.slice(), oLeft = O.slice(), best = null;
+      const plan = (k, oL, vR) => {
+        const lRows = rows(oL, W * .62, Math.min(Math.max(W * .2, 200), 480), 3, true);
+        const wr0 = W * .36, rRows = rows(vR, wr0, (wr0 - GAP * (k - 1)) / (k * avgV), k, true);
+        /* larghezza di sinistra che rende uguali le altezze: le due altezze sono lineari nella larghezza */
+        const hL = w => colH(oL, lRows, w), hR = w => colH(vR, rRows, w);
+        const a1 = hL(1000) - hL(0), b1 = hL(0), a2 = hR(1000) - hR(0), b2 = hR(0);
+        const avail = W - GAP * 2;
+        const wl = ((b2 - b1) * 1000 + a2 * avail) / (a1 + a2);
+        return { k, lRows, rRows, oL, vR, wl, fr: 1 - wl / avail };
+      };
+      const ok = pl => pl.fr >= .2 && pl.fr <= .5;
+      const score = pl => (ok(pl) ? 0 : 1 + Math.min(Math.abs(pl.fr - .2), Math.abs(pl.fr - .5))) + Math.abs(pl.fr - .36) + (vRight.length % pl.k ? .05 : 0);
+      for (const k of [1, 2, 3]){ const pl = plan(k, oLeft, vRight); if (!best || score(pl) < score(best)) best = pl; }
+      /* troppe foto: quelle in più vanno sotto, a tutta larghezza */
+      while (best.fr > .46 && oLeft.length > 1){ below.unshift(oLeft.pop()); best = plan(best.k, oLeft, vRight); }
+      /* troppi verticali: quelli in più vanno sotto */
+      while (best.fr < .22 && vRight.length > best.k){ for (let j = 0; j < best.k && vRight.length > best.k; j++) below.unshift(vRight.pop()); best = plan(best.k, oLeft, vRight); }
+      const wl = Math.round(best.wl), wr = Math.round(W - GAP * 2 - wl);
+      html = `<div class="pk-split"><div class="pk-col" style="width:${wl}px">${rowsHTML(best.oL, best.lRows)}</div><div class="pk-col" style="width:${wr}px">${rowsHTML(best.vR, best.rRows)}</div></div>`;
+      if (below.length){
+        const allV = below.every(it => it.a && it.a < .87);
+        html += rowsHTML(below, rows(below, W, allV ? W * .36 : Math.min(Math.max(W * .34, 240), 620), allV ? 5 : 4), maxH);
+      }
+    }
+    /* sposta gli elementi esistenti (i video restano gli stessi) */
+    const keep = new Map(list.map(it => [it.id, it.el]));
+    box.innerHTML = html;
+    box.querySelectorAll("[data-pk]").forEach(ph => {
+      const el = keep.get(ph.dataset.pk); if (!el) return;
+      el.style.cssText = ph.style.cssText; ph.replaceWith(el);
+    });
+    box.dataset.w = W;
+  }
+  function pack(box){
+    if (box._busy) return; box._busy = true;
+    const figs = [...box.children];
+    Promise.all(figs.map(aspect)).then(as => {
+      box._items = figs.map((el, i) => ({ el, id: String(i), a: as[i], full: el.classList.contains("span2"),
+        html: `<${el.tagName.toLowerCase()} data-pk="${i}"></${el.tagName.toLowerCase()}>` }));
+      layout(box); box.classList.add("ok"); watchVideos();
+    });
+  }
+  function packAll(){
+    document.querySelectorAll(".pk:not(.ok)").forEach(b => { const acc = b.closest(".acc"); if (!acc || acc.classList.contains("open")) pack(b); });
+  }
+  let rsz;
+  window.addEventListener("resize", () => { clearTimeout(rsz); rsz = setTimeout(() => document.querySelectorAll(".pk.ok").forEach(b => { if (+b.dataset.w !== b.clientWidth) layout(b); }), 150); });
 
   /* ---------- Podcast: stagioni a sinistra, player ed episodi a destra ---------- */
   const PODS = {};
@@ -132,16 +247,20 @@
   }
 
   /* ---------- Viste ---------- */
+  function focus(p){
+    const v = x => { const n = parseInt(x, 10); return Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : 50; };
+    return `object-position:${v(p.cover_focus_x)}% ${v(p.cover_focus_y)}%`;
+  }
   function tile(p){
     const i = idx(p);
     let cover = ph(i, "4/3");
     const yid = !p.cover_video && p.cover_youtube && ext ? ytId(p.cover_youtube) : null;
-    if (p.cover_video) cover = `<video class="cover" data-auto src="${esc(p.cover_video)}" ${p.cover ? `poster="${esc(p.cover)}"` : ""} muted loop playsinline preload="none"></video>`;
+    if (p.cover_video) cover = `<video class="cover" style="${focus(p)}" data-auto src="${esc(p.cover_video)}" ${p.cover ? `poster="${esc(p.cover)}"` : ""} muted loop playsinline preload="none"></video>`;
     else if (yid){
       const tall = /\/shorts\//.test(p.cover_youtube);
-      cover = `<span class="cover cvr${tall ? " tall" : ""}"${p.cover ? ` style="background:center/cover url('${esc(p.cover)}')"` : ""}><iframe src="https://www.youtube-nocookie.com/embed/${yid}?autoplay=1&mute=1&loop=1&playlist=${yid}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0" title="" tabindex="-1" aria-hidden="true" loading="lazy" allow="autoplay; encrypted-media"></iframe></span>`;
+      cover = `<span class="cover cvr${tall ? " tall" : ""}"${p.cover ? ` style="background:${focus(p).split(":")[1]}/cover url('${esc(p.cover)}')"` : ""}><iframe src="https://www.youtube-nocookie.com/embed/${yid}?autoplay=1&mute=1&loop=1&playlist=${yid}&controls=0&modestbranding=1&playsinline=1&rel=0&disablekb=1&iv_load_policy=3&fs=0" title="" tabindex="-1" aria-hidden="true" loading="lazy" allow="autoplay; encrypted-media"></iframe></span>`;
     }
-    else if (p.cover) cover = `<img class="cover" src="${esc(p.cover)}" alt="" loading="${i < 4 ? "eager" : "lazy"}" decoding="async">`;
+    else if (p.cover) cover = `<img class="cover" style="${focus(p)}" src="${esc(p.cover)}" alt="" loading="${i < 4 ? "eager" : "lazy"}" decoding="async">`;
     return `<a class="tile" href="/work/${p.slug}">${cover}<span>${esc(p.client)}${p.subtitle ? SL + esc(p.subtitle) : ""}<br>${esc(p.category)}</span></a>`;
   }
   const VIEWS = {
@@ -163,7 +282,7 @@
             <button type="button" class="acc-h" data-acc aria-expanded="${!!w.open}"><span>${esc(w.title)}</span><span class="ic" aria-hidden="true"></span></button>
             <div class="acc-b"><div class="acc-in"><div class="acc-c">${paras(w.text)}${w.type === "podcast" ? podcast(w, `${p.slug}-${k}`) : w.type === "series" ? series(w, `${p.slug}-${k}`) : gallery(w.media, i + k * 3)}</div></div></div>
           </section>`).join("")}</div>` : gallery(p.media, i)}
-        ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="g2 p-gal after">${x.join("")}</div>` : ""; })()}
+        ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="pk p-gal after">${x.join("")}</div>` : ""; })()}
         <nav class="pnav" aria-label="Progetti">
           <a class="back" href="${lastList}">Back to:<br><span class="nt">${lastList === "/" || !filter ? "Portfolio" : esc(filter)}</span></a>
           ${PROJECTS.length > 1 ? `<a class="next" href="/work/${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
@@ -232,6 +351,7 @@
     const c = e.target.closest("[data-consent]");
     if (c){ const yes = c.dataset.consent === "1"; const was = ext; setExt(yes); banner(false); if (yes) loadAll(); else if (was) route(); return; }
     if (e.target.closest("[data-cookie-prefs]")) banner(true);
+    if (e.target.closest("[data-load-ext]")){ setExt(true); banner(false); loadAll(); }
   });
 
   /* About: si apre in alto e resta aperto mentre navighi */
@@ -298,7 +418,7 @@
     if (key !== "home"){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
     document.body.dataset.view = key;
     app.innerHTML = html;
-    watchVideos();
+    watchVideos(); packAll();
     document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === key ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
     window.scrollTo(0, 0);
     if (h === "privacy") showPrivacy(true);
@@ -314,7 +434,7 @@
 
   app.addEventListener("click", e => {
     const a = e.target.closest("[data-acc]");
-    if (a){ const s = a.parentElement, open = !s.classList.contains("open"); s.classList.toggle("open", open); a.setAttribute("aria-expanded", open); return; }
+    if (a){ const s = a.parentElement, open = !s.classList.contains("open"); s.classList.toggle("open", open); a.setAttribute("aria-expanded", open); if (open) packAll(); return; }
     if (e.target.closest("[data-priv]")){ showPrivacy($("#priv").hidden); return; }
     const sb = e.target.closest("[data-season]");
     if (sb){
