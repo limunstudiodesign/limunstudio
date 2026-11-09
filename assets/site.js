@@ -187,6 +187,11 @@
         <div>${lines(S.address)}</div>
         <div style="grid-column:span 2">${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">Instagram</a>` : ""}</div>
       </div>`; }
+  /* Un cliente in About diventa un link se esiste un progetto con lo stesso nome */
+  function clientLink(c){
+    const p = PROJECTS.find(x => slugify(x.client) === slugify(c));
+    return p ? `<a href="/work/${p.slug}">${esc(c)}</a>` : esc(c);
+  }
   function renderChrome(){
     const team = (S.team || []).filter(t => t && t.name);
     $("#infoContent").innerHTML = `
@@ -194,7 +199,7 @@
         <div>${paras(S.about)}</div>
         <div>
           ${S.services?.length ? `<p>Services → ${S.services.map(esc).join(SL)}</p>` : ""}
-          ${S.clients?.length ? `<p>Clients → ${S.clients.map(esc).join(SL)}</p>` : ""}
+          ${S.clients?.length ? `<p>Clients → ${S.clients.map(clientLink).join(SL)}</p>` : ""}
         </div>
       </div>
       ${S.contacts_in_about ? contacts() : ""}

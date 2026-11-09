@@ -193,7 +193,7 @@ collections:
           - { name: name, label: Nome dello studio, required: false, widget: string }
           - { name: about, label: Testo About, required: false, widget: text, hint: "Lascia una riga vuota tra un paragrafo e l'altro." }
           - { name: services, label: Services, label_singular: Servizio, widget: list, required: false }
-          - { name: clients, label: Clients, label_singular: Cliente, widget: list, required: false }
+          - { name: clients, label: Clients, label_singular: Cliente, widget: list, required: false, hint: "In ordine di importanza. Se il nome è uguale a quello di un progetto, diventa un link alla sua pagina." }
           - name: team
             label: Team
             label_singular: Persona
