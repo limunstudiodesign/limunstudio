@@ -286,22 +286,36 @@
           </section>`).join("")}</div>` : gallery(p.media, i, p.layout)}
         ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="pk p-gal after"${p.layout === "rows" ? ' data-layout="rows"' : ""}>${x.join("")}</div>` : ""; })()}
         <nav class="pnav" aria-label="Progetti">
-          <a class="back" href="${lastList}">Back to:<br><span class="nt">${lastList === "/" || !filter ? "Portfolio" : esc(filter)}</span></a>
+          <a class="back" href="${lastList}">Back to:<br><span class="nt">${lastList === "/archive" ? "Archive" : lastList === "/" || !filter ? "Portfolio" : esc(filter)}</span></a>
           ${PROJECTS.length > 1 ? `<a class="next" href="/work/${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
         </nav>
       </article>`;
     },
-    contact(){
-      return `<div class="view"><div class="blocks">
+    archive(){
+      /* Indice di tutti i lavori: una riga per progetto, o per ogni striscia se il progetto ne ha */
+      const rows = [];
+      PROJECTS.forEach(p => {
+        const works = (p.works || []).filter(w => w && w.title);
+        const first = t => { const x = String(t || "").replace(/\s+/g, " ").trim(); return x; };
+        if (works.length) works.forEach((w, k) => rows.push({ href: `/work/${p.slug}?s=${k}`, name: w.title, p, text: first(w.text) || first(p.description) }));
+        else rows.push({ href: `/work/${p.slug}`, name: p.subtitle || p.client, p, text: first(p.description) });
+      });
+      return `<div class="view"><div class="arc" role="table">
+        <div class="arc-r arc-hd" role="row"><span>N°</span><span>Name</span><span>Category</span><span>Client</span><span>Description</span><span>Year</span></div>
+        ${rows.map((r, i) => `<a class="arc-r" role="row" href="${r.href}"><span>[${String(i + 1).padStart(3, "0")}]</span><span>${esc(r.name)}</span><span>${esc(catsOf(r.p).join(" / "))}</span><span>${esc(r.p.client)}</span><span>${esc(r.text)}</span><span>${esc(r.p.year || "")}</span></a>`).join("")}
+      </div></div>`;
+    }
+  };
+  function contactBlock(){
+    return `<div class="ctc i4">
         ${S.email ? `<p>New projects:<br><a href="mailto:${esc(S.email)}" data-mail>${esc(S.email)}</a><br><button type="button" class="pill" data-copy style="margin-top:.3em">Copy</button></p>` : ""}
         ${S.address ? `<p>Studio:<br>${lines(S.address)}</p>` : ""}
         ${S.instagram_url ? `<p>Instagram:<br><a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a></p>` : ""}
       </div>
-        <div class="ct-priv"><button type="button" class="pill" id="privBtn" aria-expanded="false" data-priv>Privacy</button>
-          <div class="priv" id="priv" hidden>${paras(S.privacy || "")}<p><button type="button" class="pill" data-cookie-prefs>Cookie preferences</button></p></div>
-        </div></div>`;
-    }
-  };
+      <div class="ct-priv"><button type="button" class="pill" id="privBtn" aria-expanded="false" data-priv>Privacy</button>
+        <div class="priv" id="priv" hidden>${paras(S.privacy || "")}<p><button type="button" class="pill" data-cookie-prefs>Cookie preferences</button></p></div>
+      </div>`;
+  }
 
   /* ---------- Parti fisse: About, footer ---------- */
   function contacts(){ return `<div class="i4">
@@ -324,8 +338,9 @@
         </div>
       </div>
       ${S.contacts_in_about ? contacts() : ""}
-      ${team.length ? `<div class="ipills"><button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button></div>
-      <div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}`;
+      <div class="ipills">${team.length ? `<button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button>` : ""}<button type="button" class="pill" id="ctBtn" aria-expanded="false">Contact</button></div>
+      ${team.length ? `<div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}
+      <div class="ct" id="ct" hidden>${contactBlock()}</div>`;
     $("#foot").innerHTML = `<div>${S.name ? esc(S.name) + "<br>" : ""}${lines(S.address)}</div>
       <div>${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a>` : ""}</div>`;
     const vat = (S.vat || []).filter(v => v && v.number);
@@ -333,9 +348,11 @@
     if (S.instagram_url) $("#dockIg").href = S.instagram_url;
     const tb = $("#teamBtn");
     if (tb) tb.addEventListener("click", () => { const t = $("#team"); t.hidden = !t.hidden; tb.setAttribute("aria-expanded", !t.hidden); });
+    $("#ctBtn").addEventListener("click", () => showContact($("#ct").hidden));
   }
+  function showContact(open){ const c = $("#ct"), b = $("#ctBtn"); if (!c) return; c.hidden = !open; b.setAttribute("aria-expanded", open); }
 
-  function showPrivacy(open){ const p = $("#priv"), b = $("#privBtn"); if (!p) return; p.hidden = !open; b.setAttribute("aria-expanded", open); if (open) p.scrollIntoView({ block: "start" }); }
+  function showPrivacy(open){ const p = $("#priv"), b = $("#privBtn"); if (!p) return; p.hidden = !open; b.setAttribute("aria-expanded", open); }
 
   /* Banner dei cookie: Accetta e Rifiuta con lo stesso peso */
   function banner(show){
@@ -396,7 +413,7 @@
 
   /* Router */
   /* Indirizzi veri: /work/nome-progetto, /contact, /privacy, /about */
-  function go(path){ if (location.pathname + location.hash !== path) history.pushState(null, "", path); route(); }
+  function go(path){ if (location.pathname + location.search + location.hash !== path) history.pushState(null, "", path); route(); }
   function route(){
     const old = decodeURIComponent(location.hash.slice(1));
     if (old){ /* vecchi link con # */
@@ -412,8 +429,8 @@
     fillBar();
     let key = "home", html;
     if (h === "about"){ setAbout(true); html = VIEWS.home(); }
-    else if (h === "contact"){ key = "contact"; html = VIEWS.contact(); }
-    else if (h === "privacy"){ key = "contact"; html = VIEWS.contact(); }
+    else if (h === "contact" || h === "privacy"){ setAbout(true); showContact(true); if (h === "privacy") showPrivacy(true); html = VIEWS.home(); }
+    else if (h === "archive"){ key = "archive"; lastList = "/archive"; html = VIEWS.archive(); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
     else html = VIEWS.home();
     if (key !== "project") document.title = (key === "home" && filter ? filter + " — " : "") + (S.name || "Limun Studio Design");
@@ -423,7 +440,8 @@
     watchVideos(); packAll();
     document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === key ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
     window.scrollTo(0, 0);
-    if (h === "privacy") showPrivacy(true);
+    if (key === "project"){ const k = new URLSearchParams(location.search).get("s"); const sec = k !== null ? app.querySelectorAll(".acc")[+k] : null;
+      if (sec){ if (!sec.classList.contains("open")){ sec.classList.add("open"); sec.querySelector("[data-acc]").setAttribute("aria-expanded", "true"); packAll(); watchVideos(); } setTimeout(() => sec.scrollIntoView({ block: "start" }), 60); } }
   }
   window.addEventListener("popstate", route);
   document.addEventListener("click", e => {
@@ -437,7 +455,6 @@
   app.addEventListener("click", e => {
     const a = e.target.closest("[data-acc]");
     if (a){ const s = a.parentElement, open = !s.classList.contains("open"); s.classList.toggle("open", open); a.setAttribute("aria-expanded", open); if (open) packAll(); return; }
-    if (e.target.closest("[data-priv]")){ showPrivacy($("#priv").hidden); return; }
     const sb = e.target.closest("[data-season]");
     if (sb){
       const pod = sb.closest("[data-pod]");
@@ -453,6 +470,9 @@
       pod.querySelector(".pod-r").innerHTML = podPlayer(pod.dataset.pod, +eb.dataset.seasonOf, +eb.dataset.ep, true);
       return;
     }
+  });
+  document.addEventListener("click", e => {
+    if (e.target.closest("[data-priv]")){ showPrivacy($("#priv").hidden); return; }
     const c = e.target.closest("[data-copy]");
     if (c){
       const done = () => { c.textContent = "Copied"; setTimeout(() => c.textContent = "Copy", 1500); };

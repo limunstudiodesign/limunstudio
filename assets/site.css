@@ -49,7 +49,7 @@ img,video{display:block;max-width:100%}
 .i4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:8px;margin-top:1em}
 .i4 > *{min-width:0}
 .ipills{display:flex;gap:3px;margin-top:1em}
-.team{margin-top:.6em}
+.team,.ct{margin-top:.6em}
 .info-c p + p{margin-top:.8em}
 
 /* Pillole in basso */
@@ -138,6 +138,20 @@ a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span{font-style:ital
 .blocks{display:flex;flex-direction:column;gap:1em;max-width:19em}
 .foot{margin-top:clamp(64px,10vh,140px);padding-bottom:80px}
 .ext-off{display:flex;align-items:center;justify-content:center}
+/* Archive: indice di tutti i lavori */
+.arc{font-size:.72em;line-height:1.25}
+.arc-r{display:grid;grid-template-columns:4.2em minmax(0,1.3fr) minmax(0,1.3fr) minmax(0,1fr) minmax(0,3fr) 6.5em;column-gap:12px;padding-block:5px 6px;border-top:1px solid var(--fg)}
+.arc-r > span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arc-r > span:last-child{text-align:right}
+.arc-hd{border-top:0;padding-bottom:4px;align-items:end}
+.arc-hd > span{font-size:.7em}
+.arc-hd:hover{font-style:normal}
+.arc a.arc-r:last-child{border-bottom:1px solid var(--fg)}
+@media (max-width:640px){
+  .arc{font-size:.8em}
+  .arc-r{grid-template-columns:3.6em minmax(0,1fr) minmax(0,1fr) 4.6em;column-gap:8px}
+  .arc-r > span:nth-child(3),.arc-r > span:nth-child(5){display:none}
+}
 /* Impaginazione automatica dei media */
 .pk:not(.ok){display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;opacity:0}
 .pk.ok{display:flex;flex-direction:column;gap:8px;animation:vin .3s ease}
@@ -147,7 +161,7 @@ a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span{font-style:ital
 .pk-split{display:flex;gap:16px;align-items:flex-start}
 .pk-col{display:flex;flex-direction:column;gap:8px;min-width:0}
 .priv p + p{margin-top:.6em}
-.ct-priv{margin-top:clamp(48px,7vw,100px);display:flex;flex-direction:column;align-items:flex-start;gap:1em;max-width:44em}
+.ct-priv{margin-top:1em;display:flex;flex-direction:column;align-items:flex-start;gap:1em;max-width:44em}
 .cookie{position:fixed;z-index:25;left:0;right:0;bottom:0;display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap;background:var(--bg);padding:10px var(--gutR) calc(46px + env(safe-area-inset-bottom, 0px)) var(--gut)}
 .cookie::before{content:"";position:absolute;top:0;left:var(--gut);right:var(--gutR);border-top:1.5px solid var(--fg)}
 .cookie p{max-width:34em}
