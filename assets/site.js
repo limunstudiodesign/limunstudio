@@ -77,7 +77,8 @@
       }
       case "instagram": {
         const p = igPath(m.url); if (!p) return "";
-        return `<figure class="${cls}">${frame("instagram", `https://www.instagram.com/${p}/embed/`, "9/16", m.caption || "Post Instagram", "", m.url)}${cap}</figure>`;
+        const who = m.avatar || m.handle ? `<div class="ig-h">${m.avatar ? `<img src="${esc(m.avatar)}" alt="">` : ""}${m.handle ? `<span>${esc(m.handle)}</span>` : ""}</div>` : "";
+        return `<figure class="${cls}">${who}${frame("instagram", `https://www.instagram.com/${p}/embed/`, "9/16", m.caption || "Post Instagram", "", m.url)}${cap}</figure>`;
       }
       default: return "";
     }

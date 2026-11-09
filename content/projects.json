@@ -1464,19 +1464,25 @@
           "type": "instagram",
           "url": "https://www.instagram.com/p/DeOxzDzDpU9/",
           "size": "half",
-          "caption": ""
+          "caption": "",
+          "avatar": "/media/tera-profilo-instagram.webp",
+          "handle": "tera_italy"
         },
         {
           "type": "instagram",
           "url": "https://www.instagram.com/p/DdtCTISiePv/",
           "size": "half",
-          "caption": ""
+          "caption": "",
+          "avatar": "/media/tera-profilo-instagram.webp",
+          "handle": "tera_italy"
         },
         {
           "type": "instagram",
           "url": "https://www.instagram.com/p/DewQGOVCUoW/",
           "size": "half",
-          "caption": ""
+          "caption": "",
+          "avatar": "/media/tera-profilo-instagram.webp",
+          "handle": "tera_italy"
         }
       ],
       "works": [],

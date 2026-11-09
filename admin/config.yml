@@ -119,7 +119,9 @@ collections:
                     label: Instagram (post o reel)
                     summary: "Instagram {{fields.url}}"
                     fields:
-                      - { name: url, label: Link Instagram, widget: string, hint: "L'embed mostra la cornice di Instagram. Per un risultato più pulito carica il reel come Video." }
+                      - { name: url, label: Link Instagram, widget: string, hint: "Incolla il link del reel. Sul sito si vede solo il video, senza la cornice di Instagram." }
+                      - { name: avatar, label: Foto profilo dell'account, widget: image, required: false, hint: "Il cerchio con il logo che compare sopra il video, come su Instagram." }
+                      - { name: handle, label: Nome dell'account, widget: string, required: false, hint: "Es. tera_italy" }
                       - *size
                       - *caption
               - name: works
