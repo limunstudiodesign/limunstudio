@@ -172,10 +172,8 @@
           "text": "",
           "media": [
             {
-              "type": "video",
-              "src": "/media/ursus-pura-r.mp4",
-              "poster": "/media/ursus-pura-r.webp",
-              "sound": true,
+              "type": "youtube",
+              "url": "https://www.youtube.com/watch?v=yBgpKd72_wg",
               "size": "full",
               "caption": ""
             }
