@@ -86,10 +86,12 @@ body[data-view="home"] .view{padding-top:0}
 /* Instagram: si vede solo il video, senza intestazione, bande nere e pulsanti della cornice */
 .emb.ig{overflow:hidden;background:#000}
 .emb.ig iframe{--k:1.3;inset:auto;left:-21.3%;top:calc(-55px / var(--k));width:calc(142.6% * var(--k));height:calc((100% + 400px) * var(--k));transform:scale(calc(1 / var(--k)));transform-origin:0 0}
-@media (max-width:640px){ .emb.ig iframe{--k:2.2} }
-.ig-h{display:flex;align-items:center;gap:.45em;margin-bottom:6px;font-size:.7em;line-height:1}
-.ig-h img{width:2em;height:2em;border-radius:50%;object-fit:cover;border:1px solid var(--ph2);flex:none}
-.pk-row .m .ig-h img{width:2em;height:2em;aspect-ratio:1}
+@media (max-width:640px){ .emb.ig iframe{--k:2.2} .ig-h{top:7px;left:7px;font-size:.62em} }
+.m:has(> .ig-h){position:relative}
+.ig-h{position:absolute;z-index:2;top:10px;left:10px;right:10px;display:flex;align-items:center;gap:.45em;font-size:.7em;line-height:1;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.55);pointer-events:none}
+.ig-h span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ig-h img{width:2.2em;height:2.2em;border-radius:50%;object-fit:cover;border:1.5px solid #fff;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.35)}
+.pk-row .m .ig-h img{width:2.2em;height:2.2em;aspect-ratio:1}
 .m figcaption{font-size:.6em;letter-spacing:0;margin-top:.4em}
 
 /* Fisarmonica delle lavorazioni */
