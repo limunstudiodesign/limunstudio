@@ -1857,7 +1857,16 @@
     },
     {
       "client": "Passione Beauty",
-      "category": "Social Contents"
+      "category": "Social Contents",
+      "cover": "/media/passione-beauty-copertina.webp",
+      "media": [
+        {
+          "type": "image",
+          "src": "/media/passione-beauty-happy-bday.webp",
+          "alt": "Happy B-day Passione Unghie, foto di gruppo",
+          "size": "full"
+        }
+      ]
     },
     {
       "client": "Ideandum",
