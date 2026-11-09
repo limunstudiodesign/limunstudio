@@ -1461,26 +1461,20 @@
           "caption": ""
         },
         {
-          "type": "video",
-          "src": "/media/tera-reel-1.mp4",
-          "poster": "/media/tera-reel-1.webp",
-          "sound": true,
+          "type": "instagram",
+          "url": "https://www.instagram.com/p/DeOxzDzDpU9/",
           "size": "half",
           "caption": ""
         },
         {
-          "type": "video",
-          "src": "/media/tera-reel-2.mp4",
-          "poster": "/media/tera-reel-2.webp",
-          "sound": true,
+          "type": "instagram",
+          "url": "https://www.instagram.com/p/DdtCTISiePv/",
           "size": "half",
           "caption": ""
         },
         {
-          "type": "video",
-          "src": "/media/tera-reel-3.mp4",
-          "poster": "/media/tera-reel-3.webp",
-          "sound": true,
+          "type": "instagram",
+          "url": "https://www.instagram.com/p/DewQGOVCUoW/",
           "size": "half",
           "caption": ""
         }
