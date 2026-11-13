@@ -342,10 +342,11 @@
       <div class="ipills">${team.length ? `<button type="button" class="pill" id="teamBtn" aria-expanded="false">Team</button>` : ""}<button type="button" class="pill" id="ctBtn" aria-expanded="false">Contact</button></div>
       ${team.length ? `<div class="team" id="team" hidden>${team.map(t => `${esc(t.name)}${t.role ? " — " + esc(t.role) : ""}`).join("<br>")}</div>` : ""}
       <div class="ct" id="ct" hidden>${contactBlock()}</div>`;
-    $("#foot").innerHTML = `<div>${S.name ? esc(S.name) + "<br>" : ""}${lines(S.address)}</div>
-      <div>${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a>` : ""}</div>`;
+    /* Footer in tre blocchi: studio e P.IVA, indirizzo, contatti */
     const vat = (S.vat || []).filter(v => v && v.number);
-    if (vat.length) $("#foot > div").insertAdjacentHTML("beforeend", `<br>P.IVA ${vat.map(v => esc(v.number)).join(" — ")}`);
+    $("#foot").innerHTML = `<div>${S.name ? esc(S.name) : ""}${vat.length ? `<br>P.IVA ${vat.map(v => esc(v.number)).join(" — ")}` : ""}</div>
+      <div>${lines(S.address)}</div>
+      <div>${S.email ? `<a href="mailto:${esc(S.email)}">${esc(S.email)}</a>` : ""}${S.instagram_url ? `${S.email ? "<br>" : ""}<a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a>` : ""}</div>`;
     if (S.instagram_url) $("#dockIg").href = S.instagram_url;
     const tb = $("#teamBtn");
     if (tb) tb.addEventListener("click", () => showTeam($("#team").hidden));

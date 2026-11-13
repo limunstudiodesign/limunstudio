@@ -730,7 +730,7 @@
       "category": "Contents",
       "categories": [],
       "hidden": false,
-      "cover": "/media/decathlon-dsc5854.webp",
+      "cover": "/media/decathlon-snowboard-tele.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "",
@@ -749,6 +749,54 @@
         }
       ],
       "media": [
+        {
+          "type": "image",
+          "src": "/media/decathlon-snowboard-tele.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/decathlon-dolomiti.webp",
+          "alt": "",
+          "size": "full",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/decathlon-bindings.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/decathlon-snowboard-profilo.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/decathlon-sci-profilo.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
+        {
+          "type": "image",
+          "src": "/media/decathlon-air.webp",
+          "alt": "",
+          "size": "half",
+          "ratio": "auto",
+          "caption": ""
+        },
         {
           "type": "image",
           "src": "/media/decathlon-dsc5854.webp",
@@ -770,7 +818,10 @@
       ],
       "works": [],
       "extra": [],
-      "summary": "Contenuti per Decathlon."
+      "summary": "Contenuti per Decathlon.",
+      "cover_focus_x": "50",
+      "cover_focus_y": "50",
+      "layout": "rows"
     },
     {
       "client": "Comune di Thiene",

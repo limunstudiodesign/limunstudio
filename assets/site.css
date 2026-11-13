@@ -64,8 +64,7 @@ img,video{display:block;max-width:100%}
 
 /* Pagine */
 #app{padding-bottom:12vh;min-height:60vh}
-.view{padding-top:clamp(10px,1.6vw,24px)}
-body[data-view="home"] .view{padding-top:0}
+.view{padding-top:0}
 .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:8px;row-gap:clamp(20px,2.6vw,40px)}
 .g2 > *{min-width:0}
 .tile{display:flex;flex-direction:column;gap:.28em}
@@ -137,7 +136,9 @@ a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span{font-style:ital
 
 /* Contact e footer */
 .blocks{display:flex;flex-direction:column;gap:1em;max-width:19em}
-.foot{margin-top:clamp(64px,10vh,140px);padding-bottom:80px}
+.foot{margin-top:clamp(64px,10vh,140px);padding-bottom:80px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:8px;row-gap:1em}
+.foot > *{min-width:0}
+@media (max-width:640px){ .foot{grid-template-columns:1fr} }
 .ext-off{display:flex;align-items:center;justify-content:center}
 /* Archive: indice di tutti i lavori */
 .arc{font-size:.72em;line-height:1.25}
