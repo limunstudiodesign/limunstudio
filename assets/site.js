@@ -309,12 +309,12 @@
   };
   function contactBlock(){
     return `<div class="ctc i4">
-        ${S.email ? `<p>New projects:<br><a href="mailto:${esc(S.email)}" data-mail>${esc(S.email)}</a><br><button type="button" class="pill" data-copy style="margin-top:.3em">Copy</button></p>` : ""}
+        ${S.email ? `<p>New projects:<br><a href="mailto:${esc(S.email)}">${esc(S.email)}</a></p>` : ""}
         ${S.address ? `<p>Studio:<br>${lines(S.address)}</p>` : ""}
         ${S.instagram_url ? `<p>Instagram:<br><a href="${esc(S.instagram_url)}" target="_blank" rel="noopener">${esc(S.instagram_handle || "Instagram")}</a></p>` : ""}
       </div>
-      <div class="ct-priv"><button type="button" class="pill" id="privBtn" aria-expanded="false" data-priv>Privacy</button>
-        <div class="priv" id="priv" hidden>${paras(S.privacy || "")}<p><button type="button" class="pill" data-cookie-prefs>Cookie preferences</button></p></div>
+      <div class="ct-priv"><div class="ipills" style="margin:0"><button type="button" class="pill" id="privBtn" aria-expanded="false" data-priv>Privacy</button><button type="button" class="pill" data-cookie-prefs>Cookies</button></div>
+        <div class="priv" id="priv" hidden>${paras(S.privacy || "")}</div>
       </div>`;
   }
 
@@ -348,10 +348,12 @@
     if (vat.length) $("#foot > div").insertAdjacentHTML("beforeend", `<br>P.IVA ${vat.map(v => esc(v.number)).join(" — ")}`);
     if (S.instagram_url) $("#dockIg").href = S.instagram_url;
     const tb = $("#teamBtn");
-    if (tb) tb.addEventListener("click", () => { const t = $("#team"); t.hidden = !t.hidden; tb.setAttribute("aria-expanded", !t.hidden); });
+    if (tb) tb.addEventListener("click", () => showTeam($("#team").hidden));
     $("#ctBtn").addEventListener("click", () => showContact($("#ct").hidden));
   }
-  function showContact(open){ const c = $("#ct"), b = $("#ctBtn"); if (!c) return; c.hidden = !open; b.setAttribute("aria-expanded", open); }
+  /* Team e Contact: se ne apre uno alla volta */
+  function showTeam(open){ const t = $("#team"), b = $("#teamBtn"); if (!t) return; t.hidden = !open; b.setAttribute("aria-expanded", open); if (open) showContact(false); }
+  function showContact(open){ const c = $("#ct"), b = $("#ctBtn"); if (!c) return; c.hidden = !open; b.setAttribute("aria-expanded", open); if (open) showTeam(false); else showPrivacy(false); }
 
   function showPrivacy(open){ const p = $("#priv"), b = $("#privBtn"); if (!p) return; p.hidden = !open; b.setAttribute("aria-expanded", open); }
 
@@ -377,7 +379,7 @@
   /* About: si apre in alto e resta aperto mentre navighi */
   const topEl = $("#top"), abt = $("#abt");
   function setAbout(open){ topEl.classList.toggle("open", open); abt.setAttribute("aria-expanded", open); abt.textContent = open ? "Close" : "About"; }
-  abt.addEventListener("click", () => setAbout(!topEl.classList.contains("open")));
+  abt.addEventListener("click", () => { const open = !topEl.classList.contains("open"); if (open){ showTeam(false); showContact(false); } setAbout(open); });
   document.addEventListener("keydown", e => { if (e.key === "Escape") setAbout(false); });
 
   /* Filters */
@@ -474,12 +476,6 @@
   });
   document.addEventListener("click", e => {
     if (e.target.closest("[data-priv]")){ showPrivacy($("#priv").hidden); return; }
-    const c = e.target.closest("[data-copy]");
-    if (c){
-      const done = () => { c.textContent = "Copied"; setTimeout(() => c.textContent = "Copy", 1500); };
-      const fallback = () => { const m = $("[data-mail]"); const r = document.createRange(); r.selectNodeContents(m); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
-      try { navigator.clipboard.writeText(S.email).then(done, fallback); } catch (err){ fallback(); }
-    }
   });
 
   /* Archive: la descrizione scorre quando passi sopra alla riga */

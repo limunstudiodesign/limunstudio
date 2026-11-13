@@ -50,6 +50,7 @@ img,video{display:block;max-width:100%}
 .i4 > *{min-width:0}
 .ipills{display:flex;gap:3px;margin-top:1em}
 .team,.ct{margin-top:.6em}
+.info-c .ctc p{margin:0}
 .info-c p + p{margin-top:.8em}
 
 /* Pillole in basso */
