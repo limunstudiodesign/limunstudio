@@ -1677,6 +1677,10 @@
         {
           "name": "Matteo Nicolin",
           "role": "Video & Audio Editor"
+        },
+        {
+          "name": "Sam Mohamed Ali",
+          "role": "Assistant"
         }
       ],
       "media": [],
@@ -1765,7 +1769,9 @@
               ]
             }
           ],
-          "summary": "I videopodcast Pills registrati a TUTTOFOOD con professionisti e aziende del food, e la serie Bibetaste."
+          "summary": "I videopodcast Pills registrati a TUTTOFOOD con professionisti e aziende del food, e la serie Bibetaste.",
+          "open": true,
+          "start_season": 2
         }
       ],
       "extra": [],
