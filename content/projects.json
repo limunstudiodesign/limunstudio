@@ -1661,7 +1661,7 @@
       "category": "Podcast",
       "categories": [],
       "hidden": false,
-      "cover": "",
+      "cover": "/media/bibetech-copertina.webp",
       "cover_video": "",
       "cover_youtube": "",
       "description": "Bibetech ha presentato il format Pills all'interno di TUTTOFOOD, realizzando videopodcast con professionisti e aziende del settore food che hanno condiviso strategie, sfide e visioni sull'innovazione.\nLo studio ha curato la produzione e la regia dei contenuti, offrendo un racconto autentico delle esperienze e delle pratiche di chi ogni giorno lavora per cambiare le regole del mercato. L'iniziativa ha generato confronto, curiosità ed entusiasmo attorno al lancio del nuovo packaging, confermando l'importanza di comunicare una visione chiara e di creare connessioni reali.\nLe aziende che hanno partecipato ai videopodcast sono: EURIAL, Martinucci s.r.l., YOEGGS, Mielizia, Marcigaglia The Bridge, Frescolat S.R.L., Fattorie Garofalo, HPP Italia.",
@@ -1768,7 +1768,9 @@
           "summary": "I videopodcast Pills registrati a TUTTOFOOD con professionisti e aziende del food, e la serie Bibetaste."
         }
       ],
-      "extra": []
+      "extra": [],
+      "cover_focus_x": "50",
+      "cover_focus_y": "50"
     },
     {
       "client": "Macarons",
