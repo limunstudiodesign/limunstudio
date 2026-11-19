@@ -12,6 +12,8 @@
   const slugify = s => String(s).toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
   let PROJECTS = [], S = {}, filter = null, lastList = "/";
+  /* Con la landing temporanea attiva, la griglia dei progetti vive su /portfolio */
+  const PORT = () => S.landing ? "/portfolio" : "/";
   const idx = p => PROJECTS.indexOf(p);
   const bySlug = s => PROJECTS.find(p => p.slug === s);
   const catsOf = p => [p.category, ...(Array.isArray(p.categories) ? p.categories : [])].filter(Boolean);
@@ -286,10 +288,20 @@
           </section>`).join("")}</div>` : gallery(p.media, i, p.layout)}
         ${(() => { const x = (p.extra || []).map((m, k) => mediaItem(m, i + k)).filter(Boolean); return x.length ? `<div class="pk p-gal after"${p.layout === "rows" ? ' data-layout="rows"' : ""}>${x.join("")}</div>` : ""; })()}
         <nav class="pnav" aria-label="Progetti">
-          <a class="back" href="${lastList}">Back to:<br><span class="nt">${lastList === "/archive" ? "Archive" : lastList === "/" || !filter ? "Portfolio" : esc(filter)}</span></a>
+          <a class="back" href="${lastList}">Back to:<br><span class="nt">${lastList === "/archive" ? "Archive" : lastList === PORT() || !filter ? "Portfolio" : esc(filter)}</span></a>
           ${PROJECTS.length > 1 ? `<a class="next" href="/work/${n.slug}">Next:<br><span class="nt">${head(n)}</span></a>` : ""}
         </nav>
       </article>`;
+    },
+    landing(){
+      /* Landing temporanea: striscia di foto e video che scorre, poi il testo */
+      const items = (S.landing_media || []).filter(m => m && (m.image || m.video)).map(m => m.video
+        ? `<video src="${esc(m.video)}"${m.image ? ` poster="${esc(m.image)}"` : ""} muted loop playsinline autoplay preload="auto" aria-hidden="true"></video>`
+        : `<img src="${esc(m.image)}" alt="" decoding="async">`).join("");
+      return `<div class="view lnd">
+        ${items ? `<div class="mq-box" aria-hidden="true"><div class="mq-t"><div class="mq-s">${items}</div><div class="mq-s">${items}</div></div></div>` : ""}
+        <div class="lnd-t">${paras(S.landing_text || S.about)}</div>
+      </div>`;
     },
     archive(){
       /* Indice di tutti i lavori: una riga per progetto, o per ogni striscia se il progetto ne ha */
@@ -403,7 +415,7 @@
     const f = e.target.closest("[data-f]"); if (!f) return;
     const c = f.dataset.f || null;
     if (!c){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
-    go(c ? "/category/" + slugify(c) : "/");
+    go(c ? "/category/" + slugify(c) : PORT());
   });
 
   /* Video in loop: partono solo quando sono sullo schermo, così la pagina resta leggera */
@@ -414,6 +426,28 @@
   }), { rootMargin: "200px 0px" }) : null;
   function watchVideos(){ document.querySelectorAll("video[data-auto]").forEach(v => { if (v.dataset.watched) return; v.dataset.watched = "1"; if (io) io.observe(v); else { v.autoplay = true; v.play().catch(() => {}); } }); }
   document.addEventListener("click", e => { if (e.target.closest(".acc-h")) setTimeout(watchVideos, 50); });
+
+  /* Striscia della landing: scorre all'infinito verso sinistra, più veloce sugli schermi alti */
+  let mqRaf = 0;
+  function marquee(){
+    cancelAnimationFrame(mqRaf);
+    const t = app.querySelector(".mq-t"); if (!t) return;
+    document.documentElement.style.setProperty("--hh", document.querySelector(".bar").offsetHeight + "px");
+    const sets = t.children, still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    t.querySelectorAll("video").forEach(v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+    let x = 0, last = performance.now();
+    const step = now => {
+      if (!t.isConnected) return;
+      const dt = Math.min(now - last, 100) / 1000; last = now;
+      const w = sets[0].offsetWidth, h = t.offsetHeight;
+      if (!still && w > 0){ x -= dt * h * .35; if (-x >= w) x += w; }
+      /* se un solo giro non riempie lo schermo, aggiunge copie */
+      if (w > 0 && w * (sets.length - 1) < t.parentNode.offsetWidth) t.appendChild(sets[0].cloneNode(true));
+      t.style.transform = `translate3d(${x}px,0,0)`;
+      mqRaf = requestAnimationFrame(step);
+    };
+    mqRaf = requestAnimationFrame(step);
+  }
 
   /* Router */
   /* Indirizzi veri: /work/nome-progetto, /contact, /privacy, /about */
@@ -427,12 +461,15 @@
     }
     const path = decodeURIComponent(location.pathname).replace(/\/+$/, "") || "/";
     let h = path === "/" ? "home" : path.startsWith("/work/") ? "p-" + path.slice(6) : path.slice(1);
-    if (path === "/") filter = null;
+    if (path === "/landing" || (path === "/" && S.landing)) h = "landing";
+    else if (path === "/portfolio") h = "home";
+    if (path === "/" || path === "/portfolio") filter = null;
     if (path.startsWith("/category/")){ const sl = path.slice(10); filter = cats().find(c => slugify(c) === sl) || null; h = "home"; }
-    if (h === "home") lastList = filter ? "/category/" + slugify(filter) : "/";
+    if (h === "home") lastList = filter ? "/category/" + slugify(filter) : PORT();
     fillBar();
     let key = "home", html;
-    if (h === "about"){ setAbout(true); html = VIEWS.home(); }
+    if (h === "landing"){ key = "landing"; html = VIEWS.landing(); }
+    else if (h === "about"){ setAbout(true); html = VIEWS.home(); }
     else if (h === "contact" || h === "privacy"){ setAbout(true); showContact(true); if (h === "privacy") showPrivacy(true); html = VIEWS.home(); }
     else if (h === "archive"){ key = "archive"; lastList = "/archive"; html = VIEWS.archive(); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
@@ -441,7 +478,7 @@
     if (key !== "home"){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
     document.body.dataset.view = key;
     app.innerHTML = html;
-    watchVideos(); packAll();
+    watchVideos(); packAll(); if (key === "landing") marquee();
     document.querySelectorAll("[data-nav]").forEach(a => a.dataset.nav === key ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current"));
     window.scrollTo(0, 0);
     if (key === "project"){ const k = new URLSearchParams(location.search).get("s"); const sec = k !== null ? app.querySelectorAll(".acc")[+k] : null;
@@ -508,6 +545,7 @@
       app.innerHTML = `<p class="empty">Impossibile caricare i contenuti. Ricarica la pagina.</p>`;
       return;
     }
+    document.querySelector('.dock [data-nav="home"]').setAttribute("href", PORT());
     renderChrome(); fillBar(); route();
     if (choice === null) banner(true);
   }
