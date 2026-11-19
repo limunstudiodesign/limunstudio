@@ -300,7 +300,6 @@
         : `<img src="${esc(m.image)}" alt="" decoding="async">`).join("");
       return `<div class="view lnd">
         ${items ? `<div class="mq-box" aria-hidden="true"><div class="mq-t"><div class="mq-s">${items}</div><div class="mq-s">${items}</div></div></div>` : ""}
-        <div class="lnd-t">${paras(S.landing_text || S.about)}</div>
       </div>`;
     },
     archive(){
@@ -469,8 +468,8 @@
     fillBar();
     let key = "home", html;
     if (h === "landing"){ key = "landing"; html = VIEWS.landing(); }
-    else if (h === "about"){ setAbout(true); html = VIEWS.home(); }
-    else if (h === "contact" || h === "privacy"){ setAbout(true); showContact(true); if (h === "privacy") showPrivacy(true); html = VIEWS.home(); }
+    else if (h === "about"){ setAbout(true); if (S.landing){ key = "landing"; html = VIEWS.landing(); } else html = VIEWS.home(); }
+    else if (h === "contact" || h === "privacy"){ setAbout(true); showContact(true); if (h === "privacy") showPrivacy(true); if (S.landing){ key = "landing"; html = VIEWS.landing(); } else html = VIEWS.home(); }
     else if (h === "archive"){ key = "archive"; lastList = "/archive"; html = VIEWS.archive(); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
     else html = VIEWS.home();

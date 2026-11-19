@@ -202,8 +202,7 @@ collections:
         fields:
           - { name: name, label: Nome dello studio, required: false, widget: string }
           - { name: about, label: Testo About, required: false, widget: text, hint: "Lascia una riga vuota tra un paragrafo e l'altro." }
-          - { name: landing, label: "Landing temporanea come home", required: false, widget: boolean, default: false, hint: "Acceso: limunstudiodesign.com apre la landing e i progetti stanno su /portfolio. Spento: la home è la griglia dei progetti. La landing si vede sempre su /landing." }
-          - { name: landing_text, label: Testo della landing, required: false, widget: text, hint: "Lascia una riga vuota tra un paragrafo e l'altro. Se è vuoto usa il testo About." }
+          - { name: landing, label: "Landing temporanea come home", required: false, widget: boolean, default: false, hint: "Acceso: la home è solo la striscia a tutto schermo con About e Instagram; i progetti restano su /portfolio. Spento: la home è la griglia dei progetti. La landing si vede sempre su /landing." }
           - name: landing_media
             label: Striscia della landing
             label_singular: Elemento

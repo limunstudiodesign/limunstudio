@@ -185,10 +185,13 @@ a:hover,a:focus-visible,button:not(.pill):hover,.tile:hover span{font-style:ital
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 
-/* Landing temporanea */
+/* Landing temporanea: solo la striscia a tutto schermo, niente scroll, solo About e Instagram */
+body[data-view="landing"]{overflow:hidden;height:100svh}
+body[data-view="landing"] .foot,body[data-view="landing"] .cookie,body[data-view="landing"] .dock .drow > div:first-child,body[data-view="landing"] .fbar{display:none!important}
+body[data-view="landing"] .dock .soc{margin-left:auto}
+html:has(body[data-view="landing"]){overflow:hidden}
+body[data-view="landing"] .info-c a[href^="/work/"]{pointer-events:none}
 .mq-box{margin-inline:calc(-1 * var(--gut)) calc(-1 * var(--gutR));height:calc(100svh - var(--hh, 2.2em) - env(safe-area-inset-top, 0px));overflow:hidden;background:var(--ph1)}
 .mq-t{display:flex;height:100%;width:max-content;will-change:transform}
 .mq-s{display:flex;height:100%}
 .mq-s > *{height:100%;width:auto;max-width:none;flex:none;object-fit:cover}
-.lnd-t{display:flex;flex-direction:column;gap:1em;padding-top:.7em}
-@media (max-width:640px){ .mq-box{height:62svh} }
