@@ -460,6 +460,8 @@
     }
     const path = decodeURIComponent(location.pathname).replace(/\/+$/, "") || "/";
     let h = path === "/" ? "home" : path.startsWith("/work/") ? "p-" + path.slice(6) : path.slice(1);
+    /* sul dominio ufficiale, finché c'è la landing, si vede solo quella (più About e Contact) */
+    if (S.landing && /(^|\.)limunstudiodesign\.com$/.test(location.hostname) && !["/", "/about", "/contact", "/privacy"].includes(path)){ history.replaceState(null, "", "/"); return route(); }
     if (path === "/landing" || (path === "/" && S.landing)) h = "landing";
     else if (path === "/portfolio") h = "home";
     if (path === "/" || path === "/portfolio") filter = null;
@@ -473,7 +475,8 @@
     else if (h === "archive"){ key = "archive"; lastList = "/archive"; html = VIEWS.archive(); }
     else if (h.startsWith("p-") && bySlug(h.slice(2))){ key = "project"; const p = bySlug(h.slice(2)); html = VIEWS.project(p); document.title = `${p.client} — ${S.name || "Limun Studio Design"}`; }
     else html = VIEWS.home();
-    if (key !== "project") document.title = (key === "home" && filter ? filter + " — " : "") + (S.name || "Limun Studio Design");
+    if (key === "landing") document.title = (S.name || "Limun Studio Design") + " — Studio creativo a Vicenza";
+    else if (key !== "project") document.title = (key === "home" && filter ? filter + " — " : "") + (S.name || "Limun Studio Design");
     if (key !== "home"){ fbar.hidden = true; fbtn.setAttribute("aria-expanded", "false"); }
     document.body.dataset.view = key;
     app.innerHTML = html;

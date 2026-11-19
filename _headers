@@ -1,5 +1,9 @@
-# Finché il sito è in lavorazione non va indicizzato. Al lancio togliere questo blocco.
-/*
+# Il sito in lavorazione su pages.dev non va indicizzato.
+# Il dominio ufficiale limunstudiodesign.com invece sì.
+https://limunstudio.pages.dev/*
+  X-Robots-Tag: noindex, nofollow
+
+https://:version.limunstudio.pages.dev/*
   X-Robots-Tag: noindex, nofollow
 
 /content/*

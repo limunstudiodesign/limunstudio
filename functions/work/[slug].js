@@ -47,6 +47,8 @@ export async function onRequest({ request, env, params }) {
   return new HTMLRewriter()
     .on("title", { element(el) { el.setInnerContent(title); } })
     .on('meta[name="description"]', { element(el) { el.remove(); } })
+    .on('meta[property^="og:"]', { element(el) { el.remove(); } })
+    .on('meta[name^="twitter:"]', { element(el) { el.remove(); } })
     .on("head", { element(el) { el.append(meta, { html: true }); } })
     .transform(new Response(page.body, { status: 200, headers: { "content-type": "text/html; charset=utf-8" } }));
 }
