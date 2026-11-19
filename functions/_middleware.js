@@ -1,13 +1,13 @@
 // Dominio ufficiale (limunstudiodesign.com) mentre è attiva la landing temporanea:
-// - www rimanda all'indirizzo senza www
+// - l'indirizzo principale è www.limunstudiodesign.com (senza www arriva qui tramite rimando)
 // - i vecchi indirizzi del sito Wix e le pagine non ancora pronte rimandano alla landing
 // Su limunstudio.pages.dev invece si vede tutto il sito in lavorazione.
-const LIVE = "limunstudiodesign.com";
+const LIVE = "www.limunstudiodesign.com";
 const OPEN = ["/", "/about", "/contact", "/privacy"];
 
 export async function onRequest({ request, env, next }) {
   const url = new URL(request.url);
-  if (url.hostname === "www." + LIVE) return Response.redirect(`https://${LIVE}${url.pathname}${url.search}`, 301);
+  if (url.hostname === "limunstudiodesign.com") return Response.redirect(`https://${LIVE}${url.pathname}${url.search}`, 301);
   if (url.hostname !== LIVE) return next();
   const path = url.pathname.replace(/\/+$/, "") || "/";
   if (/\.[a-z0-9]+$/i.test(path)) return next();
